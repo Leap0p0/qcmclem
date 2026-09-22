@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traduction anglais - Workplace & HR</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #eef4ff;
+      --muted: #94a3b8;
+      --night: #060914;
+      --surface: #0e1626;
+      --surface-2: #131e31;
+      --blue: #67e8f9;
+      --blue-dark: #164e63;
+      --amber: #fbbf24;
+      --red: #fb7185;
+      --green: #86efac;
+      --line: rgba(148, 163, 184, .2);
+      --shadow: 0 28px 80px rgba(0, 0, 0, .48);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { overflow-x: hidden; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(8, 145, 178, .2), transparent 28rem),
+        radial-gradient(circle at 88% 88%, rgba(245, 158, 11, .12), transparent 30rem),
+        linear-gradient(145deg, #050812 0%, #09101d 55%, #070b14 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      display: grid;
+      place-items: center;
+      padding: 28px 16px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    button, input { font: inherit; }
+    .shell { position: relative; width: min(1020px, 100%); }
+
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      margin: 0 0 7px;
+      color: var(--blue);
+      font-size: .76rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.85rem, 4vw, 3.15rem);
+      line-height: 1;
+      letter-spacing: -.035em;
+      text-wrap: balance;
+    }
+
+    .lives {
+      flex: 0 0 auto;
+      min-width: 128px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(14, 22, 38, .78);
+      box-shadow: inset 0 1px rgba(255,255,255,.04);
+      text-align: center;
+      backdrop-filter: blur(12px);
+    }
+
+    .lives span { display: block; color: var(--muted); font-size: .72rem; font-weight: 700; text-transform: uppercase; }
+    #hearts { margin-top: 3px; color: var(--red); font-size: 1.25rem; letter-spacing: .08em; text-shadow: 0 0 16px rgba(251,113,133,.35); }
+
+    .card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(14, 22, 38, .94);
+      box-shadow: var(--shadow), inset 0 1px rgba(255,255,255,.045);
+      backdrop-filter: blur(18px);
+    }
+
+    .progress-track { height: 7px; background: #1d293d; }
+    #progress { width: 0; height: 100%; background: linear-gradient(90deg, #0891b2, var(--blue), var(--amber)); box-shadow: 0 0 20px rgba(103,232,249,.38); transition: width .4s ease; }
+
+    .quiz-menu { display: none; padding: clamp(24px, 5vw, 48px); }
+    .quiz-menu.show { display: block; }
+    .quiz-menu h2 { margin: 0 0 8px; font-family: Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+    .quiz-menu > p { margin: 0 0 24px; color: var(--muted); line-height: 1.5; }
+
+    .quiz-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .quiz-choice {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--surface-2);
+      padding: 21px 18px;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+
+    .quiz-choice::after { content: ""; position: absolute; inset: auto -25px -45px auto; width: 100px; height: 100px; border-radius: 50%; background: rgba(103,232,249,.055); }
+    .quiz-choice:hover { transform: translateY(-3px); border-color: rgba(103,232,249,.62); background: #17283b; }
+    .quiz-number { display: block; margin-bottom: 10px; color: var(--amber); font-size: .74rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .quiz-choice strong { display: block; min-height: 2.6em; font-family: Georgia, serif; font-size: 1.22rem; line-height: 1.25; }
+    .quiz-choice small { display: block; margin-top: 14px; color: var(--muted); font-weight: 650; }
+
+    main { padding: clamp(24px, 5vw, 52px); }
+    .quiz-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 22px; }
+    .meta { flex: 1; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .84rem; font-weight: 700; }
+    #category { color: var(--blue); text-transform: uppercase; letter-spacing: .08em; }
+
+    .back-button {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--blue);
+      padding: 9px 13px;
+      font-size: .78rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .back-button:hover { border-color: rgba(103,232,249,.6); background: #17283b; }
+
+    .prompt-label {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 850;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    #question {
+      margin: 0 0 20px;
+      min-height: 2.4em;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 4vw, 2.55rem);
+      line-height: 1.16;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .answer-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    #answerInput {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #09111f;
+      color: var(--ink);
+      padding: 16px 18px;
+      font-weight: 700;
+      outline: 0;
+    }
+
+    #answerInput:focus {
+      border-color: rgba(103,232,249,.72);
+      box-shadow: 0 0 0 4px rgba(103,232,249,.09);
+    }
+
+    .primary {
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0e7490, #0891b2);
+      color: #ecfeff;
+      padding: 14px 22px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(8,145,178,.22);
+      transition: transform .15s ease, filter .15s ease;
+    }
+
+    .primary:hover { transform: translateY(-2px); filter: brightness(1.13); }
+    .secondary {
+      margin: 10px 5px 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--blue);
+      padding: 13px 22px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .hint-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 650;
+    }
+
+    .ghost {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--amber);
+      padding: 10px 14px;
+      font-size: .78rem;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .ghost:hover { border-color: rgba(251,191,36,.65); background: rgba(251,191,36,.07); }
+    #feedback { min-height: 25px; margin: 20px 0 0; color: var(--muted); font-weight: 700; }
+    #feedback.bad { color: var(--red); }
+    #feedback.good { color: var(--green); }
+
+    .mini-source {
+      margin-top: 24px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: .86rem;
+      font-weight: 650;
+    }
+
+    .overlay { display: none; min-height: 420px; padding: 42px 26px; text-align: center; place-items: center; }
+    .overlay.show { display: grid; }
+    .overlay-inner { max-width: 550px; }
+    .result-icon { font-size: 3.1rem; }
+    .overlay h2 { margin: 12px 0 10px; font-family: Georgia, serif; font-size: clamp(2rem, 5vw, 3.2rem); }
+    .overlay p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
+    footer { margin-top: 14px; color: var(--muted); text-align: center; font-size: .78rem; }
+
+    .shake { animation: shake .28s ease; }
+    @keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+    @media (max-width: 760px) {
+      .quiz-list { grid-template-columns: 1fr; }
+      .quiz-choice strong { min-height: auto; }
+      .answer-panel { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 650px) {
+      header { align-items: center; }
+      .lives { min-width: 105px; padding-inline: 10px; }
+      main { padding: 24px 18px 28px; }
+      .quiz-toolbar { align-items: flex-start; flex-direction: column; }
+      .meta { align-self: stretch; }
+    }
+
+    @media (max-width: 430px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .lives { align-self: flex-end; }
+      .hint-row { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div>
+        <p class="eyebrow">Anglais pro - Traduction</p>
+        <h1>The workplace & Human Resources</h1>
+      </div>
+      <div class="lives" aria-live="polite">
+        <span>Vies restantes</span>
+        <div id="hearts" aria-label="3 vies">♥ ♥ ♥</div>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="progress-track"><div id="progress"></div></div>
+
+      <div id="quizMenu" class="quiz-menu show">
+        <h2>Choisis ton entraînement</h2>
+        <p>Traduis les mots de la fiche en anglais. Les variantes courantes sont acceptées quand il y en a plusieurs.</p>
+        <div class="quiz-list">
+          <button class="quiz-choice" type="button" data-quiz="0">
+            <span class="quiz-number">Quiz 1</span>
+            <strong>Jobs - Les postes</strong>
+            <small>20 traductions - 3 vies</small>
+          </button>
+          <button class="quiz-choice" type="button" data-quiz="1">
+            <span class="quiz-number">Quiz 2</span>
+            <strong>HR & Recruitment</strong>
+            <small>20 traductions - 3 vies</small>
+          </button>
+          <button class="quiz-choice" type="button" data-quiz="2">
+            <span class="quiz-number">Quiz 3</span>
+            <strong>Mix des deux fiches</strong>
+            <small>20 traductions - 3 vies</small>
+          </button>
+        </div>
+      </div>
+
+      <main id="quiz" hidden>
+        <div class="quiz-toolbar">
+          <button id="quitQuiz" class="back-button" type="button">← Retour aux quiz</button>
+          <div class="meta">
+            <span id="category"></span>
+            <span id="counter"></span>
+          </div>
+        </div>
+        <p class="prompt-label">Traduis en anglais</p>
+        <h2 id="question"></h2>
+        <form id="answerForm" class="answer-panel" autocomplete="off">
+          <input id="answerInput" type="text" inputmode="text" aria-label="Ta traduction en anglais" placeholder="Écris la traduction anglaise...">
+          <button class="primary" type="submit">Valider</button>
+        </form>
+        <div class="hint-row">
+          <span id="hint" class="hint"></span>
+          <button id="hintButton" class="ghost" type="button">Indice</button>
+        </div>
+        <p id="feedback" aria-live="assertive"></p>
+        <div class="mini-source">
+          <span id="sourceText"></span>
+        </div>
+      </main>
+
+      <div id="endScreen" class="overlay">
+        <div class="overlay-inner">
+          <div id="resultIcon" class="result-icon"></div>
+          <h2 id="resultTitle"></h2>
+          <p id="resultText"></p>
+          <button id="restart" class="primary" type="button">Relancer ce quiz</button>
+          <button id="backMenu" class="secondary" type="button">Choisir un autre quiz</button>
+        </div>
+      </div>
+    </section>
+    <footer>Une erreur coûte une vie. Les accents, apostrophes et majuscules ne comptent pas.</footer>
+  </div>
+
+  <script>
+    const jobs = [
+      { c: "Jobs", fr: "membre du conseil d'administration", a: ["board member"], h: "b... m..." },
+      { c: "Jobs", fr: "PDG", a: ["CEO", "chief executive officer"], h: "C..." },
+      { c: "Jobs", fr: "directeur financier", a: ["CFO", "chief financial officer"], h: "C..." },
+      { c: "Jobs", fr: "DRH", a: ["Human Resources director", "HR director"], h: "H... R... d..." },
+      { c: "Jobs", fr: "chef de service", a: ["head of department"], h: "h... of d..." },
+      { c: "Jobs", fr: "responsable administratif", a: ["office manager"], h: "o... m..." },
+      { c: "Jobs", fr: "chef de magasin", a: ["floor manager"], h: "f... m..." },
+      { c: "Jobs", fr: "chargé de clientèle", a: ["account manager"], h: "a... m..." },
+      { c: "Jobs", fr: "équipe de maintenance", a: ["maintenance crew"], h: "m... c..." },
+      { c: "Jobs", fr: "informaticien", a: ["IT technician"], h: "I... t..." },
+      { c: "Jobs", fr: "assistant de direction", a: ["PA", "personal assistant"], h: "p... a..." },
+      { c: "Jobs", fr: "employé de bureau", a: ["clerk", "clerical worker"], h: "c..." },
+      { c: "Jobs", fr: "cadre", a: ["executive"], h: "e..." },
+      { c: "Jobs", fr: "intérimaire", a: ["temp"], h: "t..." },
+      { c: "Jobs", fr: "demandeur d'emploi", a: ["job seeker"], h: "j... s..." },
+      { c: "Jobs", fr: "prestataire", a: ["contractor"], h: "c..." },
+      { c: "Jobs", fr: "stagiaire", a: ["intern"], h: "i..." },
+      { c: "Jobs", fr: "agent de sécurité", a: ["security guard"], h: "s... g..." },
+      { c: "Jobs", fr: "commercial", a: ["sales rep", "salesperson", "sales person"], h: "s... r..." },
+      { c: "Jobs", fr: "graphiste", a: ["graphic designer"], h: "g... d..." }
+    ];
+
+    const hr = [
+      { c: "HR & Recruitment", fr: "CV", a: ["résumé", "resume"], h: "r..." },
+      { c: "HR & Recruitment", fr: "poste vacant", a: ["vacancy"], h: "v..." },
+      { c: "HR & Recruitment", fr: "agence d'intérim", a: ["temp agency"], h: "t... a..." },
+      { c: "HR & Recruitment", fr: "évaluation", a: ["appraisal"], h: "a..." },
+      { c: "HR & Recruitment", fr: "(taux de) présence du personnel", a: ["staff attendance"], h: "s... a..." },
+      { c: "HR & Recruitment", fr: "congé", a: ["leave"], h: "l..." },
+      { c: "HR & Recruitment", fr: "main-d'oeuvre / effectifs", a: ["manpower"], h: "m..." },
+      { c: "HR & Recruitment", fr: "mutation / muter", a: ["transfer"], h: "t..." },
+      { c: "HR & Recruitment", fr: "poser sa candidature", a: ["apply"], h: "a..." },
+      { c: "HR & Recruitment", fr: "fournir une référence", a: ["provide a reference"], h: "p... a r..." },
+      { c: "HR & Recruitment", fr: "évaluer", a: ["assess"], h: "a..." },
+      { c: "HR & Recruitment", fr: "être sur la liste de candidats sélectionnés", a: ["be shortlisted", "shortlisted"], h: "be s..." },
+      { c: "HR & Recruitment", fr: "embaucher", a: ["take on"], h: "t... o..." },
+      { c: "HR & Recruitment", fr: "nommer", a: ["appoint"], h: "a..." },
+      { c: "HR & Recruitment", fr: "pointer", a: ["clock in", "clock out", "clock in/out"], h: "c... in / out" },
+      { c: "HR & Recruitment", fr: "réduire les effectifs", a: ["downsize"], h: "d..." },
+      { c: "HR & Recruitment", fr: "licencier pour motif économique", a: ["lay off"], h: "l... o..." },
+      { c: "HR & Recruitment", fr: "renvoyer", a: ["dismiss"], h: "d..." },
+      { c: "HR & Recruitment", fr: "donner son préavis", a: ["give notice"], h: "g... n..." },
+      { c: "HR & Recruitment", fr: "démissionner", a: ["resign"], h: "r..." }
+    ];
+
+    const quizGroups = [jobs, hr, [...jobs, ...hr]];
+    const $ = id => document.getElementById(id);
+    const shuffle = list => {
+      const copy = [...list];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    };
+
+    const normalize = value => value
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase("en")
+      .replace(/[’']/g, "")
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+
+    let deck = [];
+    let currentQuiz = 0;
+    let current = 0;
+    let lives = 3;
+    let score = 0;
+    let locked = false;
+    let transitionTimer = null;
+
+    function updateLives() {
+      const full = "♥ ".repeat(lives);
+      const empty = "♡ ".repeat(3 - lives);
+      $("hearts").textContent = (full + empty).trim();
+      $("hearts").setAttribute("aria-label", `${lives} vie${lives > 1 ? "s" : ""} restante${lives > 1 ? "s" : ""}`);
+    }
+
+    function startGame(quizIndex = currentQuiz) {
+      clearTimeout(transitionTimer);
+      currentQuiz = quizIndex;
+      deck = shuffle(quizGroups[currentQuiz]).slice(0, 20);
+      current = 0;
+      lives = 3;
+      score = 0;
+      locked = false;
+      $("quizMenu").classList.remove("show");
+      $("quiz").hidden = false;
+      $("endScreen").classList.remove("show");
+      updateLives();
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      locked = false;
+      const item = deck[current];
+      $("progress").style.width = `${(current / deck.length) * 100}%`;
+      $("category").textContent = item.c;
+      $("counter").textContent = `Question ${current + 1} / ${deck.length}`;
+      $("question").textContent = item.fr;
+      $("hint").textContent = "";
+      $("feedback").textContent = "";
+      $("feedback").className = "";
+      $("answerInput").value = "";
+      $("answerInput").disabled = false;
+      $("answerInput").classList.remove("shake");
+      $("sourceText").textContent = item.c === "Jobs"
+        ? "Source : fiche Jobs - Les postes"
+        : "Source : fiche Human Resources & Recruitment";
+      requestAnimationFrame(() => $("answerInput").focus());
+    }
+
+    function editDistance(a, b) {
+      const previous = Array.from({ length: b.length + 1 }, (_, index) => index);
+      const currentRow = Array(b.length + 1).fill(0);
+
+      for (let i = 1; i <= a.length; i++) {
+        currentRow[0] = i;
+        for (let j = 1; j <= b.length; j++) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          currentRow[j] = Math.min(
+            currentRow[j - 1] + 1,
+            previous[j] + 1,
+            previous[j - 1] + cost
+          );
+        }
+        previous.splice(0, previous.length, ...currentRow);
+      }
+
+      return previous[b.length];
+    }
+
+    function isAlmostCorrect(value, answers) {
+      const clean = normalize(value);
+      if (!clean) return false;
+
+      return answers.some(answer => {
+        const expected = normalize(answer);
+        if (clean === expected) return false;
+        const limit = expected.length <= 4 ? 1 : expected.length <= 10 ? 2 : 3;
+        return editDistance(clean, expected) <= limit;
+      });
+    }
+
+    function isCorrect(value, answers) {
+      const clean = normalize(value);
+      return answers.some(answer => normalize(answer) === clean);
+    }
+
+    function showExpectedAnswer(item) {
+      const [first, ...rest] = item.a;
+      return rest.length ? `${first} (${rest.join(" / ")})` : first;
+    }
+
+    function acceptCorrectAnswer() {
+      locked = true;
+      score++;
+      $("answerInput").disabled = true;
+      $("feedback").textContent = "Bonne traduction !";
+      $("feedback").className = "good";
+      transitionTimer = setTimeout(() => {
+        current++;
+        if (current === deck.length) endGame(true);
+        else renderQuestion();
+      }, 720);
+    }
+
+    function handleWrongAnswer(item) {
+      lives--;
+      updateLives();
+      $("answerInput").classList.remove("shake");
+      void $("answerInput").offsetWidth;
+      $("answerInput").classList.add("shake");
+
+      if (lives === 0) {
+        locked = true;
+        $("answerInput").disabled = true;
+        $("feedback").textContent = `La traduction attendue était : ${showExpectedAnswer(item)}.`;
+        $("feedback").className = "bad";
+        transitionTimer = setTimeout(() => endGame(false), 1300);
+        return;
+      }
+
+      $("feedback").textContent = `Ce n'est pas ça. ${lives} vie${lives > 1 ? "s" : ""} restante${lives > 1 ? "s" : ""}.`;
+      $("feedback").className = "bad";
+      $("answerInput").select();
+    }
+
+    function handleAlmostAnswer() {
+      $("answerInput").classList.remove("shake");
+      void $("answerInput").offsetWidth;
+      $("answerInput").classList.add("shake");
+      $("feedback").textContent = "Tu y es presque : corrige la petite erreur et réessaie. Aucune vie perdue.";
+      $("feedback").className = "";
+      $("answerInput").select();
+    }
+
+    function endGame(won) {
+      $("quiz").hidden = true;
+      $("endScreen").classList.add("show");
+      $("progress").style.width = won ? "100%" : `${(current / deck.length) * 100}%`;
+      $("resultIcon").textContent = won ? "✓" : "↻";
+      $("resultTitle").textContent = won ? "Traductions validées" : "Partie terminée";
+      $("resultText").textContent = won
+        ? `Tu as traduit les ${deck.length} mots avec ${lives} vie${lives > 1 ? "s" : ""} restante${lives > 1 ? "s" : ""}.`
+        : `Tu as trouvé ${score} bonne${score > 1 ? "s" : ""} traduction${score > 1 ? "s" : ""} sur ${deck.length}. Le paquet sera remélangé à la prochaine tentative.`;
+    }
+
+    function showMenu() {
+      clearTimeout(transitionTimer);
+      locked = true;
+      $("quiz").hidden = true;
+      $("endScreen").classList.remove("show");
+      $("quizMenu").classList.add("show");
+      $("progress").style.width = "0";
+      lives = 3;
+      updateLives();
+    }
+
+    $("answerForm").addEventListener("submit", event => {
+      event.preventDefault();
+      if (locked) return;
+      const item = deck[current];
+      if (isCorrect($("answerInput").value, item.a)) acceptCorrectAnswer();
+      else if (isAlmostCorrect($("answerInput").value, item.a)) handleAlmostAnswer();
+      else handleWrongAnswer(item);
+    });
+
+    $("hintButton").addEventListener("click", () => {
+      if (!deck[current]) return;
+      $("hint").textContent = `Indice : ${deck[current].h}`;
+      $("answerInput").focus();
+    });
+
+    $("restart").addEventListener("click", () => startGame(currentQuiz));
+    $("backMenu").addEventListener("click", showMenu);
+    $("quitQuiz").addEventListener("click", showMenu);
+    document.querySelectorAll(".quiz-choice").forEach(button => {
+      button.addEventListener("click", () => startGame(Number(button.dataset.quiz)));
+    });
+    updateLives();
+  </script>
+</body>
+</html>

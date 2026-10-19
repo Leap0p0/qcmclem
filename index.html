@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Traduction anglais - Workplace & HR</title>
+  <title>QCM — Négociation-vente et relation client</title>
   <style>
     :root {
       color-scheme: dark;
@@ -16,14 +16,11 @@
       --blue-dark: #164e63;
       --amber: #fbbf24;
       --red: #fb7185;
-      --green: #86efac;
       --line: rgba(148, 163, 184, .2);
       --shadow: 0 28px 80px rgba(0, 0, 0, .48);
     }
 
     * { box-sizing: border-box; }
-
-    html, body { overflow-x: hidden; }
 
     body {
       margin: 0;
@@ -52,8 +49,7 @@
       mask-image: linear-gradient(to bottom, black, transparent 80%);
     }
 
-    button, input { font: inherit; }
-    .shell { position: relative; width: min(1020px, 100%); }
+    .shell { position: relative; width: min(920px, 100%); }
 
     header {
       display: flex;
@@ -74,7 +70,7 @@
 
     h1 {
       margin: 0;
-      max-width: 720px;
+      max-width: 680px;
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(1.85rem, 4vw, 3.15rem);
       line-height: 1;
@@ -108,18 +104,109 @@
 
     .progress-track { height: 7px; background: #1d293d; }
     #progress { width: 0; height: 100%; background: linear-gradient(90deg, #0891b2, var(--blue), var(--amber)); box-shadow: 0 0 20px rgba(103,232,249,.38); transition: width .4s ease; }
+    main { padding: clamp(24px, 5vw, 52px); }
+
+    .quiz-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 22px; }
+    .meta { flex-wrap: wrap; flex: 1; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .84rem; font-weight: 700; }
+    #category { color: var(--blue); text-transform: uppercase; letter-spacing: .08em; }
+
+    .back-button {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--blue);
+      padding: 9px 13px;
+      font: inherit;
+      font-size: .78rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .back-button:hover { border-color: rgba(103,232,249,.6); background: #17283b; }
+
+    #question {
+      margin: 0 0 25px;
+      min-height: 3.1em;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.35;
+    }
+    .blank {
+      display: inline-block;
+      min-width: 4.5em;
+      border-bottom: 3px solid var(--amber);
+      color: var(--amber);
+      text-align: center;
+      line-height: 1.05;
+      text-shadow: 0 0 18px rgba(251,191,36,.28);
+    }
+
+    #qcmAnswers { display: grid; gap: 12px; }
+    #qcmAnswers[hidden] { display: none; }
+    .answer-choice {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-2);
+      color: var(--ink);
+      padding: 16px 18px;
+      text-align: left;
+      font: inherit;
+      font-weight: 650;
+      line-height: 1.35;
+      cursor: pointer;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .answer-choice:hover:not(:disabled) { transform: translateY(-2px); border-color: rgba(103,232,249,.65); background: #17283b; }
+    .answer-choice.wrong { border-color: rgba(251,113,133,.62); background: rgba(127,29,29,.3); color: #fda4af; text-decoration: line-through; animation: shake .28s ease; }
+    .answer-choice.correct { border-color: rgba(103,232,249,.7); background: rgba(8,145,178,.2); color: #a5f3fc; }
+    .primary {
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0e7490, #0891b2);
+      color: #ecfeff;
+      padding: 14px 22px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(8,145,178,.22);
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .primary:hover { transform: translateY(-2px); filter: brightness(1.13); }
+    .back-button:focus-visible, .answer-choice:focus-visible, .primary:focus-visible, .secondary:focus-visible, .quiz-choice:focus-visible {
+      outline: 3px solid rgba(251,191,36,.42);
+      outline-offset: 3px;
+    }
+
+    #feedback { min-height: 25px; margin: 20px 0 0; color: var(--muted); font-weight: 700; }
+    #feedback.bad { color: var(--red); }
+    #feedback.good { color: var(--blue); }
+
+    .overlay { display: none; min-height: 420px; padding: 42px 26px; text-align: center; place-items: center; }
+    .overlay.show { display: grid; }
+    .overlay-inner { max-width: 550px; }
+    .result-icon { font-size: 3.1rem; }
+    .overlay h2 { margin: 12px 0 10px; font-family: Georgia, serif; font-size: clamp(2rem, 5vw, 3.2rem); }
+    .overlay p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
+    .primary { margin-top: 14px; border-radius: 999px; }
+    .secondary {
+      margin: 10px 5px 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--blue);
+      padding: 13px 22px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .secondary:hover { border-color: rgba(103,232,249,.6); background: rgba(103,232,249,.07); }
 
     .quiz-menu { display: none; padding: clamp(24px, 5vw, 48px); }
     .quiz-menu.show { display: block; }
     .quiz-menu h2 { margin: 0 0 8px; font-family: Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.6rem); }
-    .quiz-menu > p { margin: 0 0 24px; color: var(--muted); line-height: 1.5; }
-
-    .quiz-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
+    .quiz-menu > p { margin: 0 0 26px; color: var(--muted); line-height: 1.5; }
+    .quiz-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .quiz-choice {
       position: relative;
       overflow: hidden;
@@ -132,177 +219,69 @@
       cursor: pointer;
       transition: transform .15s ease, border-color .15s ease, background .15s ease;
     }
-
     .quiz-choice::after { content: ""; position: absolute; inset: auto -25px -45px auto; width: 100px; height: 100px; border-radius: 50%; background: rgba(103,232,249,.055); }
     .quiz-choice:hover { transform: translateY(-3px); border-color: rgba(103,232,249,.62); background: #17283b; }
     .quiz-number { display: block; margin-bottom: 10px; color: var(--amber); font-size: .74rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
     .quiz-choice strong { display: block; min-height: 2.6em; font-family: Georgia, serif; font-size: 1.22rem; line-height: 1.25; }
     .quiz-choice small { display: block; margin-top: 14px; color: var(--muted); font-weight: 650; }
-
-    main { padding: clamp(24px, 5vw, 52px); }
-    .quiz-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 22px; }
-    .meta { flex: 1; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .84rem; font-weight: 700; }
-    #category { color: var(--blue); text-transform: uppercase; letter-spacing: .08em; }
-
-    .back-button {
-      flex: 0 0 auto;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--surface-2);
-      color: var(--blue);
-      padding: 9px 13px;
-      font-size: .78rem;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .back-button:hover { border-color: rgba(103,232,249,.6); background: #17283b; }
-
-    .prompt-label {
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: .78rem;
-      font-weight: 850;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-
-    #question {
-      margin: 0 0 20px;
-      min-height: 2.4em;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.65rem, 4vw, 2.55rem);
-      line-height: 1.16;
-      color: var(--ink);
-      text-wrap: balance;
-    }
-
-    .answer-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 12px;
-      align-items: stretch;
-    }
-
-    #answerInput {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #09111f;
-      color: var(--ink);
-      padding: 16px 18px;
-      font-weight: 700;
-      outline: 0;
-    }
-
-    #answerInput:focus {
-      border-color: rgba(103,232,249,.72);
-      box-shadow: 0 0 0 4px rgba(103,232,249,.09);
-    }
-
-    .primary {
-      border: 0;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #0e7490, #0891b2);
-      color: #ecfeff;
-      padding: 14px 22px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 10px 28px rgba(8,145,178,.22);
-      transition: transform .15s ease, filter .15s ease;
-    }
-
-    .primary:hover { transform: translateY(-2px); filter: brightness(1.13); }
-    .secondary {
-      margin: 10px 5px 0;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--blue);
-      padding: 13px 22px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .hint-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .hint {
-      color: var(--muted);
-      font-size: .9rem;
-      font-weight: 650;
-    }
-
-    .ghost {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--amber);
-      padding: 10px 14px;
-      font-size: .78rem;
-      font-weight: 850;
-      cursor: pointer;
-    }
-
-    .ghost:hover { border-color: rgba(251,191,36,.65); background: rgba(251,191,36,.07); }
-    #feedback { min-height: 25px; margin: 20px 0 0; color: var(--muted); font-weight: 700; }
-    #feedback.bad { color: var(--red); }
-    #feedback.good { color: var(--green); }
-
-    .mini-source {
-      margin-top: 24px;
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-      color: var(--muted);
-      font-size: .86rem;
-      font-weight: 650;
-    }
-
-    .overlay { display: none; min-height: 420px; padding: 42px 26px; text-align: center; place-items: center; }
-    .overlay.show { display: grid; }
-    .overlay-inner { max-width: 550px; }
-    .result-icon { font-size: 3.1rem; }
-    .overlay h2 { margin: 12px 0 10px; font-family: Georgia, serif; font-size: clamp(2rem, 5vw, 3.2rem); }
-    .overlay p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
     footer { margin-top: 14px; color: var(--muted); text-align: center; font-size: .78rem; }
 
-    .shake { animation: shake .28s ease; }
     @keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
-
-    @media (max-width: 760px) {
-      .quiz-list { grid-template-columns: 1fr; }
-      .quiz-choice strong { min-height: auto; }
-      .answer-panel { grid-template-columns: 1fr; }
-    }
-
     @media (max-width: 650px) {
       header { align-items: center; }
       .lives { min-width: 105px; padding-inline: 10px; }
       main { padding: 24px 18px 28px; }
+      .quiz-list { grid-template-columns: 1fr; }
+      .quiz-choice strong { min-height: auto; }
       .quiz-toolbar { align-items: flex-start; flex-direction: column; }
       .meta { align-self: stretch; }
     }
-
     @media (max-width: 430px) {
       header { align-items: flex-start; flex-direction: column; }
       .lives { align-self: flex-end; }
-      .hint-row { align-items: flex-start; flex-direction: column; }
     }
-
     @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+    [hidden] { display: none !important; }
+    .source { color: var(--muted); font-size: .76rem; overflow-wrap: anywhere; }
+    #feedback { line-height: 1.65; min-height: 1.5em; }
+    .quiz-choice strong { min-height: 0; }
+    .quiz-choice small { line-height: 1.5; }
+    #nextQuestion { margin-top: 12px; }
+    .quiz-entry { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    .quiz-entry .quiz-choice { flex: 1; font: inherit; }
+    .course-link { padding: 11px 14px; border: 1px solid var(--line); border-radius: 11px; background: rgba(103,232,249,.04); color: var(--blue); font: inherit; font-size: .82rem; font-weight: 700; cursor: pointer; text-align: left; }
+    .course-link:hover { background: rgba(103,232,249,.12); border-color: var(--blue); }
+    .course-link:focus-visible, .course-nav button:focus-visible, #courseJump:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+    .course-view { padding: clamp(24px, 5vw, 48px); }
+    .course-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
+    #courseJump { max-width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 10px; padding: 10px; background: var(--surface-2); color: var(--ink); font: inherit; font-size: .82rem; }
+    #courseTitle { margin: 10px 0 16px; font: bold clamp(1.8rem, 4vw, 2.6rem)/1.15 Georgia, serif; text-wrap: balance; }
+    .course-intro { color: #cbd5e1; line-height: 1.8; margin-bottom: 25px; }
+    .course-block { padding: 21px 0; border-top: 1px solid var(--line); }
+    .course-block h3 { margin: 0 0 12px; color: var(--blue); font-size: 1rem; }
+    .course-block p, .course-block li { color: #cbd5e1; line-height: 1.85; font-size: .94rem; }
+    .course-block p { margin: 8px 0 0; }
+    .course-block ul { margin: 0; padding-left: 22px; }
+    .course-block li + li { margin-top: 8px; }
+    .course-block strong, .course-callout strong { color: var(--ink); }
+    .course-callout { margin: 18px 0; padding: 18px 20px; border: 1px solid rgba(103,232,249,.25); border-left: 3px solid var(--blue); border-radius: 12px; background: rgba(8,145,178,.08); line-height: 1.8; color: #cbd5e1; overflow-wrap: anywhere; }
+    .course-callout h3 { margin: 0 0 8px; color: var(--blue); font-size: .87rem; }
+    .course-callout p { margin: 0; font-size: .93rem; }
+    .course-callout.warning { border-color: rgba(251,191,36,.25); border-left-color: var(--amber); background: rgba(251,191,36,.04); }
+    .course-callout.warning h3 { color: var(--amber); }
+    .course-sources { font-size: .74rem; line-height: 1.8; color: var(--muted); margin-top: 23px; overflow-wrap: anywhere; }
+    .course-nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 20px; margin-top: 24px; border-top: 1px solid var(--line); }
+    .course-nav .secondary, .course-nav .primary { margin: 0; }
+    .course-nav button:disabled { opacity: .35; cursor: default; }
+    @media(max-width:650px) { .course-toolbar { align-items: stretch; flex-direction: column; } .course-nav .primary { width: 100%; order: -1; } .course-nav .secondary { padding: 12px; font-size: .8rem; } }
   </style>
 </head>
 <body>
   <div class="shell">
     <header>
       <div>
-        <p class="eyebrow">Anglais pro - Traduction</p>
-        <h1>The workplace & Human Resources</h1>
+        <p class="eyebrow">BTS NDRC • Négociation-vente • Relation client</p>
+        <h1>Révisions — Négociation & relation client</h1>
       </div>
       <div class="lives" aria-live="polite">
         <span>Vies restantes</span>
@@ -314,26 +293,41 @@
       <div class="progress-track"><div id="progress"></div></div>
 
       <div id="quizMenu" class="quiz-menu show">
-        <h2>Choisis ton entraînement</h2>
-        <p>Traduis les mots de la fiche en anglais. Les variantes courantes sont acceptées quand il y en a plusieurs.</p>
+        <h2>Révise, puis teste-toi</h2>
+        <p>12 résumés de cours et 120 questions à partir des 25 pages du dossier ajd. Pour chaque partie, relis les notions clés, les méthodes et les exemples, puis lance le quiz. Une bonne réponse par question, 3 vies par partie. Les questions et les réponses sont mélangées à chaque essai.</p>
         <div class="quiz-list">
-          <button class="quiz-choice" type="button" data-quiz="0">
-            <span class="quiz-number">Quiz 1</span>
-            <strong>Jobs - Les postes</strong>
-            <small>20 traductions - 3 vies</small>
-          </button>
-          <button class="quiz-choice" type="button" data-quiz="1">
-            <span class="quiz-number">Quiz 2</span>
-            <strong>HR & Recruitment</strong>
-            <small>20 traductions - 3 vies</small>
-          </button>
-          <button class="quiz-choice" type="button" data-quiz="2">
-            <span class="quiz-number">Quiz 3</span>
-            <strong>Mix des deux fiches</strong>
-            <small>20 traductions - 3 vies</small>
-          </button>
+<button class="quiz-choice" type="button" data-quiz="0"><span class="quiz-number">Quiz 01</span><strong>Marché et stratégie marketing</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="1"><span class="quiz-number">Quiz 02</span><strong>Statistiques et prévision des ventes</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="2"><span class="quiz-number">Quiz 03</span><strong>Portefeuille clients et rentabilité</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="3"><span class="quiz-number">Quiz 04</span><strong>Démarche de prospection</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="4"><span class="quiz-number">Quiz 05</span><strong>Performance de la prospection</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="5"><span class="quiz-number">Quiz 06</span><strong>Réseaux sociaux et social selling</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="6"><span class="quiz-number">Quiz 07</span><strong>Communication professionnelle</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="7"><span class="quiz-number">Quiz 08</span><strong>Connaissance client et préparation</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="8"><span class="quiz-number">Quiz 09</span><strong>Prise de contact et découverte</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="9"><span class="quiz-number">Quiz 10</span><strong>Argumentation, objections et prix</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="10"><span class="quiz-number">Quiz 11</span><strong>Conclusion, commande et fidélisation</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="11"><span class="quiz-number">Quiz 12</span><strong>Veille, information et outils clients</strong><small>10 questions • 3 vies • Corrections expliquées</small></button>
+<button class="quiz-choice" type="button" data-quiz="12"><span class="quiz-number">Le grand défi</span><strong>Tous les thèmes mélangés</strong><small>120 questions • 3 vies</small></button>
         </div>
       </div>
+
+      <section id="courseView" class="course-view" aria-labelledby="courseTitle" hidden>
+        <div class="course-toolbar">
+          <button id="backFromCourse" class="back-button" type="button">← Retour aux parties</button>
+          <select id="courseJump" aria-label="Choisir un résumé de cours"></select>
+        </div>
+        <p id="courseNumber" class="eyebrow"></p>
+        <h2 id="courseTitle" tabindex="-1"></h2>
+        <p id="courseIntro" class="course-intro"></p>
+        <div id="courseBody"></div>
+        <p id="courseSources" class="course-sources"></p>
+        <div class="course-nav">
+          <button id="previousCourse" class="secondary" type="button">← Partie précédente</button>
+          <button id="startCourseQuiz" class="primary" type="button">Tester cette partie →</button>
+          <button id="nextCourse" class="secondary" type="button">Partie suivante →</button>
+        </div>
+      </section>
 
       <main id="quiz" hidden>
         <div class="quiz-toolbar">
@@ -343,20 +337,11 @@
             <span id="counter"></span>
           </div>
         </div>
-        <p class="prompt-label">Traduis en anglais</p>
         <h2 id="question"></h2>
-        <form id="answerForm" class="answer-panel" autocomplete="off">
-          <input id="answerInput" type="text" inputmode="text" aria-label="Ta traduction en anglais" placeholder="Écris la traduction anglaise...">
-          <button class="primary" type="submit">Valider</button>
-        </form>
-        <div class="hint-row">
-          <span id="hint" class="hint"></span>
-          <button id="hintButton" class="ghost" type="button">Indice</button>
-        </div>
-        <p id="feedback" aria-live="assertive"></p>
-        <div class="mini-source">
-          <span id="sourceText"></span>
-        </div>
+        <div id="qcmAnswers" hidden></div>
+        <p id="feedback" aria-live="polite"></p>
+        <p id="source" class="source"></p>
+        <button id="nextQuestion" class="primary" type="button" hidden>Question suivante →</button>
       </main>
 
       <div id="endScreen" class="overlay">
@@ -364,62 +349,1878 @@
           <div id="resultIcon" class="result-icon"></div>
           <h2 id="resultTitle"></h2>
           <p id="resultText"></p>
-          <button id="restart" class="primary" type="button">Relancer ce quiz</button>
+          <button id="restart" class="primary" type="button">Relancer le quiz</button>
           <button id="backMenu" class="secondary" type="button">Choisir un autre quiz</button>
         </div>
       </div>
     </section>
-    <footer>Une erreur coûte une vie. Les accents, apostrophes et majuscules ne comptent pas.</footer>
+    <footer>Une erreur coûte une vie. Lis la correction puis avance à ton rythme. Fonctionne hors ligne.</footer>
   </div>
 
   <script>
-    const jobs = [
-      { c: "Jobs", fr: "membre du conseil d'administration", a: ["board member"], h: "b... m..." },
-      { c: "Jobs", fr: "PDG", a: ["CEO", "chief executive officer"], h: "C..." },
-      { c: "Jobs", fr: "directeur financier", a: ["CFO", "chief financial officer"], h: "C..." },
-      { c: "Jobs", fr: "DRH", a: ["Human Resources director", "HR director"], h: "H... R... d..." },
-      { c: "Jobs", fr: "chef de service", a: ["head of department"], h: "h... of d..." },
-      { c: "Jobs", fr: "responsable administratif", a: ["office manager"], h: "o... m..." },
-      { c: "Jobs", fr: "chef de magasin", a: ["floor manager"], h: "f... m..." },
-      { c: "Jobs", fr: "chargé de clientèle", a: ["account manager"], h: "a... m..." },
-      { c: "Jobs", fr: "équipe de maintenance", a: ["maintenance crew"], h: "m... c..." },
-      { c: "Jobs", fr: "informaticien", a: ["IT technician"], h: "I... t..." },
-      { c: "Jobs", fr: "assistant de direction", a: ["PA", "personal assistant"], h: "p... a..." },
-      { c: "Jobs", fr: "employé de bureau", a: ["clerk", "clerical worker"], h: "c..." },
-      { c: "Jobs", fr: "cadre", a: ["executive"], h: "e..." },
-      { c: "Jobs", fr: "intérimaire", a: ["temp"], h: "t..." },
-      { c: "Jobs", fr: "demandeur d'emploi", a: ["job seeker"], h: "j... s..." },
-      { c: "Jobs", fr: "prestataire", a: ["contractor"], h: "c..." },
-      { c: "Jobs", fr: "stagiaire", a: ["intern"], h: "i..." },
-      { c: "Jobs", fr: "agent de sécurité", a: ["security guard"], h: "s... g..." },
-      { c: "Jobs", fr: "commercial", a: ["sales rep", "salesperson", "sales person"], h: "s... r..." },
-      { c: "Jobs", fr: "graphiste", a: ["graphic designer"], h: "g... d..." }
+    // Rédigé à partir des photos de ajd ; les six doublons identiques sont écartés.
+    const quizGroups = [
+  [
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Thé et café satisfont un même besoin avec des produits différents. Leur concurrence est ___.",
+      "a": [
+        "indirecte"
+      ],
+      "w": [
+        "directe",
+        "monopolistique",
+        "inexistante"
+      ],
+      "e": "Des produits de substitution relèvent de la concurrence indirecte ; des offres de même type relèvent de la concurrence directe.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Un marché dominé par quelques offreurs est un ___.",
+      "a": [
+        "oligopole"
+      ],
+      "w": [
+        "monopole",
+        "marché atomisé",
+        "monopsone"
+      ],
+      "e": "Un monopole compte un seul offreur, un oligopole quelques offreurs et un marché atomisé une multitude d’acteurs.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Avec 240 000 € de CA sur un marché de 1 200 000 €, la part de marché en valeur est de ___.",
+      "a": [
+        "20 %"
+      ],
+      "w": [
+        "5 %",
+        "25 %",
+        "80 %"
+      ],
+      "e": "Part de marché = CA de l’entreprise / CA du marché × 100 = 240 000 / 1 200 000 × 100 = 20 %.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Dans SWOT, une forte notoriété déjà acquise par l’entreprise est une ___.",
+      "a": [
+        "force interne"
+      ],
+      "w": [
+        "opportunité externe",
+        "menace externe",
+        "faiblesse interne"
+      ],
+      "e": "La notoriété est une force de l’entreprise ; une évolution favorable du marché serait une opportunité externe.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Découper les consommateurs en groupes de besoins homogènes correspond à la ___.",
+      "a": [
+        "segmentation"
+      ],
+      "w": [
+        "prospection",
+        "fidélisation",
+        "distribution"
+      ],
+      "e": "La segmentation crée des groupes ; le ciblage choisit ceux auxquels s’adresser.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "La démarche marketing suit l’ordre diagnostic, segmentation, puis ___.",
+      "a": [
+        "ciblage et positionnement"
+      ],
+      "w": [
+        "positionnement et ciblage",
+        "promotion et diagnostic",
+        "distribution et segmentation"
+      ],
+      "e": "Après l’analyse et la segmentation, on sélectionne les cibles puis la place souhaitée pour l’offre dans leur esprit.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Vouloir être perçu comme une marque haut de gamme et durable définit un ___.",
+      "a": [
+        "positionnement"
+      ],
+      "w": [
+        "taux de marque",
+        "canal de vente",
+        "fichier prospects"
+      ],
+      "e": "Le positionnement traduit l’image souhaitée de l’offre par rapport aux concurrents.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Un prix élevé au lancement correspond à une stratégie d’___.",
+      "a": [
+        "écrémage"
+      ],
+      "w": [
+        "alignement",
+        "intégration",
+        "entrée à bas prix"
+      ],
+      "e": "L’écrémage utilise un prix élevé ; la pénétration un prix bas et l’alignement suit les prix concurrents.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Dans les 5P, le personnel en contact avec les clients relève de ___.",
+      "a": [
+        "People"
+      ],
+      "w": [
+        "Place",
+        "Price",
+        "Product"
+      ],
+      "e": "People concerne les équipes ; Place la distribution ; Price le prix et Product le produit.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    },
+    {
+      "c": "Marché et stratégie marketing",
+      "q": "Des recommandations spontanées de clients relèvent des ___.",
+      "a": [
+        "Earned Media"
+      ],
+      "w": [
+        "Paid Media",
+        "Owned Media",
+        "stocks de sécurité"
+      ],
+      "e": "La visibilité Earned est obtenue par les recommandations ; Paid est achetée et Owned repose sur les supports propres à la marque.",
+      "s": "IMG_0486.HEIC · IMG_0487.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "La catégorie de produit achetée est une variable ___.",
+      "a": [
+        "qualitative"
+      ],
+      "w": [
+        "quantitative continue",
+        "quantitative discrète",
+        "monétaire"
+      ],
+      "e": "Une catégorie décrit une caractéristique ; le nombre de commandes et le CA sont quantitatifs.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "Sur 80 clients, 20 préfèrent le retrait en magasin. Leur fréquence est de ___.",
+      "a": [
+        "25 %"
+      ],
+      "w": [
+        "20 %",
+        "40 %",
+        "60 %"
+      ],
+      "e": "Fréquence = effectif de la modalité / effectif total = 20 / 80 = 0,25, soit 25 %.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "Dans la série 2, 3, 3, 4, 8, le mode est ___.",
+      "a": [
+        "3"
+      ],
+      "w": [
+        "4",
+        "2",
+        "8"
+      ],
+      "e": "Le mode est la valeur la plus fréquente : ici 3 apparaît deux fois.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "Dans la série ordonnée 10, 20, 30, 40, 100, la médiane est ___.",
+      "a": [
+        "30"
+      ],
+      "w": [
+        "40",
+        "20",
+        "100"
+      ],
+      "e": "La médiane partage la série ordonnée en deux parties de même effectif : c’est ici la troisième valeur.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "Deux ventes à 10 € et trois à 20 € donnent un prix moyen de ___.",
+      "a": [
+        "16 €"
+      ],
+      "w": [
+        "15 €",
+        "30 €",
+        "18 €"
+      ],
+      "e": "Moyenne pondérée = (2 × 10 + 3 × 20) / 5 = 80 / 5 = 16 €.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "Un écart-type faible indique des valeurs ___.",
+      "a": [
+        "concentrées autour de la moyenne"
+      ],
+      "w": [
+        "très dispersées",
+        "toutes supérieures à la moyenne",
+        "nécessairement nulles"
+      ],
+      "e": "L’écart-type mesure la dispersion ; une faible valeur indique une série relativement homogène.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "L’écart-type est la ___ de la variance.",
+      "a": [
+        "racine carrée"
+      ],
+      "w": [
+        "moitié",
+        "somme",
+        "valeur doublée"
+      ],
+      "e": "Si la variance vaut 25, l’écart-type vaut √25 = 5.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "Pour représenter la répartition des ventes en pourcentage par famille, on choisit un diagramme ___.",
+      "a": [
+        "circulaire"
+      ],
+      "w": [
+        "de Gantt",
+        "de tournée",
+        "hiérarchique"
+      ],
+      "e": "Le diagramme circulaire représente les parts d’un ensemble ; les bâtons facilitent la comparaison des modalités.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "Avec la tendance y = 150x + 800, la prévision pour x = 6 est ___.",
+      "a": [
+        "1 700"
+      ],
+      "w": [
+        "950",
+        "4 950",
+        "1 550"
+      ],
+      "e": "On remplace x par 6 : 150 × 6 + 800 = 1 700. La prévision reste à interpréter dans son contexte.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    },
+    {
+      "c": "Statistiques et prévision des ventes",
+      "q": "La méthode de Mayer construit une droite passant par ___.",
+      "a": [
+        "les points moyens de deux groupes de périodes"
+      ],
+      "w": [
+        "les deux ventes les plus élevées",
+        "toutes les observations exactement",
+        "le seul dernier point observé"
+      ],
+      "e": "La série est partagée en deux groupes de même taille. Les moindres carrés minimisent, eux, la somme des écarts au carré.",
+      "s": "IMG_0488.HEIC · IMG_0489.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "Selon Pareto, environ 20 % des clients génèrent ___ du chiffre d’affaires.",
+      "a": [
+        "80 %"
+      ],
+      "w": [
+        "20 %",
+        "50 %",
+        "5 %"
+      ],
+      "e": "C’est une règle indicative de concentration : une minorité de clients réalise une grande partie du CA.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "La méthode 20/80 commence par un classement des clients par ___.",
+      "a": [
+        "CA décroissant"
+      ],
+      "w": [
+        "ordre alphabétique",
+        "ancienneté croissante uniquement",
+        "distance géographique"
+      ],
+      "e": "On calcule ensuite les pourcentages cumulés pour observer la concentration du portefeuille.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "Dans la méthode ABC du cours, le segment A désigne les ___.",
+      "a": [
+        "gros clients"
+      ],
+      "w": [
+        "clients moyens",
+        "petits clients",
+        "prospects non contactés"
+      ],
+      "e": "Le segment A représente environ 20 % des clients pour 80 % du CA ; sa fidélisation est prioritaire.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "La méthode ABC distingue ___ segments pour adapter les actions.",
+      "a": [
+        "trois"
+      ],
+      "w": [
+        "deux",
+        "quatre",
+        "cinq"
+      ],
+      "e": "A regroupe les gros clients, B les moyens et C les petits ; la méthode affine Pareto.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "Un produit acheté 80 € HT et vendu 120 € HT dégage une marge de ___.",
+      "a": [
+        "40 €"
+      ],
+      "w": [
+        "80 €",
+        "120 €",
+        "200 €"
+      ],
+      "e": "Marge commerciale = prix de vente HT − prix d’achat HT = 120 − 80 = 40 €.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "Avec une marge de 40 € et un prix d’achat de 80 € HT, le taux de marge est de ___.",
+      "a": [
+        "50 %"
+      ],
+      "w": [
+        "33,33 %",
+        "40 %",
+        "66,67 %"
+      ],
+      "e": "Taux de marge = marge / prix d’achat HT × 100 = 40 / 80 × 100 = 50 %.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "Avec une marge de 40 € et un prix de vente de 120 € HT, le taux de marque est de ___.",
+      "a": [
+        "33,33 %"
+      ],
+      "w": [
+        "50 %",
+        "40 %",
+        "80 %"
+      ],
+      "e": "Taux de marque = marge / prix de vente HT × 100 = 40 / 120 × 100 ≈ 33,33 %.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "Un client génère 5 000 € HT pour 3 000 € de produits et 700 € de coûts relationnels. Sa valeur nette est de ___.",
+      "a": [
+        "1 300 €"
+      ],
+      "w": [
+        "2 000 €",
+        "4 300 €",
+        "8 700 €"
+      ],
+      "e": "Valeur client = CA HT − coût des produits − coûts de la relation = 5 000 − 3 000 − 700 = 1 300 €.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "La Life Time Value évalue la rentabilité du client ___.",
+      "a": [
+        "sur la durée de la relation"
+      ],
+      "w": [
+        "sur la seule première commande",
+        "sans aucun coût relationnel",
+        "par son seul nombre d’abonnés"
+      ],
+      "e": "Elle tient compte des profits attendus pendant la relation et des coûts d’acquisition, de développement et de fidélisation.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    },
+    {
+      "c": "Portefeuille clients et rentabilité",
+      "q": "Un flux de 1 100 € reçu dans un an, actualisé à 10 %, vaut aujourd’hui ___.",
+      "a": [
+        "1 000 €"
+      ],
+      "w": [
+        "1 210 €",
+        "990 €",
+        "1 100 €"
+      ],
+      "e": "Valeur actuelle = 1 100 / (1 + 0,10) = 1 000 €. L’actualisation tient compte du temps.",
+      "s": "IMG_0490.HEIC · IMG_0491.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Démarche de prospection",
+      "q": "La prospection sert notamment à compenser l’___ naturelle du portefeuille.",
+      "a": [
+        "attrition"
+      ],
+      "w": [
+        "actualisation",
+        "inflation",
+        "intégration"
+      ],
+      "e": "L’attrition est la perte de clients. La prospection renouvelle le portefeuille et développe l’activité.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "Avant de choisir les techniques de contact, on définit ___.",
+      "a": [
+        "le profil des prospects recherchés"
+      ],
+      "w": [
+        "une remise identique pour tous",
+        "la commande de chaque prospect",
+        "la conclusion de tous les appels"
+      ],
+      "e": "Le ciblage découle de la segmentation et oriente le fichier et les méthodes de prospection.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "Qualifier un fichier prospects consiste à ___.",
+      "a": [
+        "vérifier et actualiser les informations"
+      ],
+      "w": [
+        "contacter tous les numéros sans distinction",
+        "supprimer les petits comptes",
+        "classer uniquement par prénom"
+      ],
+      "e": "Un fichier qualifié contient des informations vérifiées et utiles pour adapter l’action commerciale.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "Une entreprise ciblée mais jamais contactée est un ___.",
+      "a": [
+        "suspect"
+      ],
+      "w": [
+        "prospect froid",
+        "prospect tiède",
+        "client fidèle"
+      ],
+      "e": "Le suspect appartient à la cible avant le premier contact ; le prospect froid a été contacté sans réaction.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "Un prospect intéressé mais sans projet immédiat est ___.",
+      "a": [
+        "tiède"
+      ],
+      "w": [
+        "chaud",
+        "froid",
+        "déjà client"
+      ],
+      "e": "Le prospect tiède nécessite un maintien du lien ; un achat imminent caractérise un prospect chaud.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "Un prospect dont l’achat est imminent doit recevoir en priorité ___.",
+      "a": [
+        "un rendez-vous et une proposition adaptée"
+      ],
+      "w": [
+        "un abandon du suivi",
+        "une relance dans plusieurs années",
+        "une suppression de sa fiche"
+      ],
+      "e": "L’action commerciale s’adapte à la maturité du projet du prospect.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "CROC signifie ___.",
+      "a": [
+        "Contact, Raison, Objet, Conclusion"
+      ],
+      "w": [
+        "Contact, Résultat, Offre, Commande",
+        "Ciblage, Réduction, Objectif, Contrôle",
+        "Client, Réseau, Organisation, Contrat"
+      ],
+      "e": "On capte l’attention, explique pourquoi on appelle, présente l’objet puis conclut par une action concrète.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "Attirer des prospects grâce à du contenu utile correspond à l’___.",
+      "a": [
+        "inbound marketing"
+      ],
+      "w": [
+        "écrémage",
+        "achat impulsif",
+        "escompte"
+      ],
+      "e": "Le marketing entrant attire grâce à des contenus à valeur ajoutée.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "Une tournée qui rayonne depuis un point central est en ___.",
+      "a": [
+        "marguerite"
+      ],
+      "w": [
+        "spirale",
+        "zigzag",
+        "ligne de tendance"
+      ],
+      "e": "La spirale s’éloigne progressivement en cercles ; le zigzag suit des allers-retours le long d’un axe.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    },
+    {
+      "c": "Démarche de prospection",
+      "q": "Avec 7 heures disponibles, 45 min d’entretien et 15 min de déplacement par visite, on peut prévoir ___ visites.",
+      "a": [
+        "7"
+      ],
+      "w": [
+        "9",
+        "6",
+        "14"
+      ],
+      "e": "7 heures = 420 min ; une visite mobilise 60 min, soit 420 / 60 = 7 dans ces conditions simplifiées.",
+      "s": "IMG_0492.HEIC · IMG_0493.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Performance de la prospection",
+      "q": "Sur 1 000 e-mails envoyés, 950 sont délivrés. La délivrabilité est de ___.",
+      "a": [
+        "95 %"
+      ],
+      "w": [
+        "5 %",
+        "90 %",
+        "105 %"
+      ],
+      "e": "Délivrabilité = mails délivrés / mails envoyés × 100 = 950 / 1 000 × 100.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Sur 1 000 e-mails envoyés, 50 ne sont pas délivrés. Le taux de rebond est de ___.",
+      "a": [
+        "5 %"
+      ],
+      "w": [
+        "95 %",
+        "50 %",
+        "0,5 %"
+      ],
+      "e": "Rebond = mails non délivrés / mails envoyés × 100 = 5 %.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Selon la convention de la fiche, 250 ouvertures pour 1 000 mails envoyés donnent un taux d’ouverture de ___.",
+      "a": [
+        "25 %"
+      ],
+      "w": [
+        "4 %",
+        "75 %",
+        "40 %"
+      ],
+      "e": "La fiche utilise mails ouverts / mails envoyés × 100. Il faut toujours préciser le dénominateur retenu.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Selon la fiche, 30 clics pour 1 000 mails envoyés donnent un taux de clics de ___.",
+      "a": [
+        "3 %"
+      ],
+      "w": [
+        "30 %",
+        "0,3 %",
+        "33,33 %"
+      ],
+      "e": "Taux de clics de la fiche = clics / mails envoyés × 100 = 3 %.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Avec 20 actions réalisées pour 1 000 mails envoyés, la conversion est de ___.",
+      "a": [
+        "2 %"
+      ],
+      "w": [
+        "20 %",
+        "5 %",
+        "0,2 %"
+      ],
+      "e": "Conversion = actions réalisées / mails envoyés × 100 = 2 %.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Sur 100 appels réalisés, 80 aboutissent. Le taux de validité est de ___.",
+      "a": [
+        "80 %"
+      ],
+      "w": [
+        "20 %",
+        "125 %",
+        "8 %"
+      ],
+      "e": "Validité = appels aboutis / appels réalisés × 100. Cet indicateur renseigne sur la qualité des coordonnées.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Avec 100 appels réalisés, 40 argumentés et 10 RDV, le taux de conversion brut est de ___.",
+      "a": [
+        "10 %"
+      ],
+      "w": [
+        "25 %",
+        "40 %",
+        "4 %"
+      ],
+      "e": "Conversion brute = RDV / appels réalisés = 10 / 100 = 10 %.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Avec 100 appels réalisés, 40 argumentés et 10 RDV, le taux de conversion net est de ___.",
+      "a": [
+        "25 %"
+      ],
+      "w": [
+        "10 %",
+        "40 %",
+        "75 %"
+      ],
+      "e": "Conversion nette = RDV / appels argumentés × 100 = 10 / 40 × 100 = 25 %.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Sur 60 visites, 15 concernent des prospects et génèrent 3 RDV. Le taux de transformation de ces prospects est de ___.",
+      "a": [
+        "20 %"
+      ],
+      "w": [
+        "5 %",
+        "25 %",
+        "50 %"
+      ],
+      "e": "Transformation = RDV / prospects visités = 3 / 15 = 20 %. L’effort de prospection vaut 15 / 60 = 25 %.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    },
+    {
+      "c": "Performance de la prospection",
+      "q": "Avec un objectif de 40 RDV et un résultat de 30, le taux de réalisation est de ___.",
+      "a": [
+        "75 %"
+      ],
+      "w": [
+        "133,33 %",
+        "25 %",
+        "30 %"
+      ],
+      "e": "Réalisation = résultat / objectif × 100 = 75 %. Le tableau de bord aide à choisir les actions correctives.",
+      "s": "IMG_0494.HEIC · IMG_0495.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Le social selling utilise les réseaux sociaux pour identifier des prospects, construire une expertise et ___.",
+      "a": [
+        "déclencher des prises de rendez-vous"
+      ],
+      "w": [
+        "remplacer toute relation par des publicités",
+        "calculer uniquement la TVA",
+        "supprimer le suivi commercial"
+      ],
+      "e": "Il associe identification des prospects, crédibilité, échanges et rendez-vous.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Dans PEPSI, le premier P signifie ___.",
+      "a": [
+        "Profil"
+      ],
+      "w": [
+        "Prix",
+        "Prospection terrain",
+        "Production"
+      ],
+      "e": "Un profil professionnel attractif est la première étape, avant le développement du réseau et la publication.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Dans PEPSI, Étendre consiste à ___.",
+      "a": [
+        "développer un réseau de contacts ciblés"
+      ],
+      "w": [
+        "augmenter tous les prix",
+        "publier sans aucun ciblage",
+        "multiplier uniquement les plateformes"
+      ],
+      "e": "La pertinence des contacts permet de construire un réseau utile à l’activité commerciale.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Dans PEPSI, Publier consiste à ___.",
+      "a": [
+        "partager du contenu à valeur ajoutée"
+      ],
+      "w": [
+        "diffuser seulement des tarifs",
+        "copier tous les concurrents",
+        "éviter les contenus d’expertise"
+      ],
+      "e": "Un contenu utile développe l’image d’expert et favorise les échanges.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Dans PEPSI, Stimuler consiste à ___.",
+      "a": [
+        "interagir pour provoquer des échanges"
+      ],
+      "w": [
+        "ne jamais répondre aux commentaires",
+        "acheter des stocks",
+        "compter uniquement les abonnés"
+      ],
+      "e": "L’interaction nourrit la conversation et prépare les rendez-vous.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Le I de PEPSI signifie ___.",
+      "a": [
+        "Indicateurs"
+      ],
+      "w": [
+        "Investissements matériels",
+        "Incidents",
+        "Inventaires"
+      ],
+      "e": "Les indicateurs mesurent l’efficacité des actions de social selling.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Le nombre de personnes ayant vu une publication correspond à sa ___.",
+      "a": [
+        "portée"
+      ],
+      "w": [
+        "marge",
+        "fréquence de commande",
+        "valeur client"
+      ],
+      "e": "La portée mesure la visibilité ; les suiveurs sont les abonnés et les interactions traduisent des réactions.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Dans la fiche, un contact ayant laissé ses coordonnées est un ___.",
+      "a": [
+        "MQL"
+      ],
+      "w": [
+        "SQL",
+        "PGI",
+        "FRNG"
+      ],
+      "e": "Le cours distingue les MQL, contacts ayant laissé leurs coordonnées, et les SQL, contacts approchés par l’équipe commerciale.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Avec 60 interactions pour 1 200 visiteurs, le taux d’engagement selon la fiche est de ___.",
+      "a": [
+        "5 %"
+      ],
+      "w": [
+        "20 %",
+        "0,5 %",
+        "60 %"
+      ],
+      "e": "Taux d’engagement selon la fiche = interactions / visiteurs × 100 = 5 %.",
+      "s": "IMG_0496.HEIC"
+    },
+    {
+      "c": "Réseaux sociaux et social selling",
+      "q": "Le networking suit trois étapes : rencontrer, communiquer et ___.",
+      "a": [
+        "entretenir la relation"
+      ],
+      "w": [
+        "arrêter tout suivi",
+        "réduire tous les prix",
+        "attendre sans reprendre contact"
+      ],
+      "e": "Le contact régulier transforme progressivement les relations en opportunités d’affaires.",
+      "s": "IMG_0496.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Communication professionnelle",
+      "q": "Le choix des mots et la structure du discours relèvent de la communication ___.",
+      "a": [
+        "verbale"
+      ],
+      "w": [
+        "non verbale",
+        "para-verbale",
+        "visuelle uniquement"
+      ],
+      "e": "Le verbal concerne le contenu exprimé par les mots.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "Le regard, les gestes et la posture relèvent de la communication ___.",
+      "a": [
+        "non verbale"
+      ],
+      "w": [
+        "verbale",
+        "para-verbale",
+        "comptable"
+      ],
+      "e": "Le non-verbal comprend les expressions, le regard, la gestuelle, la posture et la tenue.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "Le ton, le débit et le volume de la voix relèvent de la communication ___.",
+      "a": [
+        "para-verbale"
+      ],
+      "w": [
+        "verbale",
+        "non verbale",
+        "institutionnelle"
+      ],
+      "e": "Le para-verbal porte sur la manière de dire, y compris les silences et l’intonation.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "La cohérence entre discours, posture et ton correspond à la ___.",
+      "a": [
+        "congruence"
+      ],
+      "w": [
+        "segmentation",
+        "dispersion",
+        "substitution"
+      ],
+      "e": "La congruence entre les trois registres renforce la crédibilité du message.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "Se mettre à la place de son interlocuteur mobilise l’___.",
+      "a": [
+        "empathie"
+      ],
+      "w": [
+        "assertivité",
+        "autorité statutaire",
+        "actualisation"
+      ],
+      "e": "L’empathie aide à comprendre le point de vue et le ressenti de l’autre.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "« Si je comprends bien, votre priorité est le délai » est une ___.",
+      "a": [
+        "reformulation"
+      ],
+      "w": [
+        "objection prétexte",
+        "vente additionnelle",
+        "menace"
+      ],
+      "e": "Reprendre les propos avec ses propres mots permet de vérifier la compréhension.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "Exprimer fermement son désaccord tout en respectant l’autre relève de l’___.",
+      "a": [
+        "assertivité"
+      ],
+      "w": [
+        "agressivité",
+        "évitement",
+        "obéissance"
+      ],
+      "e": "L’assertivité permet de défendre ses idées sans attaquer ni s’effacer.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "La position occupée dans l’organisation correspond au ___.",
+      "a": [
+        "statut"
+      ],
+      "w": [
+        "rôle",
+        "besoin",
+        "canal"
+      ],
+      "e": "Le statut désigne la position ; le rôle désigne les comportements attendus liés à cette position.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "Obtenir une commande est un enjeu ___ de communication.",
+      "a": [
+        "opératoire"
+      ],
+      "w": [
+        "identitaire",
+        "symbolique",
+        "sensoriel"
+      ],
+      "e": "L’opératoire vise un résultat concret ; le symbolique affirme l’expertise et l’identitaire préserve l’image de soi.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    },
+    {
+      "c": "Communication professionnelle",
+      "q": "Rechercher un accord satisfaisant pour les deux parties est une stratégie ___.",
+      "a": [
+        "intégrative"
+      ],
+      "w": [
+        "d’évitement",
+        "de domination systématique",
+        "de généralisation"
+      ],
+      "e": "La stratégie intégrative recherche une satisfaction mutuelle et aide à dépasser les biais de communication.",
+      "s": "IMG_0497.HEIC · IMG_0498.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Une vente à une entreprise relève du marché ___.",
+      "a": [
+        "B to B"
+      ],
+      "w": [
+        "B to C",
+        "B to G",
+        "C to C"
+      ],
+      "e": "B to B concerne les entreprises, B to C les particuliers et B to G les administrations.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Dans Maslow, le besoin de sécurité vient après les besoins ___.",
+      "a": [
+        "physiologiques"
+      ],
+      "w": [
+        "d’estime",
+        "d’appartenance",
+        "d’accomplissement"
+      ],
+      "e": "Le cours suit cet ordre : physiologiques, sécurité, appartenance, estime, accomplissement.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Acheter pour son propre plaisir relève d’une motivation ___.",
+      "a": [
+        "hédoniste"
+      ],
+      "w": [
+        "oblative",
+        "d’auto-expression uniquement",
+        "de sécurité uniquement"
+      ],
+      "e": "La motivation hédoniste recherche le plaisir personnel.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Acheter un cadeau pour faire plaisir à un proche relève d’une motivation ___.",
+      "a": [
+        "oblative"
+      ],
+      "w": [
+        "hédoniste uniquement",
+        "d’auto-expression uniquement",
+        "de rentabilité"
+      ],
+      "e": "La motivation oblative vise à faire plaisir aux autres.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Choisir une tenue pour affirmer sa personnalité relève d’une motivation ___.",
+      "a": [
+        "d’auto-expression"
+      ],
+      "w": [
+        "oblative",
+        "de stockage",
+        "d’attrition"
+      ],
+      "e": "L’auto-expression consiste à affirmer sa personnalité à travers l’achat.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Le processus d’achat suit besoin, recherche d’informations, puis ___.",
+      "a": [
+        "évaluation, décision, évaluation post-achat"
+      ],
+      "w": [
+        "décision, évaluation post-achat, évaluation",
+        "évaluation post-achat, décision, évaluation",
+        "fidélisation, besoin, décision"
+      ],
+      "e": "Le client compare les solutions, prend sa décision, puis évalue son achat après usage.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Un achat impliquant acheteur, utilisateur et décideur est ___.",
+      "a": [
+        "multidécisionnel"
+      ],
+      "w": [
+        "toujours impulsif",
+        "sans prescripteur possible",
+        "nécessairement instantané"
+      ],
+      "e": "Les ventes B to B et B to G impliquent souvent plusieurs intervenants et des cycles plus longs.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Le CRM centralise historique, profil, potentiel et ___ des clients.",
+      "a": [
+        "rentabilité"
+      ],
+      "w": [
+        "température corporelle",
+        "état des machines uniquement",
+        "prix concurrents uniquement"
+      ],
+      "e": "Ces informations permettent de qualifier les comptes et d’allouer les ressources selon leur potentiel.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Avant un RDV, un objectif de marge est un objectif ___.",
+      "a": [
+        "quantitatif"
+      ],
+      "w": [
+        "qualitatif",
+        "relationnel uniquement",
+        "symbolique uniquement"
+      ],
+      "e": "CA, volume et marge sont quantitatifs ; image et qualité relationnelle sont qualitatifs.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    },
+    {
+      "c": "Connaissance client et préparation",
+      "q": "Définir ses concessions possibles et ses limites revient à fixer sa ___.",
+      "a": [
+        "marge de manœuvre"
+      ],
+      "w": [
+        "part de marché",
+        "fréquence statistique",
+        "portée digitale"
+      ],
+      "e": "La préparation inclut objectifs, limites, plan d’action et pitch pour capter l’attention.",
+      "s": "IMG_0499.HEIC · IMG_0500.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Prise de contact et découverte",
+      "q": "En e-relation de type inbound, le contact est souvent initié par ___.",
+      "a": [
+        "le prospect déjà informé en ligne"
+      ],
+      "w": [
+        "le transporteur",
+        "le comptable uniquement",
+        "le concurrent principal"
+      ],
+      "e": "Le prospect peut solliciter l’entreprise après sa recherche en ligne ; le commercial adapte sa prise de contact.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "En début d’entretien, on se présente, formule une accroche et ___.",
+      "a": [
+        "précise l’objectif de l’échange"
+      ],
+      "w": [
+        "annonce une remise sans connaître le besoin",
+        "conclut immédiatement la commande",
+        "ignore le contexte du client"
+      ],
+      "e": "Les premières minutes installent le cadre et présentent la valeur ajoutée de l’échange.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "Le plan de découverte vise à cerner l’acheteur et ___.",
+      "a": [
+        "la personne"
+      ],
+      "w": [
+        "le seul prix concurrent",
+        "le seul coût de transport",
+        "uniquement la signature"
+      ],
+      "e": "Cerner l’acheteur indique quoi proposer ; cerner la personne aide à savoir comment le proposer.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "« Qu’attendez-vous de votre prochaine solution ? » est une question ___.",
+      "a": [
+        "ouverte"
+      ],
+      "w": [
+        "fermée",
+        "alternative",
+        "de conclusion implicite"
+      ],
+      "e": "Une question ouverte favorise une réponse développée et l’expression libre des besoins.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "« Disposez-vous déjà d’un contrat de maintenance ? » est une question ___.",
+      "a": [
+        "fermée"
+      ],
+      "w": [
+        "ouverte",
+        "alternative",
+        "de reformulation uniquement"
+      ],
+      "e": "Elle appelle principalement oui ou non et permet de vérifier un point précis.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "« Préférez-vous une livraison mardi ou jeudi ? » est une question ___.",
+      "a": [
+        "alternative"
+      ],
+      "w": [
+        "ouverte",
+        "sans choix",
+        "de découverte générale"
+      ],
+      "e": "Une question alternative propose un choix entre des options définies.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "La synthèse des besoins sert à ___.",
+      "a": [
+        "valider la compréhension avant de proposer"
+      ],
+      "w": [
+        "éviter toute validation",
+        "remplacer l’écoute par un monologue",
+        "conclure avec des besoins inconnus"
+      ],
+      "e": "La synthèse et la reformulation vérifient que la proposition répondra aux priorités exprimées.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "L’écoute active consiste à ___.",
+      "a": [
+        "porter une attention réelle au discours de l’autre"
+      ],
+      "w": [
+        "préparer uniquement sa réponse sans écouter",
+        "interrompre chaque phrase",
+        "chercher immédiatement une objection"
+      ],
+      "e": "Elle accompagne le questionnement et la reformulation pendant la découverte.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "Dans l’analyse transactionnelle du cours, les états du moi sont ___.",
+      "a": [
+        "Parent, Adulte, Enfant"
+      ],
+      "w": [
+        "Acheteur, Vendeur, Prescripteur",
+        "Visuel, Auditif, Kinesthésique",
+        "Contact, Objet, Conclusion"
+      ],
+      "e": "Le cours présente ces trois états comme une grille de lecture des échanges relationnels.",
+      "s": "IMG_0501.HEIC"
+    },
+    {
+      "c": "Prise de contact et découverte",
+      "q": "Dans la présentation de la PNL du cours, visuel, auditif et kinesthésique désignent des ___.",
+      "a": [
+        "canaux sensoriels"
+      ],
+      "w": [
+        "types de marge",
+        "segments ABC",
+        "étapes de commande"
+      ],
+      "e": "Le cours les présente comme des repères pour adapter la communication et se synchroniser avec l’interlocuteur.",
+      "s": "IMG_0501.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "CAP signifie ___.",
+      "a": [
+        "Caractéristique, Avantage, Preuve"
+      ],
+      "w": [
+        "Contact, Achat, Prix",
+        "Client, Argument, Promotion",
+        "Coût, Actualisation, Profit"
+      ],
+      "e": "La caractéristique décrit l’offre, l’avantage traduit le bénéfice client et la preuve crédibilise l’argument.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "« Batterie de 12 h, pas de recharge pendant la tournée, voici le test d’autonomie » suit la logique ___.",
+      "a": [
+        "CAP"
+      ],
+      "w": [
+        "CROC",
+        "ABC",
+        "PEPSI"
+      ],
+      "e": "12 h est la caractéristique, l’usage sans recharge l’avantage et le test la preuve.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "Dans SONCAS(E), un client préoccupé par la fiabilité relève de la motivation ___.",
+      "a": [
+        "Sécurité"
+      ],
+      "w": [
+        "Orgueil",
+        "Nouveauté",
+        "Argent"
+      ],
+      "e": "La sécurité exprime un besoin de réassurance : on privilégie les garanties et les preuves adaptées.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "On sélectionne les arguments en fonction ___.",
+      "a": [
+        "des besoins découverts"
+      ],
+      "w": [
+        "de la longueur du catalogue",
+        "du seul nombre de concurrents",
+        "de son argument préféré"
+      ],
+      "e": "L’argument répond au besoin du client ; une question de validation contrôle sa portée.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "Une objection provenant d’un malentendu est ___.",
+      "a": [
+        "non fondée"
+      ],
+      "w": [
+        "fondée",
+        "toujours prétexte",
+        "irréfutable"
+      ],
+      "e": "Le cours distingue les objections fondées, les non fondées liées à un malentendu et les prétextes.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "Le traitement proposé suit approuver, comprendre, répondre, puis ___.",
+      "a": [
+        "contrôler et adapter"
+      ],
+      "w": [
+        "conclure sans vérifier",
+        "contredire et interrompre",
+        "accorder automatiquement une remise"
+      ],
+      "e": "On accueille l’objection, comprend sa cause, répond, vérifie l’effet puis ajuste.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "Avantage, prix, avantage : c’est la technique du ___.",
+      "a": [
+        "sandwich"
+      ],
+      "w": [
+        "zigzag",
+        "Mayer",
+        "cross-selling"
+      ],
+      "e": "Le sandwich encadre l’annonce du prix par les bénéfices de l’offre.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "Présenter un abonnement sous forme de coût quotidien utilise la ___.",
+      "a": [
+        "division"
+      ],
+      "w": [
+        "multiplication",
+        "soustraction",
+        "ristourne"
+      ],
+      "e": "La division répartit le prix en unités de temps ; la multiplication valorise un bénéfice sur la durée.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "Une réduction liée à un défaut du produit est un ___.",
+      "a": [
+        "rabais"
+      ],
+      "w": [
+        "escompte",
+        "ristourne",
+        "taux de marque"
+      ],
+      "e": "Le rabais compense un défaut ; la remise peut être liée à la quantité et la ristourne porte sur une période.",
+      "s": "IMG_0502.HEIC"
+    },
+    {
+      "c": "Argumentation, objections et prix",
+      "q": "Une réduction accordée pour un paiement comptant est un ___.",
+      "a": [
+        "escompte"
+      ],
+      "w": [
+        "rabais",
+        "surcoût",
+        "bénéfice brut"
+      ],
+      "e": "L’escompte est lié au paiement ; il se distingue des réductions commerciales.",
+      "s": "IMG_0502.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Une question du client sur les délais de livraison peut être un ___.",
+      "a": [
+        "signal d’achat"
+      ],
+      "w": [
+        "refus définitif",
+        "signal d’attrition certain",
+        "ordre de résiliation"
+      ],
+      "e": "Les questions sur délais, modalités et garanties peuvent traduire une projection dans l’achat, à interpréter dans le contexte.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "« Préférez-vous le modèle bleu ou gris ? » illustre une conclusion ___.",
+      "a": [
+        "alternative"
+      ],
+      "w": [
+        "directe",
+        "en escalier",
+        "par soustraction"
+      ],
+      "e": "L’alternative propose deux options ; la directe formule une proposition franche et l’escalier enchaîne des accords.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Proposer une housse avec un ordinateur est du ___.",
+      "a": [
+        "cross-selling"
+      ],
+      "w": [
+        "up-selling",
+        "downsizing",
+        "benchmarking"
+      ],
+      "e": "Le cross-selling propose un produit complémentaire ; l’up-selling une montée en gamme.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Proposer un modèle plus performant et plus haut de gamme est de l’___.",
+      "a": [
+        "up-selling"
+      ],
+      "w": [
+        "inbound marketing",
+        "écrémage statistique",
+        "actualisation"
+      ],
+      "e": "L’up-selling est la montée en gamme ; le cross-selling ajoute une offre complémentaire.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Sur 1 000 € HT, deux remises successives de 10 % puis 5 % donnent un net commercial de ___.",
+      "a": [
+        "855 €"
+      ],
+      "w": [
+        "850 €",
+        "950 €",
+        "900 €"
+      ],
+      "e": "Calcul en cascade : 1 000 × 0,90 × 0,95 = 855 €. Les pourcentages successifs ne s’additionnent pas.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Avec 855 € de net commercial et 2 % d’escompte, le net financier est de ___.",
+      "a": [
+        "837,90 €"
+      ],
+      "w": [
+        "853 €",
+        "855,02 €",
+        "872,10 €"
+      ],
+      "e": "Net financier = 855 × 0,98 = 837,90 €. L’escompte intervient après les réductions commerciales.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Avec un net HT de 900 € et une TVA de 20 % donnée dans l’exercice, le TTC est de ___.",
+      "a": [
+        "1 080 €"
+      ],
+      "w": [
+        "920 €",
+        "750 €",
+        "1 100 €"
+      ],
+      "e": "TTC = HT × (1 + taux de TVA) = 900 × 1,20 = 1 080 €.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Avec 150 000 € de ressources stables et 110 000 € d’emplois stables, le FRNG est de ___.",
+      "a": [
+        "40 000 €"
+      ],
+      "w": [
+        "260 000 €",
+        "−40 000 €",
+        "110 000 €"
+      ],
+      "e": "FRNG = ressources stables − emplois stables = 40 000 €.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Avec un FRNG de 40 000 € et un BFR de 25 000 €, la trésorerie nette est de ___.",
+      "a": [
+        "15 000 €"
+      ],
+      "w": [
+        "65 000 €",
+        "−15 000 €",
+        "25 000 €"
+      ],
+      "e": "Trésorerie nette = FRNG − BFR = 15 000 €. Le BFR est lié au décalage des flux du cycle d’exploitation.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    },
+    {
+      "c": "Conclusion, commande et fidélisation",
+      "q": "Pour traiter un litige, la démarche adaptée est ___.",
+      "a": [
+        "écouter, reformuler, proposer une solution, vérifier la satisfaction"
+      ],
+      "w": [
+        "ignorer la réclamation et envoyer une publicité",
+        "couper la relation après la commande",
+        "promettre sans vérifier la satisfaction"
+      ],
+      "e": "La fidélisation repose sur connaître, informer, récompenser et impliquer ; un litige bien traité peut renforcer la relation.",
+      "s": "IMG_0503.HEIC · IMG_0504.HEIC"
+    }
+  ],
+  [
+    {
+      "c": "Veille, information et outils clients",
+      "q": "La veille est un processus continu de collecte, d’analyse et de ___.",
+      "a": [
+        "diffusion"
+      ],
+      "w": [
+        "suppression systématique",
+        "facturation",
+        "stockage sans exploitation"
+      ],
+      "e": "La veille aide à comprendre l’environnement, anticiper les évolutions et prendre des décisions éclairées.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Comparer les offres, les prix et les stratégies des concurrents relève de la veille ___.",
+      "a": [
+        "concurrentielle"
+      ],
+      "w": [
+        "technologique",
+        "d’e-réputation",
+        "juridique"
+      ],
+      "e": "La concurrentielle suit les concurrents, la technologique les innovations et l’e-réputation l’image en ligne.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Une enquête réalisée directement auprès des clients est une source ___.",
+      "a": [
+        "primaire"
+      ],
+      "w": [
+        "secondaire",
+        "toujours informelle",
+        "nécessairement externe à l’entreprise"
+      ],
+      "e": "Une source primaire résulte d’une collecte directe ; une secondaire utilise des données déjà existantes.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Une information exacte mais sans lien avec la décision manque de ___.",
+      "a": [
+        "pertinence"
+      ],
+      "w": [
+        "fiabilité",
+        "disponibilité",
+        "confidentialité"
+      ],
+      "e": "La pertinence mesure l’adéquation au besoin ; la fiabilité porte sur l’exactitude et l’actualisation.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Restreindre l’accès aux données et tracer les consultations répond à un enjeu de ___.",
+      "a": [
+        "sécurité"
+      ],
+      "w": [
+        "portée publicitaire",
+        "marge commerciale",
+        "saisonnalité"
+      ],
+      "e": "La sécurité concerne les accès et la confidentialité ; la disponibilité porte sur l’accès au moment voulu.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Dans la fiche, le principe d’opt-in désigne le ___ du destinataire.",
+      "a": [
+        "consentement préalable"
+      ],
+      "w": [
+        "paiement comptant",
+        "classement automatique",
+        "partage public des coordonnées"
+      ],
+      "e": "La fiche présente l’opt-in comme le consentement préalable à l’envoi de communications commerciales en prospection B to C. Cette notion relève de la protection des données personnelles.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Le système centré sur les informations commerciales des produits et clients est le ___.",
+      "a": [
+        "SIC"
+      ],
+      "w": [
+        "SIM",
+        "SIG uniquement",
+        "FRNG"
+      ],
+      "e": "Le SIC soutient les décisions commerciales opérationnelles ; le SIM éclaire le marché et les choix stratégiques dans le SIG global.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Un logiciel réunissant achats, ventes, comptabilité et stocks dans une base commune est un ___.",
+      "a": [
+        "PGI ou ERP"
+      ],
+      "w": [
+        "réseau social",
+        "flux RSS",
+        "fichier de relance isolé"
+      ],
+      "e": "Le PGI intègre les fonctions de gestion et limite les silos ; le CRM est centré sur la relation client.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Le référentiel client unique permet une vision ___ du client.",
+      "a": [
+        "à 360°"
+      ],
+      "w": [
+        "limitée au dernier achat",
+        "limitée au seul magasin",
+        "sans historique"
+      ],
+      "e": "Il rassemble les informations des différents canaux. Le data mining recherche des corrélations utiles à la personnalisation.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    },
+    {
+      "c": "Veille, information et outils clients",
+      "q": "Un tableau de bord commercial sert à ___.",
+      "a": [
+        "synthétiser les KPI et orienter les actions"
+      ],
+      "w": [
+        "accumuler des données sans comparaison",
+        "remplacer toutes les décisions du commercial",
+        "compter uniquement les images du catalogue"
+      ],
+      "e": "Les KPI servent à comparer résultats et objectifs, identifier les tendances et déclencher des actions correctives.",
+      "s": "IMG_0505.HEIC · IMG_0506.HEIC · IMG_0507.HEIC · IMG_0508.HEIC · IMG_0509.HEIC · IMG_0510.HEIC"
+    }
+  ]
+];
+    const courseSummaries = [
+      {
+        intro: "Comprendre son marché permet de choisir les bons clients, de différencier son offre et de construire une politique commerciale cohérente.",
+        sections: [
+          ["1. Analyser le marché", "<ul><li><strong>L’offre</strong> regroupe les vendeurs. La concurrence est directe entre produits similaires, indirecte entre produits différents répondant au même besoin. Un monopole compte un offreur, un oligopole quelques offreurs et un marché atomisé de nombreux offreurs.</li><li><strong>La demande</strong> regroupe les clients actuels et potentiels. On étudie sa dimension quantitative (ventes, volumes) et qualitative (profils, motivations, comportements).</li><li><strong>PESTEL</strong> analyse les facteurs Politique, Économique, Socioculturel, Technologique, Écologique et Légal. Ils peuvent représenter des opportunités ou des menaces.</li></ul>"],
+          ["2. Construire la stratégie", "<p><strong>Diagnostic → segmentation → ciblage → positionnement.</strong> Le diagnostic SWOT distingue forces et faiblesses internes, opportunités et menaces externes. La segmentation crée des groupes homogènes ; le ciblage sélectionne les groupes prioritaires ; le positionnement définit l’image souhaitée de l’offre par rapport aux concurrents.</p>"],
+          ["3. Décliner la stratégie avec les 5P", "<ul><li><strong>Product :</strong> produit, usages et image ; tenir compte du cycle de vie et de la gamme.</li><li><strong>Price :</strong> écrémage (prix élevé), pénétration (prix bas) ou alignement sur les concurrents.</li><li><strong>Place :</strong> distribution intensive, sélective ou exclusive, sur un ou plusieurs canaux.</li><li><strong>Promotion :</strong> Paid Media (visibilité achetée), Owned Media (supports de la marque), Earned Media (recommandations et visibilité obtenue).</li><li><strong>People :</strong> équipes commerciales et personnel en contact. Ces cinq leviers doivent être cohérents avec le positionnement.</li></ul>"],
+          ["4. Différencier la marque", "<p>La marque doit être distinctive, mémorisable et adaptée à son marché, tout en respectant les qualités juridiques présentées dans le cours. Une marque produit, une marque ombrelle ou une marque caution sont différentes façons d’organiser l’identité de l’offre.</p>"]
+        ],
+        formula: "<strong>Part de marché en valeur = CA de l’entreprise ÷ CA total du marché × 100.</strong><br>En volume, on utilise les quantités vendues à la place des chiffres d’affaires.",
+        example: "Une entreprise réalise 240 000 € sur un marché de 1 200 000 € : 240 000 ÷ 1 200 000 × 100 = <strong>20 % de part de marché</strong>.",
+        trap: "Segmenter n’est pas cibler. Une force SWOT est interne à l’entreprise ; une opportunité vient de son environnement.",
+        remember: "Analyser le marché → choisir ses clients → définir son image → rendre les 5P cohérents.", sources: [486,487]
+      },
+      {
+        intro: "Les statistiques décrivent les ventes et les clients. La prévision prolonge une tendance pour aider à préparer les moyens commerciaux.",
+        sections: [
+          ["1. Identifier la variable", "<p>Une variable <strong>qualitative</strong> décrit une catégorie (type de produit, catégorie de client). Une variable <strong>quantitative</strong> s’exprime par un nombre (commandes, CA). L’effectif compte les observations ; la fréquence indique leur poids dans l’ensemble.</p>"],
+          ["2. Décrire la position et la dispersion", "<ul><li><strong>Mode :</strong> valeur la plus fréquente.</li><li><strong>Médiane :</strong> valeur centrale d’une série ordonnée ; avec un effectif pair, on prend la moyenne des deux valeurs centrales.</li><li><strong>Moyenne :</strong> somme des valeurs, pondérées par leurs effectifs, divisée par l’effectif total.</li><li><strong>Variance :</strong> moyenne des carrés des écarts à la moyenne. L’écart-type est sa racine carrée : plus il est faible, plus les valeurs sont concentrées autour de la moyenne.</li></ul>"],
+          ["3. Choisir un graphique", "<p>Un <strong>diagramme circulaire</strong> montre la répartition d’un ensemble en pourcentages. Un <strong>diagramme en bâtons</strong> permet de comparer des catégories. Le choix dépend du message à faire comprendre.</p>"],
+          ["4. Prévoir avec une droite de tendance", "<p>La relation <strong>y = ax + b</strong> relie la période x aux ventes estimées y. La méthode de <strong>Mayer</strong> partage les périodes en deux groupes et fait passer la droite par leurs points moyens. Les <strong>moindres carrés</strong> minimisent la somme des écarts au carré. Une tendance doit être confrontée à la saisonnalité, à la concurrence et au contexte commercial.</p>"]
+        ],
+        formula: "Fréquence = effectif de la modalité ÷ effectif total × 100.<br>Moyenne pondérée x̄ = Σ(nᵢ × xᵢ) ÷ Σnᵢ.<br>Variance = Σ[nᵢ × (xᵢ − x̄)²] ÷ Σnᵢ ; écart-type σ = √variance.<br>Avec deux points moyens : a = (y₂ − y₁) ÷ (x₂ − x₁), puis b = y₁ − ax₁.",
+        example: "Deux ventes à 10 € et trois à 20 € : (2 × 10 + 3 × 20) ÷ 5 = <strong>16 € en moyenne</strong>. Avec y = 150x + 800 et x = 6, la prévision est <strong>1 700</strong>.",
+        trap: "Toujours trier les valeurs avant de chercher la médiane. Une moyenne peut être tirée vers le haut par une valeur extrême. Une prévision n’est pas une certitude.",
+        remember: "Qualifier la donnée → calculer → représenter → interpréter dans son contexte.", sources: [488,489]
+      },
+      {
+        intro: "L’analyse du portefeuille sert à concentrer les efforts sur les clients à fidéliser ou à développer, en tenant compte de leur contribution et de leur rentabilité.",
+        sections: [
+          ["1. Segmenter avec Pareto et ABC", "<p>La règle indicative <strong>20/80</strong> signifie qu’environ 20 % des clients réalisent 80 % du CA. On classe les clients par CA décroissant, puis on calcule les pourcentages cumulés.</p><p>Dans la méthode ABC de la fiche : <strong>A</strong> ≈ 20 % des clients pour 80 % du CA ; <strong>B</strong> ≈ 30 % pour 15 % ; <strong>C</strong> ≈ 50 % pour 5 %. Ces repères orientent la fidélisation des gros clients et le développement des clients à potentiel.</p>"],
+          ["2. Mesurer la rentabilité", "<p>Le chiffre d’affaires mesure les ventes, tandis que la <strong>marge commerciale</strong> tient compte du prix d’achat. Le taux de marge et le taux de marque expriment cette marge avec des dénominateurs différents.</p>"],
+          ["3. Évaluer la valeur client dans le temps", "<p>La <strong>Life Time Value</strong> estime le profit sur la durée de la relation. Il faut déduire le coût des produits et les coûts d’acquisition, de développement et de fidélisation : prospection, publicité, ventes additionnelles, programme de fidélité, SAV…</p>"],
+          ["4. Actualiser les flux futurs", "<p>L’actualisation ramène un flux attendu dans le futur à sa valeur aujourd’hui. Pour plusieurs années, on actualise chaque flux puis on additionne les valeurs obtenues. Dans la formule, t est le taux par période et n le nombre de périodes.</p>"]
+        ],
+        formula: "Marge = prix de vente HT − prix d’achat HT.<br><strong>Taux de marge = marge ÷ prix d’achat HT × 100.</strong><br><strong>Taux de marque = marge ÷ prix de vente HT × 100.</strong><br>Valeur client = CA HT − coût des produits − coûts de la relation.<br>Valeur actuelle d’un flux = flux futur ÷ (1 + t)ⁿ.",
+        example: "Acheté 80 € HT et vendu 120 € HT : marge = <strong>40 €</strong>, taux de marge = <strong>50 %</strong>, taux de marque ≈ <strong>33,33 %</strong>. Un flux de 1 100 € dans un an, actualisé à 10 %, vaut <strong>1 000 € aujourd’hui</strong>.",
+        trap: "Un gros CA ne garantit pas une forte rentabilité. Ne pas confondre taux de marge (base achat) et taux de marque (base vente). Pareto est un repère, pas une répartition obligatoire.",
+        remember: "Classer les clients, repérer leur potentiel, puis arbitrer selon la marge et la valeur de la relation.", sources: [490,491]
+      },
+      {
+        intro: "La prospection renouvelle le portefeuille, compense la perte naturelle de clients et développe l’activité auprès de nouvelles cibles.",
+        sections: [
+          ["1. Définir et qualifier sa cible", "<p>On part de la segmentation pour déterminer le profil recherché. Le fichier peut provenir de contacts collectés, de réseaux sociaux professionnels, d’annuaires, de recommandations ou de prestataires. <strong>Qualifier</strong> consiste à vérifier, compléter et actualiser les informations utiles ; la fiche rappelle le respect du RGPD.</p>"],
+          ["2. Adapter l’action à la maturité", "<ul><li><strong>Suspect :</strong> ciblé, jamais contacté → prise de contact.</li><li><strong>Prospect froid :</strong> contacté sans réaction → relance et maturation de la relation.</li><li><strong>Prospect tiède :</strong> intéressé, sans projet immédiat → maintien du lien.</li><li><strong>Prospect chaud :</strong> achat imminent → rendez-vous et proposition adaptée.</li></ul>"],
+          ["3. Choisir les techniques et structurer l’appel", "<p>E-mailing, téléphone, visites terrain, salons, inbound marketing et social selling se combinent selon la cible. L’inbound attire avec du contenu utile. Au téléphone, <strong>CROC = Contact, Raison, Objet, Conclusion</strong> : se présenter, expliquer l’appel, présenter l’offre et ses bénéfices, puis obtenir une action concrète.</p>"],
+          ["4. Organiser les visites", "<p>Le plan de tournée optimise le temps et les déplacements. La <strong>marguerite</strong> rayonne depuis un point central ; la <strong>spirale</strong> s’en éloigne progressivement ; le <strong>zigzag</strong> suit des allers-retours le long d’un axe. La capacité dépend du temps disponible, de l’entretien et des trajets.</p>"]
+        ],
+        formula: "Capacité simplifiée de visites = temps disponible ÷ (durée moyenne d’entretien + durée moyenne de déplacement).<br>Utiliser la même unité de temps et arrondir au nombre entier inférieur.",
+        example: "7 h = 420 minutes. Avec 45 minutes d’entretien et 15 minutes de déplacement : 420 ÷ 60 = <strong>7 visites</strong>, avant prise en compte des autres contraintes de la journée.",
+        trap: "Choisir un canal avant d’avoir défini la cible peut rendre la campagne inefficace. Un prospect intéressé n’est pas forcément prêt à acheter immédiatement.",
+        remember: "Cibler → qualifier → contacter → adapter la relance → organiser le suivi.", sources: [492,493]
+      },
+      {
+        intro: "Mesurer la prospection permet d’identifier à quelle étape les contacts se perdent et de choisir une action corrective précise.",
+        sections: [
+          ["1. Suivre une campagne d’e-mailing", "<p>La fiche utilise cinq ratios : <strong>délivrabilité</strong> (délivrés/envoyés), <strong>rebond</strong> (non délivrés/envoyés), <strong>ouverture</strong> (ouverts/envoyés), <strong>clics</strong> (clics/envoyés), <strong>conversion</strong> (actions réalisées/envoyés). Chaque ratio est multiplié par 100. Les conventions de calcul peuvent varier selon l’outil : ici, on suit celles du cours.</p>"],
+          ["2. Suivre les appels", "<ul><li><strong>Qualification :</strong> appels réalisés ÷ contacts du fichier.</li><li><strong>Validité :</strong> appels aboutis ÷ appels réalisés.</li><li><strong>Appels argumentés :</strong> appels argumentés ÷ appels aboutis.</li><li><strong>Conversion brute :</strong> RDV obtenus ÷ appels réalisés.</li><li><strong>Conversion nette :</strong> RDV obtenus ÷ appels argumentés.</li></ul><p>Multiplier chaque ratio par 100 pour obtenir un pourcentage. Ces étapes distinguent l’exploitation du fichier, la qualité des coordonnées, l’intérêt suscité et l’obtention de RDV.</p>"],
+          ["3. Mesurer le terrain", "<p><strong>Effort de prospection = prospects visités ÷ total des visites × 100.</strong><br><strong>Transformation = RDV obtenus ÷ prospects visités × 100.</strong> Le premier indicateur décrit la place de la conquête dans les visites ; le second mesure son résultat.</p>"],
+          ["4. Décider avec le tableau de bord", "<p>On compare résultats et objectifs, puis on explique les écarts. Des rebonds élevés invitent à nettoyer le fichier ; peu d’ouvertures à retravailler l’objet ; peu de RDV après argumentation à ajuster le discours et la proposition de rendez-vous. Le tableau de bord doit déboucher sur des décisions.</p>"]
+        ],
+        formula: "<strong>Taux de réalisation = résultat ÷ objectif × 100.</strong><br>Plus de 100 % signifie que l’objectif est dépassé. Si le dénominateur est nul, le taux n’est pas calculable.",
+        example: "100 appels réalisés, 40 argumentés, 10 RDV : conversion brute = <strong>10 %</strong> ; nette = <strong>25 %</strong>. Pour 30 RDV sur un objectif de 40 : réalisation = <strong>75 %</strong>.",
+        trap: "La conversion brute et la conversion nette n’ont pas le même dénominateur. Additionner des pourcentages de nature différente ne donne pas un taux global pertinent.",
+        remember: "Pour chaque indicateur : nommer le résultat, préciser la base de calcul, comparer à l’objectif et agir.", sources: [494,495]
+      },
+      {
+        intro: "Les réseaux sociaux aident à repérer des prospects, développer sa crédibilité et engager des échanges pouvant conduire à un rendez-vous.",
+        sections: [
+          ["1. Choisir les réseaux adaptés", "<p>Les réseaux généralistes servent à la visibilité, à la veille et à la relation avec les publics. Les réseaux professionnels servent au développement de contacts d’affaires. Le choix dépend des personnes visées et de leurs usages.</p>"],
+          ["2. Appliquer PEPSI", "<ul><li><strong>Profil :</strong> construire une présentation professionnelle attractive.</li><li><strong>Étendre :</strong> développer un réseau de contacts ciblés.</li><li><strong>Publier :</strong> partager des contenus à valeur ajoutée pour montrer son expertise.</li><li><strong>Stimuler :</strong> interagir pour susciter des échanges et préparer les rendez-vous.</li><li><strong>Indicateurs :</strong> mesurer les résultats et ajuster les actions.</li></ul>"],
+          ["3. Mesurer la performance digitale", "<p>La <strong>portée</strong> compte les personnes ayant vu le profil ou une publication ; les <strong>suiveurs</strong> sont les abonnés ; les <strong>interactions</strong> sont les réactions observées. Dans la terminologie de la fiche, un <strong>MQL</strong> est un contact ayant laissé ses coordonnées et un <strong>SQL</strong> un contact approché par l’équipe commerciale. On suit la progression <strong>MQL → SQL → RDV</strong>.</p>"],
+          ["4. Entretenir son réseau", "<p>Le networking suit trois étapes : <strong>rencontrer → communiquer → entretenir</strong>. Les événements et clubs créent les occasions ; le pitch et l’écoute active ouvrent l’échange ; le suivi régulier transforme la relation en opportunité.</p>"]
+        ],
+        formula: "Selon la fiche : <strong>taux d’engagement = interactions ÷ visiteurs × 100.</strong><br>Pour une étape de conversion, rapporter les contacts arrivés à l’étape suivante aux contacts de l’étape précédente.",
+        example: "60 interactions pour 1 200 visiteurs : 60 ÷ 1 200 × 100 = <strong>5 % d’engagement</strong>, selon la convention du cours.",
+        trap: "Un grand nombre d’abonnés ne prouve pas que des rendez-vous sont obtenus. Préciser la définition des MQL/SQL et le dénominateur du taux utilisé : ils dépendent du cadre retenu.",
+        remember: "Un profil crédible, un réseau ciblé, du contenu utile, des échanges et un suivi mesuré.", sources: [496]
+      },
+      {
+        intro: "Une communication commerciale efficace repose sur la cohérence du message, la qualité de l’écoute et une relation respectueuse.",
+        sections: [
+          ["1. Aligner trois registres", "<ul><li><strong>Verbal :</strong> mots, vocabulaire et structure du discours.</li><li><strong>Non verbal :</strong> gestes, expressions, regard, posture et tenue.</li><li><strong>Para-verbal :</strong> ton, débit, volume, silences et intonation.</li></ul><p>La <strong>congruence</strong> est la cohérence entre ces registres. Même un silence ou une absence de réponse peut être interprété comme un message. Les canaux (face-à-face, téléphone, e-mail, chat, visioconférence…) imposent des adaptations.</p>"],
+          ["2. Développer les compétences relationnelles", "<p><strong>Empathie :</strong> comprendre le point de vue de l’autre. <strong>Écoute active :</strong> porter attention au discours. <strong>Reformulation :</strong> vérifier sa compréhension avec ses propres mots. <strong>Assertivité :</strong> exprimer ses idées fermement tout en respectant l’autre. Le marketing de soi valorise une image professionnelle à partir d’un diagnostic de ses forces et faiblesses.</p>"],
+          ["3. Comprendre les positions et les enjeux", "<p>Le <strong>statut</strong> désigne la position dans l’organisation ; le <strong>rôle</strong>, les comportements attendus ; le <strong>rapport de place</strong>, la dynamique relationnelle entre interlocuteurs. Les enjeux sont <strong>opératoires</strong> (obtenir un résultat), <strong>symboliques</strong> (affirmer son expertise) et <strong>identitaires</strong> (préserver son image et celle de l’autre).</p>"],
+          ["4. Limiter les malentendus", "<p>Distorsions, généralisations et omissions peuvent fausser la compréhension. Questionner et reformuler aide à les repérer. Une stratégie <strong>intégrative</strong> recherche un accord satisfaisant pour les deux parties.</p>"]
+        ],
+        example: "Le client dit : « Votre délai m’inquiète ». Réponse : <strong>« Si je comprends bien, votre priorité est d’être livré avant l’ouverture. Quelle est la date limite ? »</strong> Cette reformulation est suivie d’une question de précision.",
+        trap: "L’empathie n’oblige pas à être d’accord. L’assertivité n’est ni l’agressivité ni l’effacement. Un discours rassurant avec un ton impatient manque de congruence.",
+        remember: "Écouter, reformuler, adapter les mots et la manière de les dire, puis vérifier la compréhension.", sources: [497,498]
+      },
+      {
+        intro: "Préparer un entretien consiste à comprendre le client, son processus d’achat et ses motivations, puis à fixer ses objectifs et ses limites.",
+        sections: [
+          ["1. Identifier le type de client", "<p><strong>B to C :</strong> vente aux particuliers. <strong>B to B :</strong> vente aux entreprises. <strong>B to G :</strong> vente aux administrations. En B to B et B to G, les cycles sont souvent plus longs et impliquent plusieurs personnes : acheteur, décideur, utilisateur, prescripteur.</p>"],
+          ["2. Repérer les besoins et les motivations", "<p>Dans le modèle de <strong>Maslow</strong> présenté par le cours : besoins physiologiques → sécurité → appartenance → estime → accomplissement.</p><p>Les motivations peuvent être <strong>hédonistes</strong> (se faire plaisir), <strong>oblatives</strong> (faire plaisir à autrui) ou <strong>d’auto-expression</strong> (affirmer sa personnalité). Les freins, inhibitions et risques perçus peuvent bloquer la décision.</p>"],
+          ["3. Suivre le processus d’achat", "<p><strong>Besoin → recherche d’informations → évaluation des solutions → décision → évaluation post-achat.</strong> La complexité dépend de l’achat (impulsif, réfléchi ou répété) et du nombre d’intervenants. Identifier qui utilise, qui influence et qui décide évite de s’adresser au mauvais interlocuteur.</p>"],
+          ["4. Préparer le rendez-vous", "<p>Le <strong>CRM</strong> centralise historique, profil, potentiel et rentabilité du client. Avant le rendez-vous, on définit des objectifs <strong>quantitatifs</strong> (CA, volume, marge), <strong>qualitatifs</strong> (image, relation), sa <strong>marge de manœuvre</strong> (concessions et limites), un plan de questionnement, les arguments et outils utiles, puis un pitch d’accroche.</p>"]
+        ],
+        example: "Pour vendre un équipement à une entreprise : identifier l’utilisateur et le décideur, consulter l’historique dans le CRM, préparer les questions sur l’usage et fixer la marge minimale avant l’entretien.",
+        trap: "Le besoin exprime ce qui manque ; la motivation explique ce qui pousse à acheter. Un objectif de marge est quantitatif, même s’il ne porte pas directement sur le CA.",
+        remember: "Connaître le client, comprendre sa décision, préparer les questions et fixer objectifs, concessions et limites.", sources: [499,500]
+      },
+      {
+        intro: "Les premières minutes installent la relation. La découverte permet ensuite de proposer une solution adaptée au besoin et à la personne.",
+        sections: [
+          ["1. Réussir la prise de contact", "<p>Se présenter, formuler une accroche adaptée, expliquer sa valeur ajoutée et préciser l’objectif de l’entretien. En vente traditionnelle, le commercial initie souvent le contact ; en e-relation inbound, le prospect peut arriver après s’être déjà informé en ligne.</p>"],
+          ["2. Construire le plan de découverte", "<p>Le double objectif est de <strong>cerner l’acheteur</strong> (besoins rationnels : quoi proposer) et de <strong>cerner la personne</strong> (motivations : comment proposer). Explorer les usages, attentes, contraintes, critères de décision et priorités, puis synthétiser avant d’argumenter.</p>"],
+          ["3. Varier les questions", "<ul><li><strong>Ouverte :</strong> permet une réponse développée — « Qu’attendez-vous de cette solution ? »</li><li><strong>Fermée :</strong> vérifie un point précis — « Avez-vous déjà un contrat ? »</li><li><strong>Alternative :</strong> propose un choix — « Mardi ou jeudi ? »</li></ul><p>L’écoute active, la reformulation et la synthèse vérifient que l’on a bien compris. Une question de validation permet au client de confirmer ou de corriger.</p>"],
+          ["4. Les grilles relationnelles du cours", "<p>L’<strong>analyse transactionnelle</strong> distingue les états du moi Parent, Adulte et Enfant pour lire les échanges. La présentation de la <strong>PNL</strong> dans la fiche utilise les repères visuel, auditif et kinesthésique ainsi que la synchronisation. Ce sont les notions à reconnaître dans les questions de ce cours.</p>"]
+        ],
+        example: "« Qu’est-ce qui vous gêne aujourd’hui ? » ouvre l’échange. « Le délai est-il prioritaire ? » vérifie un point. <strong>« Si je résume, vous recherchez X, avant telle date, dans tel budget : c’est bien cela ? »</strong> valide la découverte.",
+        trap: "Une question alternative n’est pas une question ouverte. Argumenter avant d’avoir découvert puis validé les besoins risque de produire une offre mal ciblée.",
+        remember: "Prendre contact → questionner → écouter → reformuler → valider la synthèse → proposer.", sources: [501]
+      },
+      {
+        intro: "Une bonne argumentation relie les caractéristiques de l’offre aux bénéfices recherchés par le client et les appuie par des preuves.",
+        sections: [
+          ["1. Construire un argument CAP / SONCAS(E)", "<p><strong>CAP = Caractéristique → Avantage → Preuve.</strong> La caractéristique décrit l’offre, l’avantage traduit son intérêt pour ce client et la preuve rend la promesse crédible.</p><p><strong>SONCAS(E)</strong> classe les motivations : Sécurité, Orgueil, Nouveauté, Confort, Argent, Sympathie, Environnement. Sélectionner les arguments en fonction des besoins découverts, puis vérifier leur portée par une question de validation.</p>"],
+          ["2. Traiter les objections", "<p>Une objection <strong>fondée</strong> est sincère et justifiée ; une objection <strong>non fondée</strong> vient d’un malentendu ; un <strong>prétexte</strong> sert à esquiver ou à marchander. La méthode du cours suit cinq étapes : <strong>approuver → comprendre → répondre → contrôler → adapter</strong>. Accueillir l’objection permet d’en chercher la cause avant de répondre.</p>"],
+          ["3. Présenter et justifier le prix", "<p>Le <strong>sandwich</strong> suit avantage → prix → avantage ; la <strong>boule de neige</strong> annonce le prix puis cumule les avantages. Pour justifier : <strong>addition</strong> des bénéfices, <strong>soustraction</strong> du coût de ne pas acheter, <strong>multiplication</strong> du bénéfice sur la durée, <strong>division</strong> du prix par unité de temps, <strong>positionnement</strong> face à la concurrence.</p>"],
+          ["4. Défendre la marge et distinguer les réductions", "<p><strong>Remise :</strong> réduction commerciale liée notamment à la quantité. <strong>Ristourne :</strong> réduction calculée sur une période. <strong>Rabais :</strong> réduction liée à un défaut. <strong>Escompte :</strong> réduction financière liée au paiement comptant. Une réduction de prix diminue la marge : elle doit être mesurée avant d’être proposée.</p>"]
+        ],
+        formula: "Marge commerciale = PV HT − PA HT.<br>Taux de marge = marge ÷ PA HT × 100.<br>Taux de marque = marge ÷ PV HT × 100.",
+        example: "<strong>Caractéristique :</strong> batterie de 12 h. <strong>Avantage :</strong> une tournée sans recharge. <strong>Preuve :</strong> test d’autonomie. Pour un client sensible à la sécurité, ajouter des garanties et des preuves de fiabilité.",
+        trap: "Une caractéristique seule n’explique pas le bénéfice client. « Approuver » une objection signifie accueillir la remarque, pas accorder automatiquement une remise. Rabais et escompte ont des causes différentes.",
+        remember: "Découvrir le besoin → choisir le bon argument CAP → vérifier → traiter l’objection → défendre la valeur.", sources: [502]
+      },
+      {
+        intro: "La conclusion transforme l’accord en commande. Le suivi de la satisfaction et de la relation permet ensuite de fidéliser le client.",
+        sections: [
+          ["1. Repérer le moment de conclure", "<p>Les signaux d’achat sont <strong>verbaux</strong> (questions sur délais, garanties, modalités) et <strong>non verbaux</strong> (hochement de tête, sourire, posture détendue). Les interpréter dans le contexte, puis choisir une conclusion <strong>directe</strong> (proposition franche), <strong>alternative</strong> (deux options), <strong>implicite</strong> (agir comme si la décision était prise) ou <strong>en escalier</strong> (suite d’accords).</p><p>Le <strong>cross-selling</strong> ajoute un produit complémentaire ; l’<strong>up-selling</strong> propose une montée en gamme.</p>"],
+          ["2. Formaliser et calculer la commande", "<p>La fiche associe bon de commande signé et CGV. Les réductions se calculent <strong>en cascade</strong> : brut HT → réductions commerciales → net commercial → escompte → net financier → ajout du port HT → net HT → TVA → TTC. Le paiement peut être comptant ou différé selon les conditions convenues.</p>"],
+          ["3. Lire le risque client en B to B", "<p>Le bilan fonctionnel permet de comparer les ressources et les emplois. Le <strong>FRNG</strong> mesure les ressources stables restant après financement des emplois stables. Le <strong>BFR</strong> traduit le besoin lié au décalage du cycle d’exploitation. La trésorerie nette compare les deux. Une valeur isolée doit être interprétée avec le contexte de l’entreprise.</p>"],
+          ["4. Fidéliser et traiter les litiges", "<p>Quatre leviers : <strong>connaître</strong> (CRM), <strong>informer</strong> (actualités), <strong>récompenser</strong> (fidélité), <strong>impliquer</strong> (avis, co-création). Face à un litige : <strong>écouter → reformuler → proposer une solution → vérifier la satisfaction</strong>. Le suivi fait partie de la relation commerciale.</p>"]
+        ],
+        formula: "Réductions successives : montant initial × (1 − r₁) × (1 − r₂).<br>TTC = net HT × (1 + taux de TVA donné).<br>FRNG = ressources stables − emplois stables.<br>BFR = actif circulant − dettes circulantes, selon la présentation de la fiche.<br>Trésorerie nette = FRNG − BFR.",
+        example: "1 000 € HT, puis −10 % et −5 % : <strong>855 €</strong> de net commercial. Avec 2 % d’escompte : <strong>837,90 €</strong> de net financier. Un FRNG de 40 000 € et un BFR de 25 000 € donnent <strong>15 000 € de trésorerie nette</strong>.",
+        trap: "Deux remises de 10 % et 5 % ne font pas 15 % : la seconde s’applique au montant déjà réduit. Une housse en plus est du cross-selling ; un ordinateur de gamme supérieure est de l’up-selling.",
+        remember: "Valider l’accord → formaliser la commande → contrôler les calculs et le risque → accompagner le client.", sources: [503,504]
+      },
+      {
+        intro: "La veille transforme des données en informations utiles. Les systèmes et outils clients les organisent pour éclairer l’action commerciale.",
+        sections: [
+          ["1. Organiser la veille", "<p>La veille suit un cycle continu : <strong>collecte → analyse → diffusion</strong>. Elle peut être commerciale (clients et ventes), concurrentielle (offres et prix), technologique (innovations), juridique (textes), sociétale (consommation) ou d’e-réputation (image en ligne). PESTEL structure l’étude de l’environnement.</p>"],
+          ["2. Choisir et vérifier les sources", "<p>Une source est <strong>interne ou externe</strong>, <strong>formelle ou informelle</strong>, <strong>primaire</strong> (collecte directe : enquête, entretien) ou <strong>secondaire</strong> (donnée existante : publication, base). Préparer le besoin d’information, chercher via alertes, flux RSS ou bases professionnelles, puis contrôler quatre critères : <strong>pertinence, fiabilité, sécurité, disponibilité</strong>.</p>"],
+          ["3. Comprendre les systèmes et les outils", "<ul><li><strong>SIG :</strong> ensemble du système d’information global.</li><li><strong>SIM :</strong> informations sur le marché et l’environnement pour les choix marketing.</li><li><strong>SIC :</strong> informations sur les produits et les clients pour l’action commerciale.</li><li><strong>PGI / ERP :</strong> intègre achats, ventes, comptabilité, stocks et autres fonctions dans une base commune.</li><li><strong>CRM :</strong> centralise les informations clients, interactions, historique et actions commerciales.</li></ul>"],
+          ["4. Exploiter et protéger l’information", "<p>Un <strong>référentiel client unique</strong> réunit les données des canaux pour une vision à 360°. Le <strong>data mining</strong> recherche des corrélations utiles à la personnalisation. Le tableau de bord synthétise les KPI, compare les objectifs et les résultats et déclenche des actions correctives.</p><p>La fiche cite la loi Informatique et Libertés, le RGPD et le Digital Services Act. Elle présente l’<strong>opt-in</strong> comme le consentement préalable à la prospection B to C. Pour la révision, retenir aussi le contrôle des accès, la confidentialité et la traçabilité des consultations.</p>"]
+        ],
+        example: "Une enquête menée directement auprès des clients est une <strong>source primaire</strong>. Le CRM conserve les réponses ; le tableau de bord en synthétise les indicateurs pour décider quelles actions améliorer.",
+        trap: "Une information peut être exacte mais non pertinente pour la décision. Sécurité = accès et confidentialité ; disponibilité = accès au moment voulu. Le PGI couvre la gestion globale, le CRM la relation client.",
+        remember: "Définir le besoin → collecter → vérifier → partager avec les bons accès → analyser → agir.", sources: [505,506,507,508,509,510]
+      }
     ];
+    quizGroups.push(quizGroups.flat());
 
-    const hr = [
-      { c: "HR & Recruitment", fr: "CV", a: ["résumé", "resume"], h: "r..." },
-      { c: "HR & Recruitment", fr: "poste vacant", a: ["vacancy"], h: "v..." },
-      { c: "HR & Recruitment", fr: "agence d'intérim", a: ["temp agency"], h: "t... a..." },
-      { c: "HR & Recruitment", fr: "évaluation", a: ["appraisal"], h: "a..." },
-      { c: "HR & Recruitment", fr: "(taux de) présence du personnel", a: ["staff attendance"], h: "s... a..." },
-      { c: "HR & Recruitment", fr: "congé", a: ["leave"], h: "l..." },
-      { c: "HR & Recruitment", fr: "main-d'oeuvre / effectifs", a: ["manpower"], h: "m..." },
-      { c: "HR & Recruitment", fr: "mutation / muter", a: ["transfer"], h: "t..." },
-      { c: "HR & Recruitment", fr: "poser sa candidature", a: ["apply"], h: "a..." },
-      { c: "HR & Recruitment", fr: "fournir une référence", a: ["provide a reference"], h: "p... a r..." },
-      { c: "HR & Recruitment", fr: "évaluer", a: ["assess"], h: "a..." },
-      { c: "HR & Recruitment", fr: "être sur la liste de candidats sélectionnés", a: ["be shortlisted", "shortlisted"], h: "be s..." },
-      { c: "HR & Recruitment", fr: "embaucher", a: ["take on"], h: "t... o..." },
-      { c: "HR & Recruitment", fr: "nommer", a: ["appoint"], h: "a..." },
-      { c: "HR & Recruitment", fr: "pointer", a: ["clock in", "clock out", "clock in/out"], h: "c... in / out" },
-      { c: "HR & Recruitment", fr: "réduire les effectifs", a: ["downsize"], h: "d..." },
-      { c: "HR & Recruitment", fr: "licencier pour motif économique", a: ["lay off"], h: "l... o..." },
-      { c: "HR & Recruitment", fr: "renvoyer", a: ["dismiss"], h: "d..." },
-      { c: "HR & Recruitment", fr: "donner son préavis", a: ["give notice"], h: "g... n..." },
-      { c: "HR & Recruitment", fr: "démissionner", a: ["resign"], h: "r..." }
-    ];
-
-    const quizGroups = [jobs, hr, [...jobs, ...hr]];
     const $ = id => document.getElementById(id);
     const shuffle = list => {
       const copy = [...list];
@@ -429,13 +2230,11 @@
       }
       return copy;
     };
-
     const normalize = value => value
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
-      .toLocaleLowerCase("en")
-      .replace(/[’']/g, "")
-      .replace(/&/g, "and")
+      .toLocaleLowerCase("fr")
+      .replace(/[’']/g, " ")
       .replace(/[^a-z0-9]+/g, " ")
       .trim();
 
@@ -446,6 +2245,63 @@
     let score = 0;
     let locked = false;
     let transitionTimer = null;
+    let currentCourse = 0;
+    let courseReturnIndex = null;
+
+    function openCourse(index) {
+      if (!Number.isInteger(index) || !courseSummaries[index]) return;
+      clearTimeout(transitionTimer);
+      locked = true;
+      currentCourse = index;
+      courseReturnIndex = index;
+      const summary = courseSummaries[index];
+      $("quizMenu").classList.remove("show");
+      $("quiz").hidden = true;
+      $("endScreen").classList.remove("show");
+      $("courseView").hidden = false;
+      document.querySelector(".lives").hidden = true;
+      $("progress").style.width = "0";
+      $("courseNumber").textContent = `Résumé de cours · Partie ${String(index + 1).padStart(2, "0")} / 12`;
+      $("courseTitle").textContent = quizGroups[index][0].c;
+      $("courseIntro").textContent = summary.intro;
+      $("courseBody").innerHTML = summary.sections.map(([title, content]) => `<section class="course-block"><h3>${title}</h3>${content}</section>`).join("")
+        + (summary.formula ? `<aside class="course-callout"><h3>Formules et méthodes à retenir</h3><p>${summary.formula}</p></aside>` : "")
+        + `<aside class="course-callout"><h3>Exemple concret</h3><p>${summary.example}</p></aside>`
+        + `<aside class="course-callout warning"><h3>Le piège à éviter</h3><p>${summary.trap}</p></aside>`
+        + `<aside class="course-callout"><h3>L’essentiel en une phrase</h3><p>${summary.remember}</p></aside>`;
+      $("courseSources").textContent = `Résumé rédigé à partir des photos du dossier ajd : ${summary.sources.map(number => `IMG_${String(number).padStart(4, "0")}.HEIC`).join(" · ")}.`;
+      $("courseJump").value = String(index);
+      $("previousCourse").disabled = index === 0;
+      $("nextCourse").disabled = index === courseSummaries.length - 1;
+      $("startCourseQuiz").textContent = `Tester la partie ${index + 1} · 10 questions →`;
+      $("courseTitle").focus();
+      $("courseView").scrollIntoView({ block: "start" });
+    }
+
+    courseSummaries.forEach((summary, index) => {
+      const quizButton = document.querySelector(`[data-quiz="${index}"]`);
+      const entry = document.createElement("div");
+      entry.className = "quiz-entry";
+      quizButton.before(entry);
+      entry.appendChild(quizButton);
+      const readButton = document.createElement("button");
+      readButton.type = "button";
+      readButton.className = "course-link";
+      readButton.dataset.course = String(index);
+      readButton.textContent = "Lire le résumé du cours →";
+      readButton.setAttribute("aria-label", `Lire le résumé : ${quizGroups[index][0].c}`);
+      readButton.addEventListener("click", () => openCourse(index));
+      entry.appendChild(readButton);
+      const option = document.createElement("option");
+      option.value = String(index);
+      option.textContent = `${String(index + 1).padStart(2, "0")} · ${quizGroups[index][0].c}`;
+      $("courseJump").appendChild(option);
+    });
+    $("backFromCourse").addEventListener("click", showMenu);
+    $("previousCourse").addEventListener("click", () => openCourse(currentCourse - 1));
+    $("nextCourse").addEventListener("click", () => openCourse(currentCourse + 1));
+    $("courseJump").addEventListener("change", event => openCourse(Number(event.target.value)));
+    $("startCourseQuiz").addEventListener("click", () => startGame(currentCourse));
 
     function updateLives() {
       const full = "♥ ".repeat(lives);
@@ -454,10 +2310,22 @@
       $("hearts").setAttribute("aria-label", `${lives} vie${lives > 1 ? "s" : ""} restante${lives > 1 ? "s" : ""}`);
     }
 
+    function renderPrompt(sentence) {
+      const [before, after = ""] = sentence.split("___");
+      $("question").replaceChildren(
+        document.createTextNode(before),
+        Object.assign(document.createElement("span"), { className: "blank", textContent: "…" }),
+        document.createTextNode(after)
+      );
+    }
+
     function startGame(quizIndex = currentQuiz) {
       clearTimeout(transitionTimer);
+      $("courseView").hidden = true;
+      document.querySelector(".lives").hidden = false;
+      courseReturnIndex = null;
       currentQuiz = quizIndex;
-      deck = shuffle(quizGroups[currentQuiz]).slice(0, 20);
+      deck = shuffle(quizGroups[currentQuiz]);
       current = 0;
       lives = 3;
       score = 0;
@@ -475,117 +2343,95 @@
       $("progress").style.width = `${(current / deck.length) * 100}%`;
       $("category").textContent = item.c;
       $("counter").textContent = `Question ${current + 1} / ${deck.length}`;
-      $("question").textContent = item.fr;
-      $("hint").textContent = "";
+      renderPrompt(item.q);
       $("feedback").textContent = "";
       $("feedback").className = "";
-      $("answerInput").value = "";
-      $("answerInput").disabled = false;
-      $("answerInput").classList.remove("shake");
-      $("sourceText").textContent = item.c === "Jobs"
-        ? "Source : fiche Jobs - Les postes"
-        : "Source : fiche Human Resources & Recruitment";
-      requestAnimationFrame(() => $("answerInput").focus());
-    }
+      $("source").textContent = "";
+      $("nextQuestion").hidden = true;
+      $("qcmAnswers").hidden = false;
+      $("qcmAnswers").replaceChildren();
 
-    function editDistance(a, b) {
-      const previous = Array.from({ length: b.length + 1 }, (_, index) => index);
-      const currentRow = Array(b.length + 1).fill(0);
-
-      for (let i = 1; i <= a.length; i++) {
-        currentRow[0] = i;
-        for (let j = 1; j <= b.length; j++) {
-          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-          currentRow[j] = Math.min(
-            currentRow[j - 1] + 1,
-            previous[j] + 1,
-            previous[j - 1] + cost
-          );
-        }
-        previous.splice(0, previous.length, ...currentRow);
-      }
-
-      return previous[b.length];
-    }
-
-    function isAlmostCorrect(value, answers) {
-      const clean = normalize(value);
-      if (!clean) return false;
-
-      return answers.some(answer => {
-        const expected = normalize(answer);
-        if (clean === expected) return false;
-        const limit = expected.length <= 4 ? 1 : expected.length <= 10 ? 2 : 3;
-        return editDistance(clean, expected) <= limit;
+      shuffle([item.a[0], ...item.w]).forEach(label => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer-choice";
+        button.textContent = label;
+        button.addEventListener("click", () => checkChoice(button, label));
+        $("qcmAnswers").appendChild(button);
       });
+      $("qcmAnswers").querySelector("button").focus();
     }
 
-    function isCorrect(value, answers) {
-      const clean = normalize(value);
-      return answers.some(answer => normalize(answer) === clean);
-    }
-
-    function showExpectedAnswer(item) {
-      const [first, ...rest] = item.a;
-      return rest.length ? `${first} (${rest.join(" / ")})` : first;
-    }
-
-    function acceptCorrectAnswer() {
+    function acceptCorrectAnswer(control) {
       locked = true;
       score++;
-      $("answerInput").disabled = true;
-      $("feedback").textContent = "Bonne traduction !";
+      control.classList.add("correct");
+      document.querySelectorAll(".answer-choice").forEach(button => button.disabled = true);
+      $("feedback").textContent = `Bonne réponse ! ${deck[current].e}`;
       $("feedback").className = "good";
-      transitionTimer = setTimeout(() => {
-        current++;
-        if (current === deck.length) endGame(true);
-        else renderQuestion();
-      }, 720);
+      showCorrectionSource();
+      $("nextQuestion").textContent = current + 1 === deck.length ? "Voir le résultat →" : "Question suivante →";
+      $("nextQuestion").hidden = false;
+      $("nextQuestion").focus();
     }
 
-    function handleWrongAnswer(item) {
-      lives--;
-      updateLives();
-      $("answerInput").classList.remove("shake");
-      void $("answerInput").offsetWidth;
-      $("answerInput").classList.add("shake");
+    function showCorrectionSource() {
+      $("source").textContent = `Photos du cours : ${deck[current].s}`;
+    }
 
-      if (lives === 0) {
-        locked = true;
-        $("answerInput").disabled = true;
-        $("feedback").textContent = `La traduction attendue était : ${showExpectedAnswer(item)}.`;
-        $("feedback").className = "bad";
-        transitionTimer = setTimeout(() => endGame(false), 1300);
+    function finishAfterLastError() {
+      const item = deck[current];
+      locked = true;
+      document.querySelectorAll(".answer-choice").forEach(button => {
+        button.disabled = true;
+        if (button.textContent === item.a[0]) button.classList.add("correct");
+      });
+      $("feedback").textContent = `La réponse attendue était « ${item.a[0]} ». ${item.e}`;
+      $("feedback").className = "bad";
+      showCorrectionSource();
+      $("nextQuestion").textContent = "Voir le résultat →";
+      $("nextQuestion").hidden = false;
+      $("nextQuestion").focus();
+    }
+
+    function checkChoice(button, label) {
+      if (locked || button.disabled) return;
+      const item = deck[current];
+      const isCorrect = item.a.some(answer => normalize(answer) === normalize(label));
+
+      if (isCorrect) {
+        acceptCorrectAnswer(button);
         return;
       }
 
-      $("feedback").textContent = `Ce n'est pas ça. ${lives} vie${lives > 1 ? "s" : ""} restante${lives > 1 ? "s" : ""}.`;
-      $("feedback").className = "bad";
-      $("answerInput").select();
-    }
-
-    function handleAlmostAnswer() {
-      $("answerInput").classList.remove("shake");
-      void $("answerInput").offsetWidth;
-      $("answerInput").classList.add("shake");
-      $("feedback").textContent = "Tu y es presque : corrige la petite erreur et réessaie. Aucune vie perdue.";
-      $("feedback").className = "";
-      $("answerInput").select();
+      lives--;
+      button.disabled = true;
+      button.classList.add("wrong");
+      updateLives();
+      if (lives === 0) {
+        finishAfterLastError();
+      } else {
+        $("feedback").textContent = `Ce n'est pas ça. Essaie encore — ${lives} vie${lives > 1 ? "s" : ""} restante${lives > 1 ? "s" : ""}.`;
+        $("feedback").className = "bad";
+      }
     }
 
     function endGame(won) {
       $("quiz").hidden = true;
       $("endScreen").classList.add("show");
       $("progress").style.width = won ? "100%" : `${(current / deck.length) * 100}%`;
-      $("resultIcon").textContent = won ? "✓" : "↻";
-      $("resultTitle").textContent = won ? "Traductions validées" : "Partie terminée";
+      $("resultIcon").textContent = won ? "🏆" : "📚";
+      $("resultTitle").textContent = won ? "Quiz réussi !" : "Partie terminée";
+      $("restart").focus();
       $("resultText").textContent = won
-        ? `Tu as traduit les ${deck.length} mots avec ${lives} vie${lives > 1 ? "s" : ""} restante${lives > 1 ? "s" : ""}.`
-        : `Tu as trouvé ${score} bonne${score > 1 ? "s" : ""} traduction${score > 1 ? "s" : ""} sur ${deck.length}. Le paquet sera remélangé à la prochaine tentative.`;
+        ? `Tu as répondu aux ${deck.length} questions avec ${lives} vie${lives > 1 ? "s" : ""} restante${lives > 1 ? "s" : ""}.`
+        : `Tu as trouvé ${score} bonne${score > 1 ? "s" : ""} réponse${score > 1 ? "s" : ""} sur ${deck.length}. Les questions seront remélangées à la prochaine tentative.`;
     }
 
     function showMenu() {
       clearTimeout(transitionTimer);
+      $("courseView").hidden = true;
+      document.querySelector(".lives").hidden = false;
       locked = true;
       $("quiz").hidden = true;
       $("endScreen").classList.remove("show");
@@ -593,23 +2439,20 @@
       $("progress").style.width = "0";
       lives = 3;
       updateLives();
+      const returnButton = courseReturnIndex === null
+        ? document.querySelector(`[data-quiz="${currentQuiz}"]`)
+        : document.querySelector(`[data-course="${courseReturnIndex}"]`);
+      returnButton.focus();
+      courseReturnIndex = null;
     }
 
-    $("answerForm").addEventListener("submit", event => {
-      event.preventDefault();
-      if (locked) return;
-      const item = deck[current];
-      if (isCorrect($("answerInput").value, item.a)) acceptCorrectAnswer();
-      else if (isAlmostCorrect($("answerInput").value, item.a)) handleAlmostAnswer();
-      else handleWrongAnswer(item);
+    $("nextQuestion").addEventListener("click", () => {
+      if (!locked) return;
+      if (lives === 0) { endGame(false); return; }
+      current++;
+      if (current === deck.length) endGame(true);
+      else renderQuestion();
     });
-
-    $("hintButton").addEventListener("click", () => {
-      if (!deck[current]) return;
-      $("hint").textContent = `Indice : ${deck[current].h}`;
-      $("answerInput").focus();
-    });
-
     $("restart").addEventListener("click", () => startGame(currentQuiz));
     $("backMenu").addEventListener("click", showMenu);
     $("quitQuiz").addEventListener("click", showMenu);
@@ -620,3 +2463,4 @@
   </script>
 </body>
 </html>
+

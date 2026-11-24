@@ -3,932 +3,408 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101b33">
-  <title>Fiche de révision — Relation client digitale, chapitres 11 à 14</title>
+  <meta name="theme-color" content="#16181c">
+  <title>CEJM · Le droit des échanges numériques</title>
   <style>
     :root {
       color-scheme: dark;
-      --ink: #edf4ff;
-      --muted: #b8cae5;
-      --paper: #0b1222;
-      --card: #111c30;
-      --line: #334965;
-      --blue: #a0cbff;
-      font-family: system-ui, sans-serif;
-      line-height: 1.6;
-      color: var(--ink);
-      background: var(--paper);
-      scroll-padding-top: 5.75rem;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; }
-    a { color: inherit; }
-    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-    .wrap { width: min(100% - 1.5rem, 58rem); margin-inline: auto; }
-    .hero { background: linear-gradient(135deg, #101b33, #183b70); padding: clamp(2.4rem, 6vw, 5rem) 0; }
-    .hero p { margin: 0; }
-    .eyebrow { color: var(--blue); font-weight: 700; }
-    h1, h2 { font-family: Georgia, serif; line-height: 1.12; }
-    h1 { margin: .4rem 0 .8rem; font-size: clamp(2.15rem, 6vw, 4.5rem); max-width: 14ch; }
-    .hero .subtitle { color: var(--muted); }
-    .toc { position: sticky; top: 0; z-index: 1; background: var(--paper); border-bottom: 1px solid var(--line); }
-    .toc ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .25rem; list-style: none; padding: .5rem 0; margin-block: 0; }
-    .toc a { display: grid; align-content: center; min-height: 3rem; padding: .25rem .1rem; border-radius: .5rem; text-align: center; text-decoration: none; font-size: .875rem; font-weight: 700; line-height: 1.2; }
-    .toc a:hover, .toc a:focus-visible { background: #203c64; }
-    .toc span { display: block; font-size: .75rem; font-weight: 500; color: var(--muted); }
-    main { padding-block: 1.25rem 2.5rem; }
-    .chapter { --accent: #192e54; margin-bottom: 1.25rem; background: var(--card); border: 1px solid var(--line); border-radius: 1.15rem; }
-    .chapter:nth-of-type(2) { --accent: #19334c; }
-    .chapter:nth-of-type(3) { --accent: #252e56; }
-    .chapter:nth-of-type(4) { --accent: #1a355c; }
-    .chapter-head { padding: .9rem clamp(1rem, 4vw, 2rem) 1.05rem; border-radius: 1.1rem 1.1rem 0 0; background: var(--accent); }
-    .chapter-head p { margin: 0 0 .3rem; color: var(--blue); font-size: .875rem; font-weight: 700; }
-    h2 { margin: 0; font-size: clamp(1.5rem, 4vw, 2.35rem); }
-    .chapter-body { padding: 0 clamp(1rem, 4vw, 2rem) 1.2rem; }
-    .topics { display: grid; gap: 0 2rem; }
-    h3 { margin: 1.15rem 0 .4rem; font-size: 1.05rem; line-height: 1.35; }
-    .topics ul, .topics ol { margin: 0; padding-inline-start: 1.15rem; }
-    .topics li + li { margin-top: .48rem; }
-    .callout { margin: 1.15rem 0; padding: .7rem .9rem; border-radius: .55rem; background: var(--accent); }
-    .recall h3 { margin-top: 1rem; }
-    details { border-top: 1px solid var(--line); }
-    summary { min-height: 2.75rem; padding: .6rem .1rem; font-weight: 650; cursor: pointer; }
-    summary::marker { color: var(--blue); }
-    details p { margin: 0 0 .75rem; padding-inline-start: 1.15rem; }
-    .actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.5rem; }
-    .actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: .55rem .9rem; border: 1px solid var(--blue); border-radius: .55rem; font-weight: 700; text-decoration: none; }
-    .actions a:first-child { background: var(--blue); color: var(--paper); }
-    .actions a:hover { background: #d1e6ff; color: var(--paper); }
-    .embedded-quiz { margin-top: 2rem; }
-    .embedded-quiz h2 { margin-bottom: .75rem; }
-    .quiz-frame { display: block; width: 100%; height: 45rem; border: 1px solid var(--line); border-radius: 1.15rem; background: var(--card); }
-    @media (min-width: 47rem) {
-      .topics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media print {
-      :root { color-scheme: light; --ink: #142a47; --muted: #354a66; --card: white; --line: #c5d3e3; --blue: #244d80; background: white; }
-      .wrap { width: 100%; }
-      .toc, .actions, .recall, .embedded-quiz { display: none; }
-      .hero { padding: .5rem 0; background: white; }
-      .hero, .hero .eyebrow, .hero .subtitle { color: var(--ink); }
-      .chapter { break-inside: avoid; }
-      .chapter .chapter-head, .chapter .callout { background: #edf4fd; }
-    }
-  </style>
-</head>
-<body id="haut">
-  <header class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Fiche de révision · Chapitres 11 à 14</p>
-      <h1>Relation client digitale</h1>
-      <p class="subtitle">Référencement, site vitrine, e-réputation et commerce en ligne.</p>
-      <div class="actions"><a href="#qcm">Aller au QCM ↓</a></div>
-    </div>
-  </header>
-  <nav class="toc" aria-label="Sommaire">
-    <ul class="wrap">
-      <li><a href="#chapitre-11"><span>Chap. 11</span>SEO / SEA</a></li>
-      <li><a href="#chapitre-12"><span>Chap. 12</span>Site vitrine</a></li>
-      <li><a href="#chapitre-13"><span>Chap. 13</span>Réputation</a></li>
-      <li><a href="#chapitre-14"><span>Chap. 14</span>E-commerce</a></li>
-    </ul>
-  </nav>
-  <main class="wrap">
-    <section class="chapter" id="chapitre-11" aria-labelledby="titre-11">
-      <header class="chapter-head"><p>Chapitre 11</p><h2 id="titre-11">Être visible sur les moteurs de recherche</h2></header>
-      <div class="chapter-body">
-        <div class="topics">
-          <div>
-            <h3>Référencement naturel (SEO)</h3>
-            <ul>
-              <li><strong>SEO</strong> signifie <em>Search Engine Optimization</em>. L’objectif est de mieux positionner les pages dans les résultats naturels pour gagner des clics et des visites.</li>
-              <li>Le moteur de recherche <strong>indexe</strong> des pages en enregistrant leurs informations dans son <strong>index</strong>.</li>
-              <li><strong>On-site</strong> regroupe ce qu’on optimise sur le site, comme les contenus, les mots-clés et l’expérience utilisateur.</li>
-              <li><strong>Off-site</strong> concerne notamment les <strong>backlinks</strong>, les liens entrants depuis d’autres sites. Le <strong>netlinking</strong> consiste à obtenir des liens pertinents pour renforcer la crédibilité du site et favoriser son classement.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Mots-clés et annonces payantes</h3>
-            <ul>
-              <li>Choisir des mots-clés liés à l’offre, au positionnement et aux attentes des internautes. La <strong>longue traîne</strong> vise des recherches précises qui attirent un trafic qualifié, par exemple « chaussures en cuir cousu main ».</li>
-              <li>Placer les mots-clés dans les titres, les premiers paragraphes et, si le contenu s’y prête, dans les textes alternatifs des images.</li>
-              <li>La <strong>balise title</strong> fournit le titre de la page. La <strong>meta description</strong> fournit un résumé. Le moteur peut s’en servir pour afficher le titre et l’extrait dans les résultats.</li>
-              <li><strong>SEA</strong> désigne le référencement payant, par exemple via Google Ads. <strong>CPC</strong> signifie coût par clic.</li>
-            </ul>
-          </div>
-        </div>
-        <p class="callout"><strong>CPC moyen</strong> = dépenses ÷ clics. <strong>Coût par conversion</strong> = dépenses ÷ conversions. Pour juger la rentabilité, comparer le coût par conversion à la valeur qu’elle rapporte.</p>
-        <div class="recall">
-          <h3>Teste-toi</h3>
-          <details><summary>Un blog fait un lien vers ton site. Quel levier SEO est concerné ?</summary><p>C’est un backlink, un levier off-site. La démarche qui consiste à obtenir ce type de lien s’appelle le netlinking.</p></details>
-          <details><summary>Une campagne coûte 120 € pour 300 clics et 12 achats. Quels coûts obtiens-tu ?</summary><p>0,40 € par clic et 10 € par conversion.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="chapitre-12" aria-labelledby="titre-12">
-      <header class="chapter-head"><p>Chapitre 12</p><h2 id="titre-12">Mesurer et animer un site vitrine</h2></header>
-      <div class="chapter-body">
-        <div class="topics">
-          <div>
-            <h3>Analyser le trafic</h3>
-            <ul>
-              <li>Le <strong>trafic</strong> correspond au nombre de visites. Un <strong>site référent</strong> apporte du trafic grâce à un lien vers le site.</li>
-              <li>Le <strong>tracking</strong> (de l’anglais <em>to track</em>, « suivre » ou « traquer ») permet d’observer les comportements. Les données peuvent inclure l’adresse IP, les pages consultées et la durée de visite.</li>
-              <li>Les <strong>cookies</strong> sont de petites données textuelles conservées par le navigateur. Un cookie de session peut aider à conserver le panier pendant la visite. Des cookies peuvent aussi servir au suivi.</li>
-              <li>Les <strong>KPI</strong> (<em>Key Performance Indicators</em>) sont les indicateurs clés de performance. Exemples du QCM : visiteurs uniques, durée moyenne des visites et <strong>taux de rebond</strong>, qui renseigne sur les visites sans engagement selon l’outil de mesure.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Attirer, convertir et fidéliser</h3>
-            <ul>
-              <li>Une <strong>page d’atterrissage</strong> est la première page de la visite. La page d’accueil en est une lorsqu’elle sert de point d’entrée. Elle présente l’identité et la promesse de l’organisation.</li>
-              <li>Une page de génération de <strong>leads</strong> (contacts commerciaux) peut proposer un livre blanc, un webinaire ou un devis en échange des coordonnées.</li>
-              <li>Une <strong>newsletter</strong> est un e-mail envoyé à des abonnés. Pour le QCM, retiens <strong>opt-in</strong> = consentement préalable aux communications par e-mail ou SMS, et possibilité de se désabonner parmi les points de protection des données associés au RGPD.</li>
-              <li>Le <strong>lead nurturing</strong> consiste à entretenir la relation avec des contenus adaptés pour aider les prospects à avancer vers l’achat et fidéliser les clients.</li>
-            </ul>
-          </div>
-        </div>
-        <p class="callout"><strong>AIDA</strong> aide à structurer une page : <strong>A</strong>ttention → <strong>I</strong>ntérêt → <strong>D</strong>ésir → <strong>A</strong>ction. Animer le site avec des contenus utiles et actualisés peut aussi contribuer à réduire le taux de rebond.</p>
-        <div class="recall">
-          <h3>Teste-toi</h3>
-          <details><summary>Le site compte 90 visites et 65 visiteurs uniques. Que mesure le trafic ?</summary><p>Les 90 visites. Un même visiteur peut revenir plusieurs fois.</p></details>
-          <details><summary>Un formulaire propose un webinaire en échange d’un e-mail. Quel est son objectif ?</summary><p>Générer un lead. L’inscription à une newsletter relève de l’opt-in.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="chapitre-13" aria-labelledby="titre-13">
-      <header class="chapter-head"><p>Chapitre 13</p><h2 id="titre-13">Suivre et protéger l’e-réputation</h2></header>
-      <div class="chapter-body">
-        <div class="topics">
-          <div>
-            <h3>Mettre en place une veille</h3>
-            <ul>
-              <li>L’<strong>e-réputation</strong> est l’image perçue en ligne. Elle se forme à partir des contenus de l’entreprise, des avis et commentaires des internautes et des publications de tiers.</li>
-              <li>Rechercher la marque avec des termes précis (« DuraGlass vaisselle résistance avis »), configurer des <strong>alertes</strong> et surveiller les <strong>SERP</strong>, les pages de résultats des moteurs de recherche.</li>
-              <li><strong>OR</strong> accepte l’un ou l’autre des termes ou les deux. Suivre le <strong>volume</strong> des mentions pour la quantité et leur <strong>tonalité</strong> pour savoir si elles sont positives, neutres ou négatives.</li>
-              <li>Observer les pratiques des marques rivales relève de la <strong>veille concurrentielle</strong>.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Modérer et répondre</h3>
-            <ul>
-              <li>Le <strong>community manager</strong> gère les échanges selon une <strong>charte de modération</strong>. Le contrôle a lieu <strong>a priori</strong> avant publication ou <strong>a posteriori</strong> après publication. Un <strong>troll</strong> cherche à provoquer des disputes.</li>
-              <li><strong>Avis négatif argumenté</strong> : reconnaître le problème, proposer une prise en charge et transmettre les défauts récurrents au service qualité.</li>
-              <li><strong>Avis positif</strong> : remercier en reprenant un détail du retour. Pour une demande de commande, indiquer le canal adapté.</li>
-              <li><strong>Coordonnées personnelles en public</strong> : masquer les coordonnées et poursuivre l’échange en privé.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Réagir à un bad buzz</h3>
-            <ol>
-              <li><strong>Diagnostiquer</strong> l’origine et les relais du bouche-à-oreille négatif. Une vidéo sur les pratiques d’un fournisseur a une origine externe. Les repartages accélèrent la viralité.</li>
-              <li><strong>Répondre sur le canal concerné</strong>. Reconnaître les faits établis et annoncer les vérifications ou actions engagées.</li>
-              <li><strong>Évaluer</strong> la réponse en comparant le volume et la tonalité des mentions au fil du temps.</li>
-            </ol>
-          </div>
-          <div>
-            <h3>Reconstruire l’e-réputation</h3>
-            <ul>
-              <li><strong>Curing</strong> : demander le retrait d’un contenu précis en justifiant la demande.</li>
-              <li><strong>Flooding</strong> : publier des contenus positifs pour réduire la visibilité des résultats négatifs dans les moteurs de recherche.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="recall">
-          <h3>Teste-toi</h3>
-          <details><summary>Une réclamation courtoise contient une adresse e-mail. Comment réagir ?</summary><p>Reconnaître le problème, proposer une prise en charge, masquer l’adresse et continuer en privé.</p></details>
-          <details><summary>Une crise se propage sur Facebook. Par quoi commencer ?</summary><p>Identifier l’origine et les relais, puis répondre sur Facebook avec des faits vérifiés et des actions concrètes. Suivre ensuite le volume et la tonalité des mentions.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="chapitre-14" aria-labelledby="titre-14">
-      <header class="chapter-head"><p>Chapitre 14</p><h2 id="titre-14">Vendre en ligne et convertir</h2></header>
-      <div class="chapter-body">
-        <div class="topics">
-          <div>
-            <h3>Types de commerce et de sites</h3>
-            <ul>
-              <li><strong>B2C</strong> : entreprise → particulier. <strong>B2B</strong> : entreprise → entreprise. <strong>B2G</strong> : entreprise → administration. <strong>C2C</strong> : particulier → particulier.</li>
-              <li><strong>Click &amp; mortar</strong> : magasin et boutique en ligne. <strong>Pure player</strong> : activité de vente exclusivement en ligne. <strong>Véadiste traditionnel</strong> : acteur historique de la vente à distance, notamment par correspondance.</li>
-              <li><strong>Marketplace</strong> : plateforme qui met en relation des vendeurs et des acheteurs et peut percevoir une commission. <strong>Affiliation</strong> : un partenaire touche une commission sur les ventes générées par ses liens.</li>
-              <li><strong>M-commerce</strong> : achat sur un appareil mobile.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Parcours et profils d’achat</h3>
-            <ul>
-              <li><strong>Web-to-store</strong> : recherche sur Internet → achat en magasin. <strong>Showrooming</strong> : découverte ou essai en magasin → achat sur Internet.</li>
-              <li><strong>Spontané</strong> : coup de cœur ou promotion. <strong>Humaniste</strong> : avis et échange avec un conseiller.</li>
-              <li><strong>Méthodique</strong> : compare longuement et lit les fiches. <strong>Compétitif</strong> : repère l’offre la plus avantageuse selon ses critères puis décide vite.</li>
-              <li>Un <strong>persona</strong> est le portrait fictif d’un profil type, construit à partir des habitudes et attentes d’un segment.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Ergonomie, confiance et mesure</h3>
-            <ul>
-              <li>Une interface <strong>responsive</strong> s’adapte à l’écran. Rendre les catégories et la recherche accessibles dès l’accueil, et proposer des filtres par genre, prix ou disponibilité.</li>
-              <li><strong>HTTPS</strong> chiffre la connexion. Les <strong>CGV</strong> (conditions générales de vente) présentent les modalités de paiement, de livraison et de retour. Une fiche produit avec un guide des tailles aide à choisir la bonne pointure.</li>
-              <li>Le <strong>taux d’abandon de panier</strong> mesure la part des paniers créés qui ne débouchent pas sur une commande.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Marketing automation</h3>
-            <ul>
-              <li>Un événement <strong>déclenche</strong> un scénario. Par exemple, la création d’un compte entraîne l’envoi d’un e-mail de bienvenue.</li>
-              <li>Pour une <strong>relance de panier</strong>, cibler les internautes identifiés qui ont ajouté un article et n’ont pas finalisé l’achat. Rappeler les articles pour personnaliser le message.</li>
-              <li><strong>Segmenter</strong> les contacts permet d’adapter les messages aux visiteurs, prospects et clients. Le <strong>taux de clics</strong> mesure l’interaction avec le lien de retour au panier.</li>
-            </ul>
-          </div>
-        </div>
-        <p class="callout"><strong>Taux de conversion sur les visites</strong> = (commandes ÷ visites) × 100. Avec 50 commandes pour 2 500 visites, on obtient <strong>2 %</strong>.</p>
-        <div class="recall">
-          <h3>Teste-toi</h3>
-          <details><summary>Tu compares les prix en ligne puis tu achètes en boutique. Quel parcours ?</summary><p>Web-to-store. Si tu essaies en boutique puis achètes sur Internet, c’est du showrooming.</p></details>
-          <details><summary>30 commandes pour 1 200 visites. Quel taux de conversion ?</summary><p>2,5 % : (30 ÷ 1 200) × 100.</p></details>
-        </div>
-      </div>
-    </section>
-    <section class="embedded-quiz" id="qcm" aria-labelledby="titre-qcm">
-      <h2 id="titre-qcm">QCM complet</h2>
-      <!-- Le document du QCM est embarqué pour permettre l’utilisation hors ligne. -->
-      <iframe class="quiz-frame" title="QCM interactif des chapitres 11 à 14" srcdoc="&lt;!doctype html&gt;
-&lt;html lang=&quot;fr&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-  &lt;meta name=&quot;theme-color&quot; content=&quot;#060914&quot;&gt;
-  &lt;title&gt;Quiz à trous - Relation client digitale - Chapitres 11 à 14&lt;/title&gt;
-  &lt;style&gt;
-    :root {
-      color-scheme: dark;
-      --ink: #eef4ff;
-      --muted: #94a3b8;
-      --night: #060914;
-      --surface: #0e1626;
-      --surface-2: #131e31;
-      --blue: #67e8f9;
-      --blue-dark: #164e63;
-      --amber: #fbbf24;
-      --red: #fb7185;
-      --line: rgba(148, 163, 184, .2);
-      --shadow: 0 28px 80px rgba(0, 0, 0, .48);
+      --bg: #16181c;
+      --panel: #22252b;
+      --line: #3e434d;
+      --text: #f8f6ef;
+      --muted: #c3c8d2;
+      --accent: #d6f6a0;
+      --bad: #ffacab;
+      font: 100%/1.55 system-ui, sans-serif;
     }
 
     * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 8%, rgba(8, 145, 178, .2), transparent 28rem),
-        radial-gradient(circle at 88% 88%, rgba(245, 158, 11, .12), transparent 30rem),
-        linear-gradient(145deg, #050812 0%, #09101d 55%, #070b14 100%);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, sans-serif;
-      display: grid;
-      place-items: center;
-      padding: max(28px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
-      -webkit-text-size-adjust: 100%;
-      -webkit-tap-highlight-color: transparent;
-      overflow-x: hidden;
+    [hidden] { display: none !important; }
+    body { margin: 0; background: var(--bg); color: var(--text); }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2 { line-height: 1.05; letter-spacing: -.045em; text-wrap: balance; }
+    h1 { font-size: clamp(2.5rem, 8vw, 5rem); max-width: 14ch; margin-block: .45rem .9rem; }
+    h2 { font-size: clamp(1.9rem, 5vw, 2.65rem); margin-bottom: .8rem; }
+    h3 { font-size: 1.08rem; }
+    a { color: var(--accent); text-underline-offset: .2em; }
+    button, summary { cursor: pointer; }
+    button { font: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    section { scroll-margin-top: 4.75rem; }
+    .wrap { width: min(100%, 53rem); margin-inline: auto; padding-inline: clamp(1rem, 4.5vw, 2rem); }
+    nav { position: sticky; top: 0; z-index: 1; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .nav-inner { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; padding-block: .55rem; }
+    .nav-inner a { display: grid; place-items: center; min-height: 2.75rem; border-radius: .65rem; background: var(--panel); color: var(--text); font-weight: 700; text-decoration: none; }
+    .nav-inner a[aria-current] { background: var(--accent); color: #222d13; }
+    header { padding-block: clamp(2rem, 8vw, 4.5rem) 1.75rem; }
+    .eyebrow { color: var(--accent); font-size: .875rem; font-weight: 750; }
+    .intro { max-width: 42ch; color: var(--muted); }
+    .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin: 0 0 2.3rem; }
+    .facts div { border-top: 1px solid var(--accent); padding: .65rem .15rem 0; }
+    .facts dt { color: var(--accent); font-size: clamp(1.08rem, 5vw, 1.65rem); font-weight: 800; white-space: nowrap; }
+    .facts dd { margin: .15rem 0 0; color: var(--muted); font-size: .875rem; line-height: 1.3; }
+    .course-list, .quiz-list, #qcmAnswers { display: grid; gap: .65rem; }
+    details, .game-card, .quiz-choice { background: var(--panel); border: 1px solid var(--line); border-radius: .9rem; }
+    summary { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .9rem 1rem; font-weight: 750; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--accent); font-size: 1.25rem; line-height: 1; }
+    details[open] > summary::after { content: "−"; }
+    .lesson { margin-inline: 1rem; padding-block: .8rem 1rem; border-top: 1px solid var(--line); }
+    .lesson ul, .lesson ol, .sources ul { padding-left: 1.2rem; margin: .15rem 0 .9rem; }
+    .lesson h3 + ol { margin-top: .45rem; }
+    li + li { margin-top: .5rem; }
+    .example { padding: .65rem .8rem; border-left: 2px solid var(--accent); background: var(--bg); margin-bottom: .6rem; }
+    main { padding-bottom: 2.5rem; }
+    #qcm, .sources { margin-top: 2.25rem; }
+    #quizMenu p { margin-bottom: .9rem; }
+    .quiz-choice { display: grid; gap: .2rem; align-content: center; min-height: 4.5rem; padding: .85rem 1rem; color: var(--text); text-align: left; }
+    .quiz-choice span, .meta { color: var(--muted); font-size: .875rem; }
+    .game-card { padding: clamp(.9rem, 4vw, 1.5rem); }
+    .game-top, .meta, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+    .game-top, .meta { justify-content: space-between; }
+    .meta { margin-top: .7rem; }
+    .meta strong { color: var(--accent); }
+    .heart, .bad { color: var(--bad); }
+    progress { display: block; width: 100%; height: .55rem; margin-block: .65rem 1rem; border: 0; border-radius: 1rem; overflow: hidden; background: var(--bg); accent-color: var(--accent); }
+    progress::-webkit-progress-bar { background: var(--bg); }
+    progress::-webkit-progress-value { background: var(--accent); }
+    progress::-moz-progress-bar { background: var(--accent); }
+    #question { margin-bottom: 1rem; font-size: clamp(1.2rem, 4.5vw, 1.65rem); line-height: 1.3; }
+    .blank { color: var(--accent); border-bottom: 2px solid currentColor; padding-inline: .6em; white-space: nowrap; }
+    .answer-choice, .primary, .secondary { min-height: 2.75rem; padding: .6rem .85rem; border: 1px solid var(--line); border-radius: .65rem; font-weight: 700; }
+    .answer-choice { min-height: 3rem; background: var(--bg); color: var(--text); text-align: left; }
+    .answer-choice:disabled { cursor: default; }
+    .answer-choice.wrong { border-color: var(--bad); color: var(--bad); text-decoration: line-through; }
+    .answer-choice.correct, .good { color: var(--accent); }
+    .answer-choice.correct { border-color: var(--accent); }
+    .primary { border-color: var(--accent); background: var(--accent); color: #222d13; }
+    .secondary { background: var(--bg); color: var(--accent); }
+    .secondary:hover, .quiz-choice:hover, .answer-choice:hover:not(:disabled) { border-color: var(--accent); }
+    #feedback:not(:empty), #resultText { margin-block: .85rem; }
+    .sources ul { margin-inline: 1rem; color: var(--muted); }
+    @media (min-width: 40rem) {
+      .quiz-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .facts { gap: 1rem; }
     }
+  </style>
+</head>
+<body>
+  <nav aria-label="Révision">
+    <div class="wrap nav-inner">
+      <a href="#cours" aria-current="location">Fiche de cours</a>
+      <a href="#qcm">QCM</a>
+    </div>
+  </nav>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">CEJM · Thème 4 · Chapitre 5</p>
+      <h1>Le droit des échanges numériques</h1>
+      <p class="intro">Preuve électronique, contrat en ligne et prestations numériques entre professionnels.</p>
+    </header>
 
-    body::before {
-      content: &quot;&quot;;
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .22;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, black, transparent 80%);
-    }
+    <dl class="facts">
+      <div><dt>14 jours</dt><dd>pour se rétracter en principe</dd></div>
+      <div><dt>Dès 120 €</dt><dd>pour l’archivage obligatoire</dd></div>
+      <div><dt>10 ans</dt><dd>de conservation du contrat</dd></div>
+    </dl>
 
-    .shell { position: relative; width: min(920px, 100%); }
+    <section id="cours" aria-labelledby="course-title">
+      <h2 id="course-title">Fiche de cours</h2>
+      <div class="course-list">
+        <details open>
+          <summary>La preuve électronique</summary>
+          <div class="lesson">
+            <ul>
+              <li><strong>Dématérialisation.</strong> Remplacer un document papier par un document numérique. D’après l’article 1366 du Code civil, l’écrit électronique a la même force probante que le papier si son auteur est identifiable et si son intégrité est garantie lors de sa création et de sa conservation.</li>
+              <li><strong>Signature électronique.</strong> Elle identifie le signataire et manifeste son consentement. La signature électronique qualifiée bénéficie d’une présomption de fiabilité (article 1367 et son décret d’application). La non-répudiation désigne la possibilité d’attribuer la signature à son auteur si celui-ci la conteste.</li>
+              <li><strong>Actes de commerce.</strong> À l’égard des commerçants, la preuve est en principe libre (article L. 110-3 du Code de commerce). Un e-mail non signé peut servir de preuve.</li>
+              <li><strong>Lettre recommandée électronique (LRE).</strong> Avec un service conforme, elle a la même valeur qu’un recommandé papier. Le destinataire non professionnel doit avoir donné son accord préalable. À compter du lendemain de la notification, le destinataire a 15 jours pour accepter ou refuser l’envoi.</li>
+              <li><strong>Archivage numérique.</strong> La norme NF Z42-013 encadre la conservation des documents pour préserver leur intégrité et leur valeur probante.</li>
+            </ul>
+            <button class="secondary" type="button" data-quiz="0">Faire le quiz sur la preuve</button>
+          </div>
+        </details>
+        <details>
+          <summary>Informer et protéger le cyberacheteur</summary>
+          <div class="lesson">
+            <ul>
+              <li><strong>Commerce électronique.</strong> La loi du 21 juin 2004 pour la confiance dans l’économie numérique encadre cette activité. L’achat en ligne se fait à distance, sans rencontre physique.</li>
+              <li><strong>Information avant la commande.</strong> Le consommateur doit connaître l’identité du vendeur, les caractéristiques essentielles, le prix total, la livraison et les conditions de rétractation. Les moyens de paiement et restrictions de livraison apparaissent dès le début de la commande. Les conditions générales de vente (CGV) ont valeur contractuelle lorsqu’elles ont été communiquées et acceptées.</li>
+              <li><strong>RGPD.</strong> Une adresse e-mail professionnelle nominative est une donnée personnelle. Pour un compte client, seules les données nécessaires à la finalité poursuivie doivent être collectées.</li>
+              <li><strong>Cookies et newsletter.</strong> Les traceurs soumis au consentement nécessitent un choix préalable. La CNIL recommande généralement de conserver ce choix, accord ou refus, pendant 6 mois. Pour une newsletter commerciale destinée à des prospects particuliers, l’accord préalable (opt-in) est la règle.</li>
+            </ul>
+            <button class="secondary" type="button" data-quiz="1">Faire le quiz sur le cyberacheteur</button>
+          </div>
+        </details>
+        <details>
+          <summary>Conclure, archiver et se rétracter</summary>
+          <div class="lesson">
+            <h3>Les étapes de la commande</h3>
+            <ol>
+              <li><strong>Vérifier et corriger.</strong> L’acheteur vérifie le détail et le prix total de sa commande et corrige ses éventuelles erreurs.</li>
+              <li><strong>Confirmer.</strong> Le second clic donne l’accord définitif. Le bouton indique clairement l’obligation de payer.</li>
+              <li><strong>Recevoir la confirmation.</strong> Le vendeur accuse réception par voie électronique sans délai injustifié.</li>
+            </ol>
+            <ul>
+              <li><strong>Archivage.</strong> Dès 120 €, le vendeur conserve le contrat électronique du consommateur et lui donne accès sur demande. Le délai est de 10 ans à partir de la conclusion si l’exécution est immédiate, ou de la livraison ou de l’exécution si elle est différée.</li>
+              <li><strong>Rétractation.</strong> En principe, le consommateur a 14 jours pour se rétracter, à compter du lendemain de la réception pour un bien ou de la conclusion pour un service. Après notification, il a 14 jours pour renvoyer le bien. La vente à domicile ouvre aussi en principe ce droit. Certains achats font exception, par exemple les biens personnalisés.</li>
+              <li><strong>Frais de retour.</strong> Ils sont généralement à la charge du consommateur si le vendeur l’en a informé, sauf si le vendeur les prend en charge.</li>
+            </ul>
+            <p class="example"><strong>Cas Mademoiselle bio.</strong> Dans l’exemple du QCM, le vendeur prend en charge les frais de retour.</p>
+            <button class="secondary" type="button" data-quiz="2">Faire le quiz sur le contrat</button>
+          </div>
+        </details>
+        <details>
+          <summary>Les prestations numériques entre pros</summary>
+          <div class="lesson">
+            <ul>
+              <li><strong>Objet du contrat.</strong> Les parties définissent le service fourni (hébergement, location d’un logiciel, maintenance), le prix, la durée et leurs obligations.</li>
+              <li><strong>Réversibilité.</strong> Cette clause organise la récupération des données ou le transfert du service en fin de contrat. Le client peut reprendre le service ou le confier à un autre prestataire. La clause peut prévoir une assistance au transfert.</li>
+              <li><strong>Confidentialité.</strong> Cette clause protège les informations échangées pendant la prestation.</li>
+            </ul>
+            <p class="example"><strong>Cas OVH.</strong> OVH héberge le site et la clause qui précise son rôle le distingue du concepteur. Le client doit publier des contenus licites et disposer des droits de propriété intellectuelle nécessaires. Dans les conditions étudiées, les contenus sont supprimés à l’arrêt du service.</p>
+            <p class="example"><strong>Cas QuiDitMiam!</strong> GOA SOFT assure la location et la maintenance de l’application pour Régal et Saveurs. L’article 8 impose la confidentialité aux deux parties.</p>
+            <button class="secondary" type="button" data-quiz="3">Faire le quiz sur les prestations</button>
+          </div>
+        </details>
+      </div>
+    </section>
 
-    header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 18px;
-    }
+    <section id="qcm" aria-labelledby="qcm-title">
+      <h2 id="qcm-title" tabindex="-1">QCM</h2>
+      <div id="quizMenu">
+        <p class="intro">Complète les phrases. Tu as 3 vies et chaque erreur coûte une vie.</p>
+        <div class="quiz-list">
+          <button class="quiz-choice" type="button" data-quiz="0"><strong>La preuve électronique</strong><span>10 questions</span></button>
+          <button class="quiz-choice" type="button" data-quiz="1"><strong>Informer et protéger le cyberacheteur</strong><span>10 questions</span></button>
+          <button class="quiz-choice" type="button" data-quiz="2"><strong>Conclure, archiver et se rétracter</strong><span>10 questions</span></button>
+          <button class="quiz-choice" type="button" data-quiz="3"><strong>Les prestations numériques entre pros</strong><span>10 questions</span></button>
+        </div>
+      </div>
+      <div id="quiz" class="game-card" hidden>
+        <div class="game-top">
+          <button id="quitQuiz" class="secondary" type="button">Tous les quiz</button>
+          <strong><span class="heart" aria-hidden="true">♥</span> <span id="lives"></span></strong>
+        </div>
+        <div class="meta"><strong id="category"></strong><span id="counter"></span></div>
+        <progress id="progress" aria-label="Questions réussies" value="0" max="10"></progress>
+        <h3 id="question" tabindex="-1"></h3>
+        <div id="qcmAnswers"></div>
+        <p id="feedback" role="status"></p>
+        <button id="next" class="primary" type="button" hidden>Question suivante</button>
+      </div>
+      <div id="endScreen" class="game-card" hidden>
+        <h3 id="resultTitle" tabindex="-1"></h3>
+        <p id="resultText"></p>
+        <div class="actions">
+          <button id="restart" class="primary" type="button">Rejouer</button>
+          <button id="backMenu" class="secondary" type="button">Tous les quiz</button>
+        </div>
+      </div>
+      <noscript><p>Active JavaScript pour jouer au QCM.</p></noscript>
+    </section>
 
-    .eyebrow {
-      margin: 0 0 7px;
-      color: var(--blue);
-      font-size: .76rem;
-      font-weight: 850;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
+    <details class="sources">
+      <summary>Sources de la fiche</summary>
+      <ul>
+        <li>Support de cours du chapitre et QCM fourni.</li>
+        <li><a href="https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000032037829/">Légifrance · Écrit et signature électroniques</a></li>
+        <li><a href="https://www.legifrance.gouv.fr/eli/decret/2017/9/28/JUSC1716705D/jo/texte/fr">Légifrance · Signature électronique qualifiée</a></li>
+        <li><a href="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006219127/">Légifrance · Preuve des actes de commerce</a></li>
+        <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F31463">Service Public · Lettre recommandée électronique</a></li>
+        <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F10488">Service Public · Commande en ligne et archivage</a></li>
+        <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F10485">Service Public · Droit de rétractation</a></li>
+        <li><a href="https://cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/comment-mettre-mon-site-web-en-conformite">CNIL · Cookies et traceurs</a></li>
+        <li><a href="https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique-sms-mms-et-automate-dappel">CNIL · Prospection par e-mail</a></li>
+      </ul>
+    </details>
+  </main>
 
-    h1 {
-      margin: 0;
-      max-width: 680px;
-      font-family: Georgia, &quot;Times New Roman&quot;, serif;
-      font-size: clamp(1.85rem, 4vw, 3.15rem);
-      line-height: 1;
-      letter-spacing: -.035em;
-      text-wrap: balance;
-    }
-
-    .lives {
-      flex: 0 0 auto;
-      min-width: 128px;
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(14, 22, 38, .78);
-      box-shadow: inset 0 1px rgba(255,255,255,.04);
-      text-align: center;
-      backdrop-filter: blur(12px);
-    }
-
-    .lives span { display: block; color: var(--muted); font-size: .72rem; font-weight: 700; text-transform: uppercase; }
-    #hearts { margin-top: 3px; color: var(--red); font-size: 1.25rem; letter-spacing: .08em; text-shadow: 0 0 16px rgba(251,113,133,.35); }
-
-    .card {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: rgba(14, 22, 38, .94);
-      box-shadow: var(--shadow), inset 0 1px rgba(255,255,255,.045);
-      backdrop-filter: blur(18px);
-    }
-
-    .progress-track { height: 7px; background: #1d293d; }
-    #progress { width: 0; height: 100%; background: linear-gradient(90deg, #0891b2, var(--blue), var(--amber)); box-shadow: 0 0 20px rgba(103,232,249,.38); transition: width .4s ease; }
-    main { padding: clamp(24px, 5vw, 52px); }
-
-    .quiz-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 22px; }
-    .meta { flex: 1; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .84rem; font-weight: 700; }
-    #category { color: var(--blue); text-transform: uppercase; letter-spacing: .08em; }
-
-    .back-button {
-      flex: 0 0 auto;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--surface-2);
-      color: var(--blue);
-      padding: 9px 13px;
-      font: inherit;
-      font-size: .78rem;
-      font-weight: 800;
-      cursor: pointer;
-    }
-    .back-button:hover { border-color: rgba(103,232,249,.6); background: #17283b; }
-
-    #question {
-      margin: 0 0 25px;
-      min-height: 3.1em;
-      font-family: Georgia, &quot;Times New Roman&quot;, serif;
-      font-size: clamp(1.45rem, 3vw, 2rem);
-      line-height: 1.35;
-      overflow-wrap: break-word;
-    }
-    .blank {
-      display: inline-block;
-      min-width: 4.5em;
-      border-bottom: 3px solid var(--amber);
-      color: var(--amber);
-      text-align: center;
-      line-height: 1.05;
-      text-shadow: 0 0 18px rgba(251,191,36,.28);
-    }
-
-    #qcmAnswers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    #qcmAnswers[hidden] { display: none; }
-    .answer-choice {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: var(--surface-2);
-      color: var(--ink);
-      padding: 16px 18px;
-      text-align: left;
-      font: inherit;
-      font-weight: 650;
-      line-height: 1.35;
-      cursor: pointer;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .answer-choice:hover:not(:disabled) { transform: translateY(-2px); border-color: rgba(103,232,249,.65); background: #17283b; }
-    .answer-choice.wrong { border-color: rgba(251,113,133,.62); background: rgba(127,29,29,.3); color: #fda4af; text-decoration: line-through; animation: shake .28s ease; }
-    .answer-choice.correct { border-color: rgba(103,232,249,.7); background: rgba(8,145,178,.2); color: #a5f3fc; }
-    .primary {
-      border: 0;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #0e7490, #0891b2);
-      color: #ecfeff;
-      padding: 14px 22px;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 10px 28px rgba(8,145,178,.22);
-      transition: transform .15s ease, filter .15s ease;
-    }
-    .primary:hover { transform: translateY(-2px); filter: brightness(1.13); }
-    .back-button:focus-visible, .answer-choice:focus-visible, .primary:focus-visible, .secondary:focus-visible, .quiz-choice:focus-visible {
-      outline: 3px solid rgba(251,191,36,.42);
-      outline-offset: 3px;
-    }
-
-    #feedback { min-height: 25px; margin: 20px 0 0; color: var(--muted); font-weight: 700; }
-    #feedback.bad { color: var(--red); }
-    #feedback.good { color: var(--blue); }
-
-    .overlay { display: none; min-height: 420px; padding: 42px 26px; text-align: center; place-items: center; }
-    .overlay.show { display: grid; }
-    .overlay-inner { max-width: 550px; }
-    .result-icon { font-size: 3.1rem; }
-    .overlay h2 { margin: 12px 0 10px; font-family: Georgia, serif; font-size: clamp(2rem, 5vw, 3.2rem); }
-    .overlay p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
-    .primary { margin-top: 14px; border-radius: 999px; }
-    .secondary {
-      margin: 10px 5px 0;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--blue);
-      padding: 13px 22px;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-    }
-    .secondary:hover { border-color: rgba(103,232,249,.6); background: rgba(103,232,249,.07); }
-
-    .quiz-menu { display: none; padding: clamp(24px, 5vw, 48px); }
-    .quiz-menu.show { display: block; }
-    .quiz-menu h2 { margin: 0 0 8px; font-family: Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.6rem); }
-    .quiz-menu &gt; p { margin: 0 0 26px; color: var(--muted); line-height: 1.5; }
-    .quiz-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-    .quiz-choice {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 17px;
-      background: var(--surface-2);
-      padding: 21px 18px;
-      color: var(--ink);
-      text-align: left;
-      cursor: pointer;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .quiz-choice::after { content: &quot;&quot;; position: absolute; inset: auto -25px -45px auto; width: 100px; height: 100px; border-radius: 50%; background: rgba(103,232,249,.055); }
-    .quiz-choice:hover { transform: translateY(-3px); border-color: rgba(103,232,249,.62); background: #17283b; }
-    .quiz-number { display: block; margin-bottom: 10px; color: var(--amber); font-size: .74rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
-    .chapter-tag { display: inline-block; margin-left: 6px; padding: 2px 8px; border: 1px solid rgba(103,232,249,.28); border-radius: 999px; color: var(--blue); letter-spacing: .06em; }
-    .quiz-choice strong { display: block; min-height: 2.6em; font-family: Georgia, serif; font-size: 1.22rem; line-height: 1.25; }
-    .quiz-choice small { display: block; margin-top: 14px; color: var(--muted); font-weight: 650; }
-    footer { margin-top: 14px; color: var(--muted); text-align: center; font-size: .78rem; }
-
-    @keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
-    /* Les effets de survol ne s&#x27;appliquent qu&#x27;aux appareils avec souris (évite les états &quot;collés&quot; au tactile) */
-    @media (hover: none) {
-      .answer-choice:hover:not(:disabled), .quiz-choice:hover, .primary:hover { transform: none; }
-      .answer-choice:active:not(:disabled), .quiz-choice:active { transform: scale(.98); }
-    }
-    @media (max-width: 700px) {
-      #qcmAnswers { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 650px) {
-      body { place-items: start center; padding-top: max(20px, env(safe-area-inset-top)); }
-      header { align-items: center; }
-      .lives { min-width: 105px; padding-inline: 10px; }
-      .card { border-radius: 20px; }
-      main { padding: 24px 18px 28px; }
-      .quiz-list { grid-template-columns: 1fr; }
-      .quiz-choice { padding: 18px 16px; }
-      .quiz-choice strong { min-height: auto; }
-      .quiz-toolbar { align-items: flex-start; flex-direction: column; }
-      .meta { align-self: stretch; }
-      #question { min-height: 0; margin-bottom: 20px; }
-      .answer-choice { padding: 15px 16px; min-height: 52px; }
-      .overlay { min-height: 360px; padding: 34px 18px; }
-      .primary, .secondary { width: 100%; margin-inline: 0; }
-    }
-    @media (max-width: 430px) {
-      header { align-items: stretch; flex-direction: column; gap: 14px; }
-      .lives { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-      #hearts { margin-top: 0; }
-      .meta { flex-direction: column; gap: 4px; }
-    }
-    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
-  &lt;/style&gt;
-  &lt;style&gt;
-    body { min-height: 0; display: block; }
-    .shell { margin-inline: auto; }
-    @media (max-width: 430px) {
-      body { padding-inline: 10px; }
-    }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class=&quot;shell&quot;&gt;
-    &lt;header&gt;
-      &lt;div&gt;
-        &lt;p class=&quot;eyebrow&quot;&gt;NDRC • Relation client digitale • Chapitres 11 à 14&lt;/p&gt;
-        &lt;h1&gt;Relation client digitale&lt;/h1&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;lives&quot; aria-live=&quot;polite&quot;&gt;
-        &lt;span&gt;Vies restantes&lt;/span&gt;
-        &lt;div id=&quot;hearts&quot; aria-label=&quot;3 vies&quot;&gt;♥ ♥ ♥&lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/header&gt;
-
-    &lt;section class=&quot;card&quot;&gt;
-      &lt;div class=&quot;progress-track&quot;&gt;&lt;div id=&quot;progress&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-
-      &lt;div id=&quot;quizMenu&quot; class=&quot;quiz-menu show&quot;&gt;
-        &lt;h2&gt;Choisis ton quiz&lt;/h2&gt;
-        &lt;p&gt;Complète chaque phrase en choisissant la bonne réponse parmi les propositions.&lt;/p&gt;
-        &lt;div class=&quot;quiz-list&quot;&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;0&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 1 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 11&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Comprendre le référencement naturel (SEO)&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;1&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 2 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 11&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Mots-clés, netlinking et SEA&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;2&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 3 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 12&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Analyser le trafic du site&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;3&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 4 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 12&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Optimiser et animer le site vitrine&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;4&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 5 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 13&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;E-réputation et veille&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;5&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 6 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 13&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Modération et relation avec les internautes&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;6&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 7 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 13&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Bad buzz et reconstruction de l’e-réputation&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;7&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 8 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 14&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Types de commerce et sites marchands&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;8&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 9 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 14&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Comportements d’achat et ergonomie&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-          &lt;button class=&quot;quiz-choice&quot; type=&quot;button&quot; data-quiz=&quot;9&quot;&gt;
-            &lt;span class=&quot;quiz-number&quot;&gt;Quiz 10 &lt;span class=&quot;chapter-tag&quot;&gt;Chap. 14&lt;/span&gt;&lt;/span&gt;
-            &lt;strong&gt;Confiance, conversion et marketing automation&lt;/strong&gt;
-            &lt;small&gt;10 questions à trous • 3 vies&lt;/small&gt;
-          &lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-
-      &lt;main id=&quot;quiz&quot; hidden&gt;
-        &lt;div class=&quot;quiz-toolbar&quot;&gt;
-          &lt;button id=&quot;quitQuiz&quot; class=&quot;back-button&quot; type=&quot;button&quot;&gt;← Retour aux quiz&lt;/button&gt;
-          &lt;div class=&quot;meta&quot;&gt;
-            &lt;span id=&quot;category&quot;&gt;&lt;/span&gt;
-            &lt;span id=&quot;counter&quot;&gt;&lt;/span&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;h2 id=&quot;question&quot;&gt;&lt;/h2&gt;
-        &lt;div id=&quot;qcmAnswers&quot; hidden&gt;&lt;/div&gt;
-        &lt;p id=&quot;feedback&quot; aria-live=&quot;assertive&quot;&gt;&lt;/p&gt;
-      &lt;/main&gt;
-
-      &lt;div id=&quot;endScreen&quot; class=&quot;overlay&quot;&gt;
-        &lt;div class=&quot;overlay-inner&quot;&gt;
-          &lt;div id=&quot;resultIcon&quot; class=&quot;result-icon&quot;&gt;&lt;/div&gt;
-          &lt;h2 id=&quot;resultTitle&quot;&gt;&lt;/h2&gt;
-          &lt;p id=&quot;resultText&quot;&gt;&lt;/p&gt;
-          &lt;button id=&quot;restart&quot; class=&quot;primary&quot; type=&quot;button&quot;&gt;Relancer le quiz&lt;/button&gt;
-          &lt;button id=&quot;backMenu&quot; class=&quot;secondary&quot; type=&quot;button&quot;&gt;Choisir un autre quiz&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/section&gt;
-    &lt;footer&gt;Une erreur coûte une vie. Choisis la bonne proposition pour avancer.&lt;/footer&gt;
-  &lt;/div&gt;
-
-  &lt;script&gt;
+  <script>
     const quizGroups = [
       [
-        { c: &quot;SEO&quot;, q: &quot;SEO signifie Search Engine ___.&quot;, a: [&quot;Optimization&quot;], w: [&quot;Advertising&quot;, &quot;Marketing&quot;, &quot;Operation&quot;] },
-        { c: &quot;Définition&quot;, q: &quot;Le SEO désigne le ___ d&#x27;un site dans les résultats des moteurs de recherche.&quot;, a: [&quot;positionnement&quot;], w: [&quot;hébergement&quot;, &quot;financement&quot;, &quot;graphisme&quot;] },
-        { c: &quot;Objectif&quot;, q: &quot;L&#x27;objectif du référencement naturel est de faire apparaître le site dans les ___ résultats.&quot;, a: [&quot;premiers&quot;], w: [&quot;derniers&quot;, &quot;anciens&quot;, &quot;rares&quot;] },
-        { c: &quot;Objectif&quot;, q: &quot;Un bon référencement permet d&#x27;augmenter les clics et le ___ du site.&quot;, a: [&quot;trafic&quot;], w: [&quot;prix&quot;, &quot;stock&quot;, &quot;capital&quot;] },
-        { c: &quot;Fonctionnement&quot;, q: &quot;Les moteurs de recherche comme Google ___ les contenus des sites.&quot;, a: [&quot;indexent&quot;], w: [&quot;suppriment&quot;, &quot;facturent&quot;, &quot;cryptent&quot;] },
-        { c: &quot;Fonctionnement&quot;, q: &quot;Les contenus indexés par Google sont stockés dans une base appelée « ___ ».&quot;, a: [&quot;Index&quot;], w: [&quot;Cookie&quot;, &quot;Panier&quot;, &quot;Serveur&quot;] },
-        { c: &quot;Critères on-site&quot;, q: &quot;La qualité des contenus, les mots-clés et l&#x27;expérience utilisateur sont des critères de classement ___.&quot;, a: [&quot;on-site&quot;], w: [&quot;off-site&quot;, &quot;payants&quot;, &quot;hors ligne&quot;] },
-        { c: &quot;Critères off-site&quot;, q: &quot;Les liens entrants provenant d&#x27;autres sites sont des critères de classement ___.&quot;, a: [&quot;off-site&quot;], w: [&quot;on-site&quot;, &quot;internes&quot;, &quot;payants&quot;] },
-        { c: &quot;Backlinks&quot;, q: &quot;Les liens entrants qui pointent vers un site sont appelés des ___.&quot;, a: [&quot;backlinks&quot;], w: [&quot;cookies&quot;, &quot;leads&quot;, &quot;opt-in&quot;] },
-        { c: &quot;Netlinking&quot;, q: &quot;Les backlinks s&#x27;obtiennent grâce au ___.&quot;, a: [&quot;netlinking&quot;], w: [&quot;tracking&quot;, &quot;phoning&quot;, &quot;retargeting&quot;] }
+        { c: "Dématérialisation", q: "La dématérialisation consiste à remplacer un document papier par un document ___.", a: ["numérique"], w: ["manuscrit", "imprimé", "oral"] },
+        { c: "Preuve entre particuliers", q: "Un écrit électronique a la même force ___ que le papier si son auteur est identifiable et son intégrité garantie.", a: ["probante"], w: ["commerciale", "fiscale", "publicitaire"] },
+        { c: "Article 1366 du Code civil", q: "Pour bénéficier de la même force probante que le papier, l’auteur de l’écrit électronique doit être ___.", a: ["identifiable"], w: ["anonyme", "majeur", "salarié"] },
+        { c: "Intégrité", q: "Le contenu du message doit être ___, c'est-à-dire qu'il n'a pas été modifié.", a: ["intègre"], w: ["crypté", "public", "traduit"] },
+        { c: "Preuve entre professionnels", q: "À l’égard des commerçants, la preuve des actes de commerce est en principe ___.", a: ["libre"], w: ["stricte", "interdite", "orale"] },
+        { c: "Signature électronique", q: "Le procédé est présumé fiable lorsqu’il met en œuvre une signature électronique ___.", a: ["qualifiée"], w: ["anonyme", "scannée", "manuscrite"] },
+        { c: "Certificat électronique", q: "La non-___ signifie que le signataire ne peut pas renier sa signature.", a: ["répudiation"], w: ["rétractation", "discrimination", "concurrence"] },
+        { c: "LRE", q: "Pour envoyer une lettre recommandée électronique à un non-professionnel, il faut obligatoirement obtenir son ___.", a: ["accord"], w: ["RIB", "adresse postale", "numéro fiscal"] },
+        { c: "LRE", q: "Le destinataire d’une LRE dispose de ___ jours à compter du lendemain de la notification pour accepter ou refuser l’envoi.", a: ["15"], w: ["3", "30", "60"] },
+        { c: "Archivage numérique", q: "La norme NF Z42-013 définit les exigences pour préserver la valeur ___ des documents archivés.", a: ["probante"], w: ["marchande", "fiscale", "esthétique"] }
       ],
       [
-        { c: &quot;Pertinence&quot;, q: &quot;Les mots-clés doivent correspondre à l&#x27;offre, au positionnement et aux ___ des internautes.&quot;, a: [&quot;attentes&quot;], w: [&quot;salaires&quot;, &quot;adresses IP&quot;, &quot;mots de passe&quot;] },
-        { c: &quot;Longue traîne&quot;, q: &quot;Des expressions de mots-clés plus précises, comme « chaussures en cuir cousu main », forment la longue ___.&quot;, a: [&quot;traîne&quot;], w: [&quot;portée&quot;, &quot;liste&quot;, &quot;durée&quot;] },
-        { c: &quot;Longue traîne&quot;, q: &quot;La longue traîne permet de cibler un trafic ___.&quot;, a: [&quot;qualifié&quot;], w: [&quot;anonyme&quot;, &quot;aléatoire&quot;, &quot;gratuit&quot;] },
-        { c: &quot;Balise titre&quot;, q: &quot;La balise ___ correspond au titre affiché dans les résultats de recherche.&quot;, a: [&quot;titre&quot;], w: [&quot;image&quot;, &quot;lien&quot;, &quot;cookie&quot;] },
-        { c: &quot;Meta description&quot;, q: &quot;La balise meta ___ correspond au texte affiché sous l&#x27;URL dans les résultats.&quot;, a: [&quot;description&quot;], w: [&quot;titre&quot;, &quot;image&quot;, &quot;lien&quot;] },
-        { c: &quot;Emplacements&quot;, q: &quot;Les titres de pages, les premiers paragraphes et les balises d&#x27;___ sont des emplacements stratégiques pour les mots-clés.&quot;, a: [&quot;images&quot;], w: [&quot;abonnés&quot;, &quot;adresses IP&quot;, &quot;emails&quot;] },
-        { c: &quot;Netlinking&quot;, q: &quot;Le netlinking renforce la ___ du site et son classement.&quot;, a: [&quot;crédibilité&quot;], w: [&quot;vitesse&quot;, &quot;fiscalité&quot;, &quot;trésorerie&quot;] },
-        { c: &quot;SEA&quot;, q: &quot;Le référencement payant est appelé ___.&quot;, a: [&quot;SEA&quot;], w: [&quot;SEO&quot;, &quot;KPI&quot;, &quot;RGPD&quot;] },
-        { c: &quot;Google Ads&quot;, q: &quot;En SEA, l&#x27;annonceur définit un CPC, c&#x27;est-à-dire un coût par ___.&quot;, a: [&quot;clic&quot;], w: [&quot;client&quot;, &quot;commande&quot;, &quot;contact&quot;] },
-        { c: &quot;Rentabilité&quot;, q: &quot;La rentabilité d&#x27;une campagne SEA s&#x27;analyse avec le coût d&#x27;acquisition par ___.&quot;, a: [&quot;conversion&quot;], w: [&quot;impression&quot;, &quot;affichage&quot;, &quot;mot-clé&quot;] }
+        { c: "E-commerce", q: "Le commerce électronique est défini par la loi du 21 juin 2004 pour la ___ dans l'économie numérique.", a: ["confiance"], w: ["sécurité", "croissance", "transparence"] },
+        { c: "Achat en ligne", q: "La première caractéristique d'un achat en ligne est l'absence de rencontre ___ entre vendeur et acheteur.", a: ["physique"], w: ["commerciale", "téléphonique", "écrite"] },
+        { c: "RGPD", q: "Le RGPD protège les données ___ des cyberconsommateurs.", a: ["personnelles"], w: ["comptables", "publiques", "anonymes"] },
+        { c: "RGPD en B2B", q: "Une adresse e-mail professionnelle nominative est une donnée ___ au sens du RGPD.", a: ["personnelle"], w: ["publique", "anonyme", "commerciale"] },
+        { c: "Cookies", q: "La CNIL recommande en général de conserver le choix exprimé sur les cookies pendant ___ mois.", a: ["6"], w: ["13", "24", "36"] },
+        { c: "Newsletter", q: "Pour les prospects particuliers, une newsletter commerciale exige en principe un ___.", a: ["opt-in"], w: ["opt-out", "défaut", "tacite reconduction"] },
+        { c: "Compte client", q: "Lors de la création d'un compte client, l'entreprise doit limiter la collecte aux données ___ à la finalité poursuivie.", a: ["nécessaires"], w: ["sensibles", "publiques", "gratuites"] },
+        { c: "CGV", q: "Lorsqu’elles sont portées à la connaissance de l’acheteur et acceptées, les CGV ont une valeur ___.", a: ["contractuelle"], w: ["indicative", "publicitaire", "morale"] },
+        { c: "Obligation d'information", q: "Avant la commande, le vendeur doit rappeler les caractéristiques ___ des biens ou services.", a: ["essentielles"], w: ["secondaires", "esthétiques", "facultatives"] },
+        { c: "Obligation d'information", q: "Au plus tard au début de la commande, le vendeur indique les moyens de ___ qu'il accepte.", a: ["paiement"], w: ["transport", "production", "recrutement"] }
       ],
       [
-        { c: &quot;Trafic&quot;, q: &quot;Le trafic d&#x27;un site correspond au nombre de ___ sur le site.&quot;, a: [&quot;visites&quot;], w: [&quot;produits&quot;, &quot;liens&quot;, &quot;salariés&quot;] },
-        { c: &quot;Origine du trafic&quot;, q: &quot;Le trafic peut provenir des sites ___, qui renvoient vers le site grâce à un lien.&quot;, a: [&quot;référents&quot;], w: [&quot;fantômes&quot;, &quot;hébergeurs&quot;, &quot;archivés&quot;] },
-        { c: &quot;Tracking&quot;, q: &quot;Le ___ permet d&#x27;observer et d&#x27;analyser le comportement d&#x27;un internaute sur le site.&quot;, a: [&quot;tracking&quot;], w: [&quot;netlinking&quot;, &quot;lead nurturing&quot;, &quot;opt-in&quot;] },
-        { c: &quot;Tracking&quot;, q: &quot;Le mot tracking vient de l&#x27;anglais « to track », qui signifie « chercher, ___ ».&quot;, a: [&quot;traquer&quot;], w: [&quot;vendre&quot;, &quot;partager&quot;, &quot;publier&quot;] },
-        { c: &quot;Données collectées&quot;, q: &quot;Le tracking collecte notamment l&#x27;adresse ___ de l&#x27;internaute, les pages consultées et la durée de la visite.&quot;, a: [&quot;IP&quot;], w: [&quot;postale&quot;, &quot;mail&quot;, &quot;de livraison&quot;] },
-        { c: &quot;Cookies&quot;, q: &quot;Le tracking s&#x27;appuie en grande partie sur les ___.&quot;, a: [&quot;cookies&quot;], w: [&quot;backlinks&quot;, &quot;newsletters&quot;, &quot;livres blancs&quot;] },
-        { c: &quot;Cookies&quot;, q: &quot;Les cookies sont des fichiers ___ envoyés par le serveur du site web visité.&quot;, a: [&quot;textes&quot;], w: [&quot;vidéos&quot;, &quot;images&quot;, &quot;audio&quot;] },
-        { c: &quot;Cookies de session&quot;, q: &quot;Les cookies liés à la session permettent par exemple la conservation du ___.&quot;, a: [&quot;panier&quot;], w: [&quot;stock&quot;, &quot;bilan&quot;, &quot;contrat&quot;] },
-        { c: &quot;KPI&quot;, q: &quot;KPI signifie Key Performance ___.&quot;, a: [&quot;Indicators&quot;], w: [&quot;Index&quot;, &quot;Investment&quot;, &quot;Interface&quot;] },
-        { c: &quot;KPI&quot;, q: &quot;La durée moyenne d&#x27;une visite, le nombre de visiteurs uniques et le taux de ___ sont des KPIs du site.&quot;, a: [&quot;rebond&quot;], w: [&quot;change&quot;, &quot;TVA&quot;, &quot;marge&quot;] }
+        { c: "Double-clic", q: "Avant de confirmer, le client vérifie sa commande et peut ___ ses erreurs.", a: ["corriger"], w: ["archiver", "publier", "ignorer"] },
+        { c: "Double-clic", q: "Le second clic permet au client de ___ définitivement sa commande.", a: ["confirmer"], w: ["annuler", "imprimer", "partager"] },
+        { c: "Accusé de réception", q: "Une fois la commande validée, le cybermarchand doit accuser ___ sans délai injustifié et par voie électronique.", a: ["réception"], w: ["rejet", "lecture", "livraison"] },
+        { c: "Archivage", q: "Le contrat électronique conclu avec un consommateur doit être archivé lorsqu’il porte sur une somme égale ou supérieure à ___ €.", a: ["120"], w: ["50", "500", "1 000"] },
+        { c: "Archivage", q: "Le délai légal de conservation du contrat électronique archivé est de ___ ans.", a: ["10"], w: ["5", "2", "30"] },
+        { c: "Archivage", q: "Des CGV qui prévoient un archivage de seulement 5 ans ne sont pas ___ à la loi.", a: ["conformes"], w: ["supérieures", "opposables", "antérieures"] },
+        { c: "Rétractation", q: "Pour un bien acheté en ligne, le consommateur dispose en principe de ___ jours pour se rétracter à partir du lendemain de la réception.", a: ["14"], w: ["7", "30", "3"] },
+        { c: "Rétractation", q: "Après avoir notifié sa rétractation, l'acheteur a encore 14 jours pour ___ le bien.", a: ["retourner"], w: ["revendre", "payer", "réparer"] },
+        { c: "Frais de retour", q: "Dans le cas Mademoiselle bio étudié, les frais de retour sont pris en charge par le ___.", a: ["vendeur"], w: ["client", "transporteur", "fabricant"] },
+        { c: "Autres contrats", q: "Comme l’achat en ligne, la vente à ___ ouvre en principe droit à un délai de rétractation.", a: ["domicile"], w: ["emporter", "l'export", "crédit-bail"] }
       ],
       [
-        { c: &quot;Animation&quot;, q: &quot;Animer régulièrement le site vitrine permet notamment de diminuer le taux de ___.&quot;, a: [&quot;rebond&quot;], w: [&quot;clics&quot;, &quot;conversion&quot;, &quot;fidélité&quot;] },
-        { c: &quot;Page d&#x27;accueil&quot;, q: &quot;La page d&#x27;accueil est une page d&#x27;___ très visitée du site.&quot;, a: [&quot;atterrissage&quot;], w: [&quot;erreur&quot;, &quot;archive&quot;, &quot;administration&quot;] },
-        { c: &quot;Page d&#x27;accueil&quot;, q: &quot;La page d&#x27;accueil doit mettre en avant l&#x27;___ de l&#x27;organisation : slogan, promesse client…&quot;, a: [&quot;identité&quot;], w: [&quot;organigramme&quot;, &quot;endettement&quot;, &quot;adresse IP&quot;] },
-        { c: &quot;Leads&quot;, q: &quot;Certaines pages d&#x27;atterrissage servent à générer des ___.&quot;, a: [&quot;leads&quot;], w: [&quot;backlinks&quot;, &quot;cookies&quot;, &quot;CPC&quot;] },
-        { c: &quot;Méthode&quot;, q: &quot;Les pages de génération de leads sont souvent structurées selon la méthode ___.&quot;, a: [&quot;AIDA&quot;], w: [&quot;SWOT&quot;, &quot;PESTEL&quot;, &quot;SONCAS&quot;] },
-        { c: &quot;Collecte de données&quot;, q: &quot;Ces pages collectent des données personnelles en échange de ___, comme un livre blanc, un webinaire ou un devis.&quot;, a: [&quot;contenus&quot;], w: [&quot;paiements&quot;, &quot;cookies&quot;, &quot;backlinks&quot;] },
-        { c: &quot;Newsletter&quot;, q: &quot;La ___ est un mail envoyé à des abonnés qui ont accepté de la recevoir.&quot;, a: [&quot;newsletter&quot;], w: [&quot;landing page&quot;, &quot;meta description&quot;, &quot;bannière&quot;] },
-        { c: &quot;Opt-in&quot;, q: &quot;L&#x27;___ est le consentement préalable de l&#x27;internaute avant l&#x27;envoi d&#x27;un mail ou d&#x27;un SMS.&quot;, a: [&quot;opt-in&quot;], w: [&quot;opt-out&quot;, &quot;upsell&quot;, &quot;index&quot;] },
-        { c: &quot;RGPD&quot;, q: &quot;Le principe de l&#x27;opt-in et la possibilité de se désabonner doivent être respectés conformément au ___.&quot;, a: [&quot;RGPD&quot;], w: [&quot;CPC&quot;, &quot;SEO&quot;, &quot;AIDA&quot;] },
-        { c: &quot;Lead nurturing&quot;, q: &quot;Le lead ___ consiste à « nourrir » les visiteurs avec des contenus adaptés pour les fidéliser ou conquérir de nouveaux clients.&quot;, a: [&quot;nurturing&quot;], w: [&quot;tracking&quot;, &quot;netlinking&quot;, &quot;booking&quot;] }
-      ],
-      [
-        { c: &quot;E-réputation&quot;, q: &quot;L’image d’une entreprise telle qu’elle est perçue à travers les contenus diffusés sur Internet constitue son ___.&quot;, a: [&quot;e-réputation&quot;], w: [&quot;identité visuelle&quot;, &quot;notoriété spontanée&quot;, &quot;charte éditoriale&quot;] },
-        { c: &quot;Visibilité&quot;, q: &quot;Une publication sur le blog officiel de DuraGlass relève des contenus ___.&quot;, a: [&quot;produits par l’entreprise&quot;], w: [&quot;publiés par les clients&quot;, &quot;rédigés par la presse&quot;, &quot;partagés par les concurrents&quot;] },
-        { c: &quot;Contenus des internautes&quot;, q: &quot;Sur la page Facebook de DuraGlass, un commentaire laissé par un acheteur est un contenu produit par ___.&quot;, a: [&quot;un internaute&quot;], w: [&quot;le service de communication&quot;, &quot;un média traditionnel&quot;, &quot;un fournisseur&quot;] },
-        { c: &quot;Veille&quot;, q: &quot;Pour repérer les nouvelles mentions de DuraGlass en ligne, on met en place une ___.&quot;, a: [&quot;veille d’e-réputation&quot;], w: [&quot;campagne d’affiliation&quot;, &quot;promotion commerciale&quot;, &quot;relance de panier&quot;] },
-        { c: &quot;Mots-clés&quot;, q: &quot;Pour suivre les avis sur la résistance de la vaisselle, la recherche la plus ciblée est ___.&quot;, a: [&quot;« DuraGlass vaisselle résistance avis »&quot;], w: [&quot;« design de table »&quot;, &quot;« boutiques décoration »&quot;, &quot;« arts de la table »&quot;] },
-        { c: &quot;Alertes&quot;, q: &quot;Pour être informé lorsqu’un nouveau résultat apparaît sur un mot-clé surveillé, on peut configurer ___.&quot;, a: [&quot;une alerte&quot;], w: [&quot;un filtre du catalogue&quot;, &quot;une campagne de SEA&quot;, &quot;une newsletter client&quot;] },
-        { c: &quot;Recherche&quot;, q: &quot;Dans une recherche, l’opérateur booléen qui accepte l’un ou l’autre des deux termes est ___.&quot;, a: [&quot;OR&quot;], w: [&quot;AND&quot;, &quot;NOT&quot;, &quot;NEAR&quot;] },
-        { c: &quot;Indicateurs&quot;, q: &quot;Pour mesurer quantitativement la visibilité de DuraGlass sur les réseaux sociaux, on peut suivre ___.&quot;, a: [&quot;le nombre de mentions&quot;], w: [&quot;les sujets récurrents des avis&quot;, &quot;le ton des commentaires&quot;, &quot;les motifs de satisfaction&quot;] },
-        { c: &quot;Analyse&quot;, q: &quot;Classer les avis comme positifs, négatifs ou neutres permet d’analyser leur ___.&quot;, a: [&quot;tonalité&quot;], w: [&quot;volume&quot;, &quot;fréquence&quot;, &quot;portée&quot;] },
-        { c: &quot;Veille concurrentielle&quot;, q: &quot;Observer les publications et pratiques des marques rivales relève de la veille ___.&quot;, a: [&quot;concurrentielle&quot;], w: [&quot;tarifaire interne&quot;, &quot;réglementaire&quot;, &quot;technologique&quot;] }
-      ],
-      [
-        { c: &quot;Modération&quot;, q: &quot;Vérifier que les commentaires respectent les règles d’un espace de discussion relève de la ___.&quot;, a: [&quot;modération&quot;], w: [&quot;conversion&quot;, &quot;segmentation&quot;, &quot;commercialisation&quot;] },
-        { c: &quot;Règles&quot;, q: &quot;Le document qui précise les comportements autorisés et les motifs de retrait des commentaires est la charte de ___.&quot;, a: [&quot;modération&quot;], w: [&quot;livraison&quot;, &quot;référencement&quot;, &quot;tarification&quot;] },
-        { c: &quot;Publication&quot;, q: &quot;Si l’équipe valide les commentaires avant leur mise en ligne, elle effectue une modération ___.&quot;, a: [&quot;a priori&quot;], w: [&quot;a posteriori&quot;, &quot;automatique&quot;, &quot;sans contrôle&quot;] },
-        { c: &quot;Avis négatif&quot;, q: &quot;Un client explique calmement que sa vaisselle s’est ternie au lave-vaisselle. La première réponse utile est de ___.&quot;, a: [&quot;reconnaître le problème et proposer une prise en charge&quot;], w: [&quot;supprimer l’avis à cause de sa note&quot;, &quot;publier le même remerciement que pour un avis positif&quot;, &quot;rediriger le client vers une promotion&quot;] },
-        { c: &quot;Données personnelles&quot;, q: &quot;Un internaute publie son adresse e-mail personnelle pour demander un catalogue. Pour protéger ses coordonnées, mieux vaut ___.&quot;, a: [&quot;masquer les coordonnées et poursuivre en privé&quot;], w: [&quot;recopier l’adresse dans la réponse publique&quot;, &quot;épingler le commentaire pour le retrouver&quot;, &quot;inviter le client à ajouter son numéro de téléphone en commentaire&quot;] },
-        { c: &quot;Avis positif&quot;, q: &quot;À un client qui félicite DuraGlass pour le design de sa vaisselle, la réponse la plus adaptée consiste à ___.&quot;, a: [&quot;le remercier en mentionnant son retour sur le design&quot;], w: [&quot;lui envoyer le formulaire de réclamation&quot;, &quot;lui demander de retirer son avis&quot;, &quot;lui répondre par les conditions de retour&quot;] },
-        { c: &quot;Suivi client&quot;, q: &quot;Un restaurateur demande publiquement comment commander à distance. La réponse doit d’abord ___.&quot;, a: [&quot;lui indiquer le canal de commande adapté&quot;], w: [&quot;lui demander de publier ses coordonnées bancaires&quot;, &quot;supprimer la demande comme hors sujet&quot;, &quot;lui demander de poster un avis positif&quot;] },
-        { c: &quot;Amélioration produit&quot;, q: &quot;Si plusieurs clients signalent le même défaut de résistance, le community manager peut faire remonter l’information au service ___.&quot;, a: [&quot;qualité&quot;], w: [&quot;paie&quot;, &quot;recrutement&quot;, &quot;facturation&quot;] },
-        { c: &quot;Troll&quot;, q: &quot;Un internaute publie des provocations répétées pour déclencher des disputes. Son comportement est typique d’un ___.&quot;, a: [&quot;troll&quot;], w: [&quot;ambassadeur&quot;, &quot;prescripteur&quot;, &quot;prospect qualifié&quot;] },
-        { c: &quot;Rôle&quot;, q: &quot;La gestion quotidienne des échanges et des commentaires d’une communauté en ligne est une mission du ___.&quot;, a: [&quot;community manager&quot;], w: [&quot;responsable logistique&quot;, &quot;contrôleur de gestion&quot;, &quot;gestionnaire de stock&quot;] }
-      ],
-      [
-        { c: &quot;Définition&quot;, q: &quot;Un bouche-à-oreille négatif qui se propage rapidement autour d’une marque est un ___.&quot;, a: [&quot;bad buzz&quot;], w: [&quot;lead nurturing&quot;, &quot;plan de fidélisation&quot;, &quot;audit de notoriété&quot;] },
-        { c: &quot;Viralité&quot;, q: &quot;Après un test raté à la télévision, des internautes repartagent la séquence et lancent un défi vidéo. Ces reprises augmentent la ___ du bad buzz.&quot;, a: [&quot;viralité&quot;], w: [&quot;délivrabilité&quot;, &quot;rentabilité&quot;, &quot;personnalisation&quot;] },
-        { c: &quot;Origine&quot;, q: &quot;Un bad buzz lié à une vidéo mettant en cause les pratiques d’un fournisseur a une origine ___.&quot;, a: [&quot;externe&quot;], w: [&quot;budgétaire&quot;, &quot;éditoriale interne&quot;, &quot;liée au paiement&quot;] },
-        { c: &quot;Diagnostic&quot;, q: &quot;Avant de rédiger une réponse officielle à une crise en ligne, l’entreprise doit d’abord ___.&quot;, a: [&quot;identifier l’origine et les relais du bad buzz&quot;], w: [&quot;publier une offre promotionnelle&quot;, &quot;refondre toutes les pages du site&quot;, &quot;changer le nom de ses comptes sociaux&quot;] },
-        { c: &quot;Réponse de crise&quot;, q: &quot;Si la crise se propage surtout sur la page Facebook de la marque, un canal pertinent pour diffuser sa réponse officielle est ___.&quot;, a: [&quot;cette même page Facebook&quot;], w: [&quot;un e-mail aux fournisseurs uniquement&quot;, &quot;le catalogue imprimé du trimestre prochain&quot;, &quot;l’espace intranet du personnel&quot;] },
-        { c: &quot;Message de crise&quot;, q: &quot;Face à une démonstration ratée, une prise de parole crédible consiste à ___.&quot;, a: [&quot;reconnaître les faits et annoncer les vérifications engagées&quot;], w: [&quot;promettre que tous les produits sont parfaits sans vérifier&quot;, &quot;rejeter la responsabilité sur les clients&quot;, &quot;écarter le sujet et annoncer une promotion&quot;] },
-        { c: &quot;Évaluation&quot;, q: &quot;Pour savoir si la réponse de crise apaise les réactions, l’entreprise peut mesurer l’évolution ___.&quot;, a: [&quot;du volume et de la tonalité des mentions&quot;], w: [&quot;du coût d’achat des marchandises&quot;, &quot;du nombre de produits référencés&quot;, &quot;des frais de livraison&quot;] },
-        { c: &quot;SERP&quot;, q: &quot;Lorsque le social media manager surveille les SERP, il examine les pages ___.&quot;, a: [&quot;de résultats des moteurs de recherche&quot;], w: [&quot;de paiement du site marchand&quot;, &quot;de gestion des stocks&quot;, &quot;d’inscription à la newsletter&quot;] },
-        { c: &quot;Curing&quot;, q: &quot;Demander le retrait d’un contenu précis en justifiant le motif de la demande correspond à la technique du ___.&quot;, a: [&quot;curing&quot;], w: [&quot;flooding&quot;, &quot;tracking&quot;, &quot;netlinking&quot;] },
-        { c: &quot;Flooding&quot;, q: &quot;Publier des contenus positifs pour réduire la visibilité des résultats négatifs dans les moteurs de recherche correspond au ___.&quot;, a: [&quot;flooding&quot;], w: [&quot;curing&quot;, &quot;showrooming&quot;, &quot;remarketing&quot;] }
-      ],
-      [
-        { c: &quot;B2C&quot;, q: &quot;Quand la Librairie Nouvelle vend un livre à un particulier sur son site, elle réalise une vente ___.&quot;, a: [&quot;B2C&quot;], w: [&quot;C2C&quot;, &quot;B2B&quot;, &quot;B2G&quot;] },
-        { c: &quot;B2B&quot;, q: &quot;Une entreprise qui vend du mobilier de bureau à d’autres entreprises pratique le ___.&quot;, a: [&quot;B2B&quot;], w: [&quot;B2C&quot;, &quot;C2C&quot;, &quot;B2G&quot;] },
-        { c: &quot;B2G&quot;, q: &quot;Une entreprise qui vend des patins à une mairie pratique le ___.&quot;, a: [&quot;B2G&quot;], w: [&quot;B2C&quot;, &quot;C2C&quot;, &quot;B2B&quot;] },
-        { c: &quot;C2C&quot;, q: &quot;La revente d’un livre entre deux particuliers sur une plateforme relève du ___.&quot;, a: [&quot;C2C&quot;], w: [&quot;B2C&quot;, &quot;B2B&quot;, &quot;B2G&quot;] },
-        { c: &quot;M-commerce&quot;, q: &quot;Une commande effectuée sur un smartphone relève du ___.&quot;, a: [&quot;m-commerce&quot;], w: [&quot;web-to-store&quot;, &quot;showrooming&quot;, &quot;curing&quot;] },
-        { c: &quot;Click &amp; mortar&quot;, q: &quot;La Librairie Nouvelle possède un magasin et une boutique en ligne. Elle appartient à la catégorie ___.&quot;, a: [&quot;click &amp; mortar&quot;], w: [&quot;pure player&quot;, &quot;véadiste traditionnel&quot;, &quot;place de marché&quot;] },
-        { c: &quot;Pure player&quot;, q: &quot;Un marchand qui vend exclusivement en ligne, sans magasin physique ni activité historique de vente par correspondance, est un ___.&quot;, a: [&quot;pure player&quot;], w: [&quot;commerçant click &amp; mortar&quot;, &quot;véadiste traditionnel&quot;, &quot;affilié&quot;] },
-        { c: &quot;Vente à distance&quot;, q: &quot;Une entreprise historiquement spécialisée dans la vente par correspondance, qui propose désormais la commande par téléphone et en ligne, est un ___.&quot;, a: [&quot;véadiste traditionnel&quot;], w: [&quot;commerçant click &amp; mortar&quot;, &quot;comparateur de prix&quot;, &quot;site vitrine&quot;] },
-        { c: &quot;Marketplace&quot;, q: &quot;Un site qui met en relation des vendeurs indépendants et des acheteurs et qui prélève une commission sur les transactions est une ___.&quot;, a: [&quot;place de marché&quot;], w: [&quot;page d’atterrissage&quot;, &quot;boutique monomarque&quot;, &quot;galerie de produits&quot;] },
-        { c: &quot;Affiliation&quot;, q: &quot;Si un site partenaire reçoit une commission sur les ventes générées par ses liens, le dispositif relève de l’___.&quot;, a: [&quot;affiliation&quot;], w: [&quot;automatisation marketing&quot;, &quot;optimisation ergonomique&quot;, &quot;analyse du trafic&quot;] }
-      ],
-      [
-        { c: &quot;Web-to-store&quot;, q: &quot;Un internaute vérifie en ligne qu’un livre est disponible, puis l’achète à la librairie. Ce parcours est du ___.&quot;, a: [&quot;web-to-store&quot;], w: [&quot;showrooming&quot;, &quot;C2C&quot;, &quot;netlinking&quot;] },
-        { c: &quot;Showrooming&quot;, q: &quot;Une cliente essaie des chaussures en boutique puis les commande sur Internet. Ce comportement est du ___.&quot;, a: [&quot;showrooming&quot;], w: [&quot;web-to-store&quot;, &quot;lead nurturing&quot;, &quot;tracking&quot;] },
-        { c: &quot;Profil spontané&quot;, q: &quot;Un acheteur séduit par une promotion et une livraison offerte passe commande sur un coup de cœur. Son profil est plutôt ___.&quot;, a: [&quot;spontané&quot;], w: [&quot;humaniste&quot;, &quot;méthodique&quot;, &quot;compétitif&quot;] },
-        { c: &quot;Profil humaniste&quot;, q: &quot;Une cliente lit des avis, prend le temps de réfléchir et souhaite discuter par chat avec un conseiller avant d’acheter. Son profil est plutôt ___.&quot;, a: [&quot;humaniste&quot;], w: [&quot;spontané&quot;, &quot;compétitif&quot;, &quot;méthodique&quot;] },
-        { c: &quot;Profil méthodique&quot;, q: &quot;Un client explore plusieurs catégories, lit les fiches et compare longuement avant de choisir. Son profil est plutôt ___.&quot;, a: [&quot;méthodique&quot;], w: [&quot;spontané&quot;, &quot;humaniste&quot;, &quot;compétitif&quot;] },
-        { c: &quot;Profil compétitif&quot;, q: &quot;Un client vérifie qu’une offre limitée est la plus avantageuse, puis décide rapidement selon ses critères. Son profil est plutôt ___.&quot;, a: [&quot;compétitif&quot;], w: [&quot;humaniste&quot;, &quot;méthodique&quot;, &quot;spontané&quot;] },
-        { c: &quot;Persona&quot;, q: &quot;Le portrait fictif construit à partir des attentes et des habitudes d’un segment de clientèle est un ___.&quot;, a: [&quot;persona&quot;], w: [&quot;tunnel d’achat&quot;, &quot;tableau de bord&quot;, &quot;catalogue&quot;] },
-        { c: &quot;Responsive&quot;, q: &quot;Une mise en page qui s’adapte à la largeur d’un smartphone, d’une tablette ou d’un ordinateur est dite ___.&quot;, a: [&quot;responsive&quot;], w: [&quot;automatisée&quot;, &quot;transactionnelle&quot;, &quot;sponsorisée&quot;] },
-        { c: &quot;Catalogue&quot;, q: &quot;Pour permettre à un lecteur d’affiner les résultats par genre, prix et disponibilité, le catalogue doit proposer des ___.&quot;, a: [&quot;filtres&quot;], w: [&quot;bannières&quot;, &quot;alertes de veille&quot;, &quot;avis clients&quot;] },
-        { c: &quot;Navigation&quot;, q: &quot;Pour réduire le nombre de clics nécessaires pour trouver un livre, la meilleure amélioration est de ___.&quot;, a: [&quot;rendre les catégories et la recherche accessibles dès l’accueil&quot;], w: [&quot;ajouter une page intermédiaire avant chaque rayon&quot;, &quot;réserver la recherche aux clients connectés&quot;, &quot;ouvrir chaque produit dans une fenêtre différente&quot;] }
-      ],
-      [
-        { c: &quot;Sécurité&quot;, q: &quot;Pour vérifier que la connexion à la page de paiement est chiffrée, on peut notamment vérifier que l’adresse utilise ___.&quot;, a: [&quot;HTTPS&quot;], w: [&quot;HTTP&quot;, &quot;FTP&quot;, &quot;SMTP&quot;] },
-        { c: &quot;CGV&quot;, q: &quot;Pour retrouver dans un document les modalités de paiement, de livraison et de retour, le client consulte les ___.&quot;, a: [&quot;CGV&quot;], w: [&quot;fiches produits&quot;, &quot;avis clients&quot;, &quot;résultats de recherche&quot;] },
-        { c: &quot;Fiche produit&quot;, q: &quot;Pour aider l’acheteur à choisir une pointure sans essayer les chaussures, l’information la plus utile sur la fiche produit est ___.&quot;, a: [&quot;un guide des tailles&quot;], w: [&quot;un lien vers les mentions légales&quot;, &quot;la date de création de la boutique&quot;, &quot;le nombre total de références du site&quot;] },
-        { c: &quot;Conversion&quot;, q: &quot;Si 50 commandes sont passées pour 2 500 visites et que le taux de conversion est calculé sur les visites, il est de ___.&quot;, a: [&quot;2 %&quot;], w: [&quot;0,2 %&quot;, &quot;5 %&quot;, &quot;20 %&quot;] },
-        { c: &quot;Abandon de panier&quot;, q: &quot;Pour déterminer si les acheteurs qui ont ajouté un article au panier quittent souvent le site sans acheter, on suit ___.&quot;, a: [&quot;le taux d’abandon de panier&quot;], w: [&quot;la durée moyenne des sessions&quot;, &quot;le taux d’ouverture des e-mails&quot;, &quot;le chiffre d’affaires par catégorie&quot;] },
-        { c: &quot;Déclencheur&quot;, q: &quot;Dans un scénario d’e-mail de bienvenue, ___.&quot;, a: [&quot;la création du compte déclenche l’envoi&quot;], w: [&quot;l’envoi est déclenché par le retour d’un produit&quot;, &quot;la livraison déclenche l’inscription du visiteur&quot;, &quot;la consultation d’un produit déclenche un remboursement&quot;] },
-        { c: &quot;Relance&quot;, q: &quot;Pour relancer un panier abandonné, le scénario doit cibler les internautes identifiés qui ___.&quot;, a: [&quot;ont ajouté un produit au panier sans finaliser l’achat&quot;], w: [&quot;ont déjà payé et reçu leur commande&quot;, &quot;se sont désinscrits des communications&quot;, &quot;ont consulté l’accueil sans ajouter de produit&quot;] },
-        { c: &quot;Personnalisation&quot;, q: &quot;Dans un e-mail de relance, rappeler les articles laissés dans le panier permet de ___ le message.&quot;, a: [&quot;personnaliser&quot;], w: [&quot;déréférencer&quot;, &quot;chiffrer&quot;, &quot;archiver&quot;] },
-        { c: &quot;Segmentation&quot;, q: &quot;Pour adapter les messages aux visiteurs, prospects et clients, le logiciel de marketing automation permet de ___ la base de contacts.&quot;, a: [&quot;segmenter&quot;], w: [&quot;compresser&quot;, &quot;anonymiser&quot;, &quot;supprimer&quot;] },
-        { c: &quot;Mesure&quot;, q: &quot;Pour vérifier si les destinataires interagissent avec le lien de retour au panier, on suit le taux de ___.&quot;, a: [&quot;clics&quot;], w: [&quot;désinscription&quot;, &quot;délivrabilité&quot;, &quot;rebond du site&quot;] }
+        { c: "Prestations numériques", q: "Les contrats de prestation de services numériques étudiés ici sont conclus entre ___.", a: ["professionnels"], w: ["particuliers", "consommateurs", "administrations"] },
+        { c: "Contrat OVH", q: "OVH fournit à son client une prestation d'___ de site web.", a: ["hébergement"], w: ["impression", "traduction", "rédaction"] },
+        { c: "Clause protectrice", q: "La clause précisant qu'OVH ne participe pas à la conception du site protège l'___.", a: ["hébergeur"], w: ["internaute", "consommateur", "administrateur"] },
+        { c: "Obligations du client", q: "Le client d'OVH s'engage à ne pas héberger de sites racistes ou ___.", a: ["illégaux"], w: ["payants", "professionnels", "étrangers"] },
+        { c: "Obligations du client", q: "Le client garantit qu'il est titulaire des droits de propriété ___ sur les contenus hébergés.", a: ["intellectuelle"], w: ["foncière", "immobilière", "collective"] },
+        { c: "Réversibilité", q: "La clause de ___ permet au client de reprendre la fonction externalisée ou de la confier à un autre prestataire.", a: ["réversibilité"], w: ["confidentialité", "exclusivité", "non-concurrence"] },
+        { c: "Réversibilité", q: "La clause de réversibilité peut prévoir une ___ du prestataire pour faciliter le transfert.", a: ["assistance"], w: ["indemnité", "caution", "remise"] },
+        { c: "CGS d'OVH", q: "Dans les CGS d’OVH étudiées, l’arrêt des services entraîne la ___ des contenus du client.", a: ["suppression"], w: ["sauvegarde", "duplication", "publication"] },
+        { c: "Contrat QuiDitMiam!", q: "Le contrat entre GOA SOFT et Régal et Saveurs porte sur la location et la ___ d'une application mobile.", a: ["maintenance"], w: ["vente", "traduction", "publicité"] },
+        { c: "Article 8", q: "L'article 8 impose aux deux parties une obligation de secret et de ___.", a: ["confidentialité"], w: ["réversibilité", "rétractation", "exclusivité"] }
       ]
     ];
 
-    const $ = id =&gt; document.getElementById(id);
-    const shuffle = list =&gt; {
-      const copy = [...list];
-      for (let i = copy.length - 1; i &gt; 0; i--) {
+    const $ = id => document.getElementById(id);
+
+    function shuffle(items) {
+      const copy = [...items];
+      for (let i = copy.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [copy[i], copy[j]] = [copy[j], copy[i]];
       }
       return copy;
-    };
-    const normalize = value =&gt; value
-      .normalize(&quot;NFD&quot;)
-      .replace(/[\u0300-\u036f]/g, &quot;&quot;)
-      .toLocaleLowerCase(&quot;fr&quot;)
-      .replace(/[’&#x27;]/g, &quot; &quot;)
-      .replace(/[^a-z0-9]+/g, &quot; &quot;)
-      .trim();
+    }
 
     let deck = [];
     let currentQuiz = 0;
     let current = 0;
     let lives = 3;
     let score = 0;
-    let locked = false;
-    let transitionTimer = null;
+
+    function showScreen(id) {
+      for (const screen of ["quizMenu", "quiz", "endScreen"]) {
+        $(screen).hidden = screen !== id;
+      }
+    }
 
     function updateLives() {
-      const full = &quot;♥ &quot;.repeat(lives);
-      const empty = &quot;♡ &quot;.repeat(3 - lives);
-      $(&quot;hearts&quot;).textContent = (full + empty).trim();
-      $(&quot;hearts&quot;).setAttribute(&quot;aria-label&quot;, `${lives} vie${lives &gt; 1 ? &quot;s&quot; : &quot;&quot;} restante${lives &gt; 1 ? &quot;s&quot; : &quot;&quot;}`);
+      $("lives").textContent = lives + (lives === 1 ? " vie" : " vies");
     }
 
-    function renderPrompt(sentence) {
-      const [before, after = &quot;&quot;] = sentence.split(&quot;___&quot;);
-      $(&quot;question&quot;).replaceChildren(
-        document.createTextNode(before),
-        Object.assign(document.createElement(&quot;span&quot;), { className: &quot;blank&quot;, textContent: &quot;…&quot; }),
-        document.createTextNode(after)
-      );
+    function focusInQuiz(id) {
+      $(id).focus({ preventScroll: true });
+      $("qcm").scrollIntoView({ block: "start" });
     }
 
-    function startGame(quizIndex = currentQuiz) {
-      clearTimeout(transitionTimer);
+    function startGame(quizIndex) {
       currentQuiz = quizIndex;
       deck = shuffle(quizGroups[currentQuiz]);
       current = 0;
       lives = 3;
       score = 0;
-      locked = false;
-      $(&quot;quizMenu&quot;).classList.remove(&quot;show&quot;);
-      $(&quot;quiz&quot;).hidden = false;
-      $(&quot;endScreen&quot;).classList.remove(&quot;show&quot;);
+      $("progress").max = deck.length;
       updateLives();
+      showScreen("quiz");
+      if (location.hash !== "#qcm") location.hash = "qcm";
       renderQuestion();
     }
 
     function renderQuestion() {
-      locked = false;
       const item = deck[current];
-      $(&quot;progress&quot;).style.width = `${(current / deck.length) * 100}%`;
-      $(&quot;category&quot;).textContent = item.c;
-      $(&quot;counter&quot;).textContent = `Question ${current + 1} / ${deck.length}`;
-      renderPrompt(item.q);
-      $(&quot;feedback&quot;).textContent = &quot;&quot;;
-      $(&quot;feedback&quot;).className = &quot;&quot;;
-      $(&quot;qcmAnswers&quot;).hidden = false;
-      $(&quot;qcmAnswers&quot;).replaceChildren();
-
-      shuffle([item.a[0], ...item.w]).forEach(label =&gt; {
-        const button = document.createElement(&quot;button&quot;);
-        button.type = &quot;button&quot;;
-        button.className = &quot;answer-choice&quot;;
+      const [before, after = ""] = item.q.split("___");
+      const blank = document.createElement("span");
+      blank.className = "blank";
+      blank.textContent = "…";
+      blank.setAttribute("aria-label", "mot manquant");
+      $("question").replaceChildren(before, blank, after);
+      $("category").textContent = item.c;
+      $("counter").textContent = "Question " + (current + 1) + " / " + deck.length;
+      $("progress").value = score;
+      $("feedback").textContent = "";
+      $("next").hidden = true;
+      $("qcmAnswers").replaceChildren(...shuffle([item.a[0], ...item.w]).map(label => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer-choice";
         button.textContent = label;
-        button.addEventListener(&quot;click&quot;, () =&gt; checkChoice(button, label));
-        $(&quot;qcmAnswers&quot;).appendChild(button);
-      });
-      $(&quot;qcmAnswers&quot;).querySelector(&quot;button&quot;).focus();
+        button.addEventListener("click", () => checkChoice(button, label === item.a[0]));
+        return button;
+      }));
+      focusInQuiz("question");
     }
 
-    function acceptCorrectAnswer(control) {
-      locked = true;
-      score++;
-      control.classList.add(&quot;correct&quot;);
-      document.querySelectorAll(&quot;.answer-choice&quot;).forEach(button =&gt; button.disabled = true);
-      $(&quot;feedback&quot;).textContent = &quot;Bonne réponse !&quot;;
-      $(&quot;feedback&quot;).className = &quot;good&quot;;
-      transitionTimer = setTimeout(() =&gt; {
-        current++;
-        if (current === deck.length) endGame(true);
-        else renderQuestion();
-      }, 750);
-    }
-
-    function finishAfterLastError() {
-      const item = deck[current];
-      locked = true;
-      document.querySelectorAll(&quot;.answer-choice&quot;).forEach(button =&gt; button.disabled = true);
-      $(&quot;feedback&quot;).textContent = `La réponse attendue était « ${item.a[0]} ».`;
-      $(&quot;feedback&quot;).className = &quot;bad&quot;;
-      transitionTimer = setTimeout(() =&gt; endGame(false), 1100);
-    }
-
-    function checkChoice(button, label) {
-      if (locked || button.disabled) return;
-      const item = deck[current];
-      const isCorrect = item.a.some(answer =&gt; normalize(answer) === normalize(label));
-
-      if (isCorrect) {
-        acceptCorrectAnswer(button);
-        return;
-      }
-
-      lives--;
+    function checkChoice(button, correct) {
+      if (button.disabled) return;
+      button.classList.add(correct ? "correct" : "wrong");
       button.disabled = true;
-      button.classList.add(&quot;wrong&quot;);
-      updateLives();
-      if (lives === 0) {
-        finishAfterLastError();
+
+      if (correct) {
+        score++;
+        $("progress").value = score;
+        $("feedback").textContent = "Bonne réponse !";
       } else {
-        $(&quot;feedback&quot;).textContent = `Ce n&#x27;est pas ça. Essaie encore — ${lives} vie${lives &gt; 1 ? &quot;s&quot; : &quot;&quot;} restante${lives &gt; 1 ? &quot;s&quot; : &quot;&quot;}.`;
-        $(&quot;feedback&quot;).className = &quot;bad&quot;;
+        lives--;
+        updateLives();
+        $("feedback").textContent = lives ? "Essaie une autre réponse." : "La bonne réponse était « " + deck[current].a[0] + " ».";
+      }
+
+      $("feedback").className = correct ? "good" : "bad";
+      if (correct || lives === 0) {
+        for (const choice of $("qcmAnswers").children) {
+          choice.disabled = true;
+          if (choice.textContent === deck[current].a[0]) choice.classList.add("correct");
+        }
+        $("next").textContent = lives === 0 || score === deck.length ? "Voir le résultat" : "Question suivante";
+        $("next").hidden = false;
+        $("next").focus();
+      } else {
+        $("qcmAnswers").querySelector("button:not(:disabled)").focus({ preventScroll: true });
       }
     }
 
-    function endGame(won) {
-      $(&quot;quiz&quot;).hidden = true;
-      $(&quot;endScreen&quot;).classList.add(&quot;show&quot;);
-      $(&quot;progress&quot;).style.width = won ? &quot;100%&quot; : `${(current / deck.length) * 100}%`;
-      $(&quot;resultIcon&quot;).textContent = won ? &quot;🏆&quot; : &quot;📚&quot;;
-      $(&quot;resultTitle&quot;).textContent = won ? &quot;Quiz réussi !&quot; : &quot;Partie terminée&quot;;
-      $(&quot;resultText&quot;).textContent = won
-        ? `Tu as répondu aux ${deck.length} questions avec ${lives} vie${lives &gt; 1 ? &quot;s&quot; : &quot;&quot;} restante${lives &gt; 1 ? &quot;s&quot; : &quot;&quot;}.`
-        : `Tu as trouvé ${score} bonne${score &gt; 1 ? &quot;s&quot; : &quot;&quot;} réponse${score &gt; 1 ? &quot;s&quot; : &quot;&quot;} sur ${deck.length}. Les questions seront remélangées à la prochaine tentative.`;
+    function endGame() {
+      $("resultTitle").textContent = score === deck.length ? "Quiz réussi !" : "Partie terminée";
+      $("resultText").textContent = score + " / " + deck.length + " bonnes réponses · " + $("lives").textContent;
+      showScreen("endScreen");
+      focusInQuiz("resultTitle");
     }
 
     function showMenu() {
-      clearTimeout(transitionTimer);
-      locked = true;
-      $(&quot;quiz&quot;).hidden = true;
-      $(&quot;endScreen&quot;).classList.remove(&quot;show&quot;);
-      $(&quot;quizMenu&quot;).classList.add(&quot;show&quot;);
-      $(&quot;progress&quot;).style.width = &quot;0&quot;;
-      lives = 3;
-      updateLives();
+      showScreen("quizMenu");
+      focusInQuiz("qcm-title");
     }
 
-    $(&quot;restart&quot;).addEventListener(&quot;click&quot;, () =&gt; startGame(currentQuiz));
-    $(&quot;backMenu&quot;).addEventListener(&quot;click&quot;, showMenu);
-    $(&quot;quitQuiz&quot;).addEventListener(&quot;click&quot;, showMenu);
-    document.querySelectorAll(&quot;.quiz-choice&quot;).forEach(button =&gt; {
-      button.addEventListener(&quot;click&quot;, () =&gt; startGame(Number(button.dataset.quiz)));
-    });
-    updateLives();
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-"></iframe>
-    </section>
-    <footer class="actions">
-      <a href="#haut">Retour en haut ↑</a>
-    </footer>
-  </main>
-  <script>
-    const quizFrame = document.querySelector(".quiz-frame");
-    let quizResizeObserver;
+    function updateNavigation() {
+      const anchor = location.hash === "#qcm" ? "#qcm" : "#cours";
+      for (const link of document.querySelectorAll(".nav-inner a")) {
+        if (link.hash === anchor) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      }
+    }
 
-    quizFrame.addEventListener("load", () => {
-      const quizBody = quizFrame.contentDocument.body;
-      quizResizeObserver?.disconnect();
-      const fitQuiz = () => {
-        const borders = quizFrame.offsetHeight - quizFrame.clientHeight;
-        quizFrame.style.height = `${Math.ceil(quizBody.getBoundingClientRect().height) + borders}px`;
-      };
-      fitQuiz();
-      quizResizeObserver = new ResizeObserver(fitQuiz);
-      quizResizeObserver.observe(quizBody);
+    $("next").addEventListener("click", () => {
+      if (lives === 0 || score === deck.length) endGame();
+      else {
+        current++;
+        renderQuestion();
+      }
     });
+    $("restart").addEventListener("click", () => startGame(currentQuiz));
+    $("backMenu").addEventListener("click", showMenu);
+    $("quitQuiz").addEventListener("click", showMenu);
+    for (const button of document.querySelectorAll("[data-quiz]")) {
+      button.addEventListener("click", () => startGame(Number(button.dataset.quiz)));
+    }
+    window.addEventListener("hashchange", updateNavigation);
+    updateNavigation();
   </script>
 </body>
 </html>
